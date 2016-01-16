@@ -21,15 +21,6 @@
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"1"] selectedImage:[UIImage imageNamed:@"1"]];
         self.view.backgroundColor=[UIColor redColor];
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     return self;
 }
 - (void)viewDidLoad {
