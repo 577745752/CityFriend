@@ -127,7 +127,7 @@
 }
 -(void)registered:(UIButton *)button
 {
-    RegisteredViewController *registered =[RegisteredViewController new];
+    RegisterViewController *registered =[RegisterViewController new];
     
     [self.navigationController pushViewController:registered animated:YES];
     

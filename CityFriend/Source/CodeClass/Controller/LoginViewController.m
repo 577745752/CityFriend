@@ -13,74 +13,129 @@
 @end
 
 @implementation LoginViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    UILabel *userNamelabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/6, kHeight/8,kWidth/6,3*kGap)];
-    userNamelabel.text=@"用户名";
-    userNamelabel.layer.cornerRadius=10;
-    userNamelabel.layer.masksToBounds=YES;
-    [self.view addSubview:userNamelabel];
-    UITextField *userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3+5*kGap, kHeight/8, kWidth/3,3*kGap)];
-    userNameTextField.borderStyle=UITextBorderStyleRoundedRect;
-    userNameTextField.placeholder=@"请输入用户名";
-    userNameTextField.layer.cornerRadius=10;
-    userNameTextField.layer.masksToBounds=YES;
-    [self.view addSubview:userNameTextField];
-    
-    UILabel *pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/6, kHeight/5,kWidth/6,3*kGap)];
-    pswLabel.text=@"密码";
-    pswLabel.layer.cornerRadius=10;
-    pswLabel.layer.masksToBounds=YES;
-    [self.view addSubview:pswLabel];
-    
-    UITextField *pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3+5*kGap, kHeight/5,kWidth/3,3*kGap)];
-    pswTextField.borderStyle=UITextBorderStyleRoundedRect;
-    pswTextField.placeholder=@"请输入密码";
-    pswTextField.layer.cornerRadius=10;
-    pswTextField.layer.masksToBounds=YES;
-    [self.view addSubview:pswTextField];
-    
-    UIButton *loginButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    loginButton.frame=CGRectMake(kWidth/6+kGap, kHeight/4+2*kGap, 6*kGap, 4*kGap);
-    [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
-    [loginButton addTarget:self.parentViewController action:@selector(changePage:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loginButton];
-    
-    
-    UIButton *getPasswordButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    getPasswordButton.frame =CGRectMake(kWidth/3+2.5*kGap, kHeight/4+2*kGap, 8*kGap, 4*kGap);
-    [getPasswordButton setTitle:@"找回密码" forState:UIControlStateNormal];
-    [getPasswordButton addTarget:self action:@selector(changeTion:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:getPasswordButton];
-    
-    UIButton *registerButton=[UIButton buttonWithType:UIButtonTypeSystem];
-   registerButton.frame=CGRectMake(kWidth/2+6*kGap, kHeight/4+2*kGap, 6*kGap, 4*kGap);
-    [registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    [registerButton addTarget:self action:@selector(changeAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:registerButton];
-    
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.navigationItem.title=@"用户登录";
+        [self drawView];
+        
+    }
+    return self;
 }
-
--(void)changePage:(UIButton *)button
+-(void)drawView
+{
+    //这里一定要用self.xxxx,代表getter方法,若是用_xxxx则是属性,不会执行getter方法
+    [self.view addSubview:self.userNameLabel];
+    [self.view addSubview:self.pswLabel];
+    [self.view addSubview:self.userNameTextField];
+    [self.view addSubview:self.pswTextField];
+    [self.view addSubview:self.loginButton];
+    [self.view addSubview:self.registerButton];
+    [self.view addSubview:self.getPasswordButton];
+}
+-(UILabel*)userNameLabel
+{
+    if (!_userNameLabel) {
+        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/7, kHeight/7,kWidth/6,5*kGap)];
+        _userNameLabel.text=@"用户名:";
+        
+    }
+    return _userNameLabel;
+}
+-(UILabel*)pswLabel
+{
+    if (!_pswLabel) {
+        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/7, kHeight/4+2*kGap,kWidth/6,5*kGap)];
+        _pswLabel.text=@"密码:";
+        
+    }
+    return _pswLabel;
+}
+-(UITextField*)userNameTextField
+{
+    if (!_userNameTextField) {
+        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kHeight/7, kWidth/2, 5*kGap)];
+        _userNameTextField.placeholder=@"请输入用户名";
+        _userNameTextField.layer.borderWidth=1;
+        _userNameTextField.layer.borderColor=[UIColor grayColor].CGColor;
+        _userNameTextField.layer.cornerRadius=5;
+        _userNameTextField.layer.masksToBounds=YES;
+        _userNameTextField.alpha=0.5;
+    }
+    return _userNameTextField;
+}
+-(UITextField*)pswTextField
+{
+    if (!_pswTextField) {
+        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kHeight/4+2*kGap, kWidth/2, 5*kGap)];
+        _pswTextField.placeholder=@"请输入密码";
+        _pswTextField.layer.borderWidth=1;
+        _pswTextField.layer.borderColor=[UIColor grayColor].CGColor;
+        _pswTextField.layer.cornerRadius=5;
+        _pswTextField.layer.masksToBounds=YES;
+        _pswTextField.secureTextEntry=YES;
+        _pswTextField.alpha=0.5;
+    }
+    return _pswTextField;
+}
+-(UIButton*)loginButton{
+    if (!_loginButton) {
+        _loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _loginButton.frame=CGRectMake(kWidth/10, kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _loginButton.layer.cornerRadius=5;
+        _loginButton.layer.masksToBounds=YES;
+        _loginButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
+        [_loginButton setTitle:@"登陆" forState:UIControlStateNormal];
+        [_loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _loginButton;
+}
+-(UIButton*)registerButton{
+    if (!_registerButton) {
+        _registerButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _registerButton.frame=CGRectMake(7*kWidth/10,kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _registerButton.layer.cornerRadius=5;
+        _registerButton.layer.masksToBounds=YES;
+        _registerButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
+        [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
+        [_registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _registerButton;
+}
+-(UIButton*)getPasswordButton{
+    if (!_getPasswordButton) {
+        _getPasswordButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _getPasswordButton.frame=CGRectMake(2*kWidth/5, kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _getPasswordButton.layer.cornerRadius=5;
+        _getPasswordButton.layer.masksToBounds=YES;
+        _getPasswordButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
+        [_getPasswordButton setTitle:@"找回密码" forState:UIControlStateNormal];
+        [_getPasswordButton addTarget:self action:@selector(getPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _getPasswordButton;
+}
+-(void)login:(UIButton*)button
 {
     
-    
 }
--(void)changeTion:(UIButton *)utton
+-(void)registerAction:(UIButton*)button
 {
-    
-    
-}
--(void)changeAction:(UIButton *)button
-{
-    RegisteredViewController *regist=[RegisteredViewController new];
+    RegisterViewController*regist=[RegisterViewController new];
     [self.navigationController pushViewController:regist animated:YES];
+}
+-(void)getPasswordAction:(UIButton*)button
+{
     
 }
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
-
-
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
