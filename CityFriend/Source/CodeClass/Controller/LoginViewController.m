@@ -36,7 +36,7 @@
 -(UILabel*)userNameLabel
 {
     if (!_userNameLabel) {
-        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/7, kHeight/7,kWidth/6,5*kGap)];
+        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/8, kHeight/6,kWidth/4,5*kGap)];
         _userNameLabel.text=@"用户名:";
         
     }
@@ -45,7 +45,7 @@
 -(UILabel*)pswLabel
 {
     if (!_pswLabel) {
-        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/7, kHeight/4+2*kGap,kWidth/6,5*kGap)];
+        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/8, kHeight/4+2*kGap,kWidth/4,5*kGap)];
         _pswLabel.text=@"密码:";
         
     }
@@ -54,7 +54,7 @@
 -(UITextField*)userNameTextField
 {
     if (!_userNameTextField) {
-        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kHeight/7, kWidth/2, 5*kGap)];
+        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(3*kWidth/8, kHeight/6, kWidth/2, 5*kGap)];
         _userNameTextField.placeholder=@"请输入用户名";
         _userNameTextField.layer.borderWidth=1;
         _userNameTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -67,7 +67,7 @@
 -(UITextField*)pswTextField
 {
     if (!_pswTextField) {
-        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kHeight/4+2*kGap, kWidth/2, 5*kGap)];
+        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(3*kWidth/8, kHeight/4+2*kGap, kWidth/2, 5*kGap)];
         _pswTextField.placeholder=@"请输入密码";
         _pswTextField.layer.borderWidth=1;
         _pswTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -81,7 +81,7 @@
 -(UIButton*)loginButton{
     if (!_loginButton) {
         _loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _loginButton.frame=CGRectMake(kWidth/10, kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _loginButton.frame=CGRectMake(kWidth/16, kHeight/3+7*kGap,kWidth/4, 5*kGap);
         _loginButton.layer.cornerRadius=5;
         _loginButton.layer.masksToBounds=YES;
         _loginButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
@@ -93,7 +93,7 @@
 -(UIButton*)registerButton{
     if (!_registerButton) {
         _registerButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _registerButton.frame=CGRectMake(7*kWidth/10,kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _registerButton.frame=CGRectMake(6*kWidth/16,kHeight/3+7*kGap,kWidth/4, 5*kGap);
         _registerButton.layer.cornerRadius=5;
         _registerButton.layer.masksToBounds=YES;
         _registerButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
@@ -105,7 +105,7 @@
 -(UIButton*)getPasswordButton{
     if (!_getPasswordButton) {
         _getPasswordButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _getPasswordButton.frame=CGRectMake(2*kWidth/5, kHeight/3+7*kGap,kWidth/5, 5*kGap);
+        _getPasswordButton.frame=CGRectMake(11*kWidth/16, kHeight/3+7*kGap,kWidth/4, 5*kGap);
         _getPasswordButton.layer.cornerRadius=5;
         _getPasswordButton.layer.masksToBounds=YES;
         _getPasswordButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
