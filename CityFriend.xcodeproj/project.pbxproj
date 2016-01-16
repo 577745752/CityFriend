@@ -55,7 +55,7 @@
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C287653C1C48E3250093F42E /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		C287653D1C48E3250093F42E /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
-		C2D1570B1C49CF260068FC6E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C2D1570C1C49D23C0068FC6E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 				C219D2E31C489DBE00F6EEDE /* Source */,
 				C219D2D21C489CBA00F6EEDE /* Main.storyboard */,
 				C219D2D51C489CBA00F6EEDE /* Assets.xcassets */,
-				C2D1570B1C49CF260068FC6E /* PrefixHeader.pch */,
+				C2D1570C1C49D23C0068FC6E /* PrefixHeader.pch */,
 				C219D2D71C489CBA00F6EEDE /* LaunchScreen.storyboard */,
 				C219D2DA1C489CBA00F6EEDE /* Info.plist */,
 				C219D2C91C489CBA00F6EEDE /* Supporting Files */,
@@ -419,7 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/lanou3g/Desktop/CityFriend /CityFriend/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
 				INFOPLIST_FILE = CityFriend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
@@ -431,7 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/lanou3g/Desktop/CityFriend /CityFriend/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
 				INFOPLIST_FILE = CityFriend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
