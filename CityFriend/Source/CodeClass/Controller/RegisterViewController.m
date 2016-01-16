@@ -25,28 +25,24 @@
 }
 -(void)drawView
 {
-    //滚动视图
-    UIScrollView*scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
-    scrollView.contentSize=CGSizeMake(kWidth, kHeight*1.2);
-    [self.view addSubview:scrollView];
     //这里一定要用self.xxxx,代表getter方法,若是用_xxxx则是属性,不会执行getter方法
-    [scrollView addSubview:self.userNameLabel];
-    [scrollView addSubview:self.pswLabel];
-    [scrollView addSubview:self.psw1Label];
-    [scrollView addSubview:self.mailLabel];
-    [scrollView addSubview:self.phoneNumberLabel];
-    [scrollView addSubview:self.userNameTextField];
-    [scrollView addSubview:self.pswTextField];
-    [scrollView addSubview:self.psw1TextField];
-    [scrollView addSubview:self.mailTextField];
-    [scrollView addSubview:self.phoneNumberTextField];
+    [self.view addSubview:self.userNameLabel];
+    [self.view addSubview:self.pswLabel];
+    [self.view addSubview:self.psw1Label];
+    [self.view addSubview:self.mailLabel];
+    [self.view addSubview:self.phoneNumberLabel];
+    [self.view addSubview:self.userNameTextField];
+    [self.view addSubview:self.pswTextField];
+    [self.view addSubview:self.psw1TextField];
+    [self.view addSubview:self.mailTextField];
+    [self.view addSubview:self.phoneNumberTextField];
     
     
 }
 -(UILabel*)userNameLabel
 {
     if (!_userNameLabel) {
-        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 4*kGap,kWidth/5,5*kGap)];
+        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 12*kGap,kWidth/5,5*kGap)];
         _userNameLabel.text=@"用户名:";
         
     }
@@ -55,7 +51,7 @@
 -(UILabel*)pswLabel
 {
     if (!_pswLabel) {
-        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 12*kGap,kWidth/5,5*kGap)];
+        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 20*kGap,kWidth/5,5*kGap)];
         _pswLabel.text=@"密  码:";
         
     }
@@ -64,7 +60,7 @@
 -(UILabel*)psw1Label
 {
     if (!_psw1Label) {
-        _psw1Label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 20*kGap,kWidth/5,5*kGap)];
+        _psw1Label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 28*kGap,kWidth/5,5*kGap)];
         _psw1Label.text=@"确认密码:";
         
     }
@@ -73,7 +69,7 @@
 -(UILabel*)mailLabel
 {
     if (!_mailLabel) {
-        _mailLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 28*kGap,kWidth/5,5*kGap)];
+        _mailLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 36*kGap,kWidth/5,5*kGap)];
         _mailLabel.text=@"邮箱:";
         
     }
@@ -82,7 +78,7 @@
 -(UILabel*)phoneNumberLabel
 {
     if (!_phoneNumberLabel) {
-        _phoneNumberLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 36*kGap,kWidth/5,5*kGap)];
+        _phoneNumberLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 44*kGap,kWidth/5,5*kGap)];
         _phoneNumberLabel.text=@"联系方式:";
         
     }
@@ -91,7 +87,7 @@
 -(UITextField*)userNameTextField
 {
     if (!_userNameTextField) {
-        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 4*kGap, kWidth/2, 5*kGap)];
+        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 12*kGap, kWidth/2, 5*kGap)];
         _userNameTextField.placeholder=@"请输入用户名";
         _userNameTextField.layer.borderWidth=1;
         _userNameTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -104,7 +100,7 @@
 -(UITextField*)pswTextField
 {
     if (!_pswTextField) {
-        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 12*kGap, kWidth/2, 5*kGap)];
+        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 20*kGap, kWidth/2, 5*kGap)];
         _pswTextField.placeholder=@"请输入密码";
         _pswTextField.layer.borderWidth=1;
         _pswTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -118,7 +114,7 @@
 -(UITextField*)psw1TextField
 {
     if (!_psw1TextField) {
-        _psw1TextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 20*kGap, kWidth/2, 5*kGap)];
+        _psw1TextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 28*kGap, kWidth/2, 5*kGap)];
         _psw1TextField.placeholder=@"再次输入密码";
         _psw1TextField.layer.borderWidth=1;
         _psw1TextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -132,7 +128,7 @@
 -(UITextField*)mailTextField
 {
     if (!_mailTextField) {
-        _mailTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 28*kGap, kWidth/2, 5*kGap)];
+        _mailTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 36*kGap, kWidth/2, 5*kGap)];
         _mailTextField.placeholder=@"请输入邮箱";
         _mailTextField.layer.borderWidth=1;
         _mailTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -145,7 +141,7 @@
 -(UITextField*)phoneNumberTextField
 {
     if (!_phoneNumberTextField) {
-        _phoneNumberTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 36*kGap, kWidth/2, 5*kGap)];
+        _phoneNumberTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 44*kGap, kWidth/2, 5*kGap)];
         _phoneNumberTextField.placeholder=@"请输入联系方式";
         _phoneNumberTextField.layer.borderWidth=1;
         _phoneNumberTextField.layer.borderColor=[UIColor grayColor].CGColor;
