@@ -26,9 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title=@"分类";
-        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"分类" image:[UIImage imageNamed:@"2"] selectedImage:[UIImage imageNamed:@"2"]];
-    self.view.backgroundColor=[UIColor yellowColor];
     // Do any additional setup after loading the view.
 }
 
