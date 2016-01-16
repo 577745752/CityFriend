@@ -46,7 +46,7 @@
 -(UILabel*)userNameLabel
 {
     if (!_userNameLabel) {
-        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, kWidth/11, 80, 40)];
+        _userNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 4*kGap,kWidth/5,5*kGap)];
         _userNameLabel.text=@"用户名:";
         
     }
@@ -55,7 +55,7 @@
 -(UILabel*)pswLabel
 {
     if (!_pswLabel) {
-        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, kWidth/11+kGap*7, 80, 40)];
+        _pswLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 12*kGap,kWidth/5,5*kGap)];
         _pswLabel.text=@"密  码:";
         
     }
@@ -64,7 +64,7 @@
 -(UILabel*)psw1Label
 {
     if (!_psw1Label) {
-        _psw1Label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, kWidth/11+kGap*14, 80, 40)];
+        _psw1Label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 20*kGap,kWidth/5,5*kGap)];
         _psw1Label.text=@"确认密码:";
         
     }
@@ -73,7 +73,7 @@
 -(UILabel*)mailLabel
 {
     if (!_mailLabel) {
-        _mailLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, kWidth/11+kGap*21, 80, 40)];
+        _mailLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 28*kGap,kWidth/5,5*kGap)];
         _mailLabel.text=@"邮箱:";
         
     }
@@ -82,7 +82,7 @@
 -(UILabel*)phoneNumberLabel
 {
     if (!_phoneNumberLabel) {
-        _phoneNumberLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, kWidth/11+kGap*28, 80, 40)];
+        _phoneNumberLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/10, 36*kGap,kWidth/5,5*kGap)];
         _phoneNumberLabel.text=@"联系方式:";
         
     }
@@ -91,7 +91,7 @@
 -(UITextField*)userNameTextField
 {
     if (!_userNameTextField) {
-        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kWidth/11, 200, 40)];
+        _userNameTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 4*kGap, kWidth/2, 5*kGap)];
         _userNameTextField.placeholder=@"请输入用户名";
         _userNameTextField.layer.borderWidth=1;
         _userNameTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -104,7 +104,7 @@
 -(UITextField*)pswTextField
 {
     if (!_pswTextField) {
-        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kWidth/11+kGap*7, 200, 40)];
+        _pswTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 12*kGap, kWidth/2, 5*kGap)];
         _pswTextField.placeholder=@"请输入密码";
         _pswTextField.layer.borderWidth=1;
         _pswTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -118,7 +118,7 @@
 -(UITextField*)psw1TextField
 {
     if (!_psw1TextField) {
-        _psw1TextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kWidth/11+kGap*14, 200, 40)];
+        _psw1TextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 20*kGap, kWidth/2, 5*kGap)];
         _psw1TextField.placeholder=@"再次输入密码";
         _psw1TextField.layer.borderWidth=1;
         _psw1TextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -132,7 +132,7 @@
 -(UITextField*)mailTextField
 {
     if (!_mailTextField) {
-        _mailTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kWidth/11+kGap*21, 200, 40)];
+        _mailTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 28*kGap, kWidth/2, 5*kGap)];
         _mailTextField.placeholder=@"请输入邮箱";
         _mailTextField.layer.borderWidth=1;
         _mailTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -145,7 +145,7 @@
 -(UITextField*)phoneNumberTextField
 {
     if (!_phoneNumberTextField) {
-        _phoneNumberTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, kWidth/11+kGap*28, 200, 40)];
+        _phoneNumberTextField=[[UITextField alloc]initWithFrame:CGRectMake(kWidth/3, 36*kGap, kWidth/2, 5*kGap)];
         _phoneNumberTextField.placeholder=@"请输入联系方式";
         _phoneNumberTextField.layer.borderWidth=1;
         _phoneNumberTextField.layer.borderColor=[UIColor grayColor].CGColor;
@@ -162,61 +162,9 @@
 }
 -(void)register1:(UIBarButtonItem*)item
 {
-    //
-    //    NSString*library=[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
-    //    NSString*preferencePath=[library stringByAppendingString:@"/Preferences"];
-    //    NSLog(@"%@",preferencePath);
-    //  //  NSUserDefaults*userDefaults=[NSUserDefaults standardUserDefaults];
-    ////    NSDictionary*resultDictionary=[NSDictionary dictionaryWithContentsOfFile:preferencePath];
-    ////    NSLog(@"%@",resultDictionary);
-    ////    for (NSString*key in userDefaults) {
-    ////        if ([self.userNameTextField.text isEqualToString:key]) {
-    ////            // 初始化一个弹窗控制器
-    ////            UIAlertController *successdController = [UIAlertController alertControllerWithTitle:@"提示" message:@"用户名被占用" preferredStyle:UIAlertControllerStyleAlert];
-    ////            // 设置弹窗上的按钮 ----  确认
-    ////            UIAlertAction *defultAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:nil];
-    ////            // 设置弹窗上的按钮 --- 返回
-    ////            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleCancel handler:nil];
-    ////            // 把按钮添加到弹窗的控制器上
-    ////            [successdController addAction:defultAction];
-    ////            [successdController addAction:cancelAction];
-    ////            // 模态到弹窗的控制器上(页面的跳转)
-    ////            [self presentViewController:successdController animated:YES completion:nil];
-    ////
-    ////        }
-    ////    }
-    //            NSUserDefaults*userDefaults=[NSUserDefaults standardUserDefaults];
-    //    if ([userDefaults arrayForKey:self.userNameTextField.text]==nil) {
-    //                    // 初始化一个弹窗控制器
-    //                    UIAlertController *successdController = [UIAlertController alertControllerWithTitle:@"提示" message:@"用户名被占用" preferredStyle:UIAlertControllerStyleAlert];
-    //                    // 设置弹窗上的按钮 ----  确认
-    //                    UIAlertAction *defultAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:nil];
-    //                    // 设置弹窗上的按钮 --- 返回
-    //                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleCancel handler:nil];
-    //                    // 把按钮添加到弹窗的控制器上
-    //                    [successdController addAction:defultAction];
-    //                    [successdController addAction:cancelAction];
-    //                    // 模态到弹窗的控制器上(页面的跳转)
-    //                    [self presentViewController:successdController animated:YES completion:nil];
-    //    }else
-    if ((self.userNameTextField.text&&self.pswTextField.text)&&(self.pswTextField.text==self.psw1TextField.text)) {
-        NSUserDefaults*userDefaults=[NSUserDefaults standardUserDefaults];
-        NSString*userName=self.userNameTextField.text;
-        NSString*psw=self.pswTextField.text;
-        NSString*mail=self.mailTextField.text;
-        NSString*phoneNumber=self.phoneNumberTextField.text;
-        NSMutableArray*userArray=[NSMutableArray arrayWithCapacity:4];
-        [userArray addObject:userName];
-        [userArray addObject:psw];
-        [userArray addObject:mail];
-        [userArray addObject:phoneNumber];
-        [userDefaults setObject:userArray forKey:userName];
-    }
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
     
 }
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
