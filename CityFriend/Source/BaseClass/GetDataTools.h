@@ -13,10 +13,11 @@
 typedef void(^PassValue) (NSMutableArray*dataArray);
 @interface GetDataTools : NSObject
 // 作为单例的属性,这个数组可以在任何位置,任何时间被访问.
-@property(nonatomic,strong)NSMutableArray*dataArray;
+@property(nonatomic,strong)NSMutableArray*foodClassifyArray;
 
 ////2.声明一个bolck属性
 //@property(nonatomic,copy)PassValue passValue;
--(void)getData:(PassValue) passValue;
+//-(void)getData:(PassValue) passValue;
+-(void)getData:(NSString*) passValue;
 +(instancetype)shareGetData;
 @end

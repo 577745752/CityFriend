@@ -21,40 +21,48 @@
     }
     return gd;
 }
--(void)getData:(PassValue) passValue
+-(void)getData:(NSString*) passValue
 {
 
-    dispatch_queue_t global=dispatch_get_global_queue(0, 0);// 创建全局队列, 全局队列的特点是所有任务都是在子线程中执行, 并且是并发执行.
-    dispatch_async(global, ^{
-        // 网络请求方式, 通过打开远程服务器的某个文件, 读取其中的内容.
-//        NSArray*array=[NSArray arrayWithContentsOfURL:[NSURL URLWithString:kURL]];
-//        // 遍历及解析
-//        for (NSDictionary*dict in array) {
-//            MusicInfoModel*model=[[MusicInfoModel alloc]init];
-//            [model setValuesForKeysWithDictionary:dict];
-//            [self.dataArray addObject:model];
-//        }
-        // 下面的动作非常重要.
-        /*
-         程序执行到下面一行时, 对self.dataArray进行值捕获, 拿到并且带着这个数组, 跑到"定义该block的文件"中去执行代码. 那么就将这个数组的值, 传递到了另外一个界面.
-         这是block的特性, 也是其他语言中 "闭包"的特性.
-         */
-        // 3.调用block, 将数组作为参数传出去.
-        
-        passValue(self.dataArray);
-    });
+//    dispatch_queue_t global=dispatch_get_global_queue(0, 0);// 创建全局队列, 全局队列的特点是所有任务都是在子线程中执行, 并且是并发执行.
+//    dispatch_async(global, ^{
+        //1.创建URL
+        NSURL*url=[NSURL URLWithString:kURL_EatClassify];
+        //2.创建Session
+        NSURLSession*session=[NSURLSession sharedSession];
+        //3.创建Task(内部处理了请求,默认使用GET请求,直接传递url即可)
+        NSURLSessionDataTask*dataTask=[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            //解析数据
+            NSDictionary*dataDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments  error:nil];
+            NSDictionary*dataDict1=[NSDictionary new];
+            dataDict1=dataDict[@"data"];
+            NSArray*dataArray=[NSArray new];
+            dataArray=dataDict1[@"cate"];
+            for (NSDictionary*dict in dataArray) {
+                FoodClassify*foodClassify=[FoodClassify new];
+                [foodClassify setValuesForKeysWithDictionary:dict];
+                [self.foodClassifyArray addObject:foodClassify];
+            }
+            for (FoodClassify* foodClassify in self.foodClassifyArray) {
+                NSLog(@"%@",foodClassify.foodID);
+            }
+        }];
+        //启动任务
+        [dataTask resume];
+
+//    });
 }
 // 懒加载, 懒加载能节省载入内存.
 // 程序开始运行时, 对于没有立即使用的内存, 不进行加载, 等到什么时候用到, 再去开辟空间.
 // 注意, 懒加载是重写变量的get方法实现的.
 // 懒加载是一种典型的以"时间换空间"的优化方式.
--(NSMutableArray*)dataArray
+-(NSMutableArray*)foodClassifyArray
 {
     //这里不能用self.dataArray  不然或造成循环调用
-    if (_dataArray==nil) {
-        _dataArray=[[NSMutableArray alloc]init];//这里可以用self.dataArray  因为这里是setter方法
+    if (_foodClassifyArray==nil) {
+        _foodClassifyArray=[[NSMutableArray alloc]init];//这里可以用self.dataArray  因为这里是setter方法
     }
-    return _dataArray;
+    return _foodClassifyArray;
 }
 
 @end

@@ -20,6 +20,7 @@
         self.navigationItem.title=@"好友";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"好友" image:[UIImage imageNamed:@"3"] selectedImage:[UIImage imageNamed:@"3"]];
         self.view.backgroundColor=[UIColor greenColor];
+        [[GetDataTools shareGetData] getData:@"aa"];
     }
     return self;
 }

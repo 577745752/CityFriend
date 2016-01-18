@@ -8,5 +8,6 @@
 
 #ifndef Project_URLHeader_h
 #define Project_URLHeader_h
+#define kURL_EatClassify @"http://saocheng.bjqttd.com/index.php/api/Food/navlist"
 
 #endif
