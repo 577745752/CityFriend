@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C20870E31C4CCCD0007EC7B6 /* FoodClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */; };
 		C219D2CB1C489CBA00F6EEDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C219D2CA1C489CBA00F6EEDE /* main.m */; };
 		C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D21C489CBA00F6EEDE /* Main.storyboard */; };
 		C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D51C489CBA00F6EEDE /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C20870E11C4CCCD0007EC7B6 /* FoodClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodClassify.h; sourceTree = "<group>"; };
+		C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodClassify.m; sourceTree = "<group>"; };
 		C219D2C61C489CBA00F6EEDE /* CityFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C219D2CA1C489CBA00F6EEDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C219D2D31C489CBA00F6EEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 		C219D2EC1C489DBE00F6EEDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C20870E11C4CCCD0007EC7B6 /* FoodClassify.h */,
+				C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				C219D2FB1C489F2100F6EEDE /* CategoriesViewController.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */,
+				C20870E31C4CCCD0007EC7B6 /* FoodClassify.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C219D2F71C489DBE00F6EEDE /* HomeViewController.m in Sources */,
 			);

@@ -16,7 +16,10 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 
+#import "GetDataTools.h"
 
+
+#import "FoodClassify.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50
