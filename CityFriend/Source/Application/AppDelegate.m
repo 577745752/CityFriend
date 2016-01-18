@@ -30,7 +30,7 @@
     UITabBarController*tab=[[UITabBarController alloc]init];
     tab.viewControllers=@[homeNC,categoriesNC,friendNC,userNC];
     self.window.rootViewController=tab;
-    tab.selectedIndex=3;
+    tab.selectedIndex=0;
 
     
     return YES;
