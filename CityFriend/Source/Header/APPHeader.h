@@ -9,7 +9,7 @@
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
 #import "HomeViewController.h"
-#import "CategoriesViewController.h"
+#import "ActivityViewController.h"
 #import "FriendViewController.h"
 #import "UserTableViewController.h"
 

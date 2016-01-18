@@ -1,31 +1,31 @@
 //
-//  CategoriesViewController.m
+//  ActivityViewController.m
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/15.
+//  Created by lanou3g on 16/1/18.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "CategoriesViewController.h"
+#import "ActivityViewController.h"
 
-@interface CategoriesViewController ()
+@interface ActivityViewController ()
 
 @end
 
-@implementation CategoriesViewController
+@implementation ActivityViewController
 -(instancetype)init
 {
     self=[super init];
     if (self) {
-        self.navigationItem.title=@"分类";
-        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"分类" image:[UIImage imageNamed:@"2"] selectedImage:[UIImage imageNamed:@"2"]];
+        self.navigationItem.title=@"活动";
+        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"活动" image:[UIImage imageNamed:@"2"] selectedImage:[UIImage imageNamed:@"2"]];
         self.view.backgroundColor=[UIColor yellowColor];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     // Do any additional setup after loading the view.
 }
 

@@ -22,13 +22,13 @@
     [self.window makeKeyAndVisible];
     
     UINavigationController*homeNC=[[UINavigationController alloc]initWithRootViewController:[HomeViewController new]];
-     UINavigationController*categoriesNC=[[UINavigationController alloc]initWithRootViewController:[CategoriesViewController new]];
+     UINavigationController*activityNC=[[UINavigationController alloc]initWithRootViewController:[ActivityViewController new]];
      UINavigationController*friendNC=[[UINavigationController alloc]initWithRootViewController:[FriendViewController new]];
      UINavigationController*userNC=[[UINavigationController alloc]initWithRootViewController:[UserTableViewController new]];
     
     
     UITabBarController*tab=[[UITabBarController alloc]init];
-    tab.viewControllers=@[homeNC,categoriesNC,friendNC,userNC];
+    tab.viewControllers=@[homeNC,activityNC,friendNC,userNC];
     self.window.rootViewController=tab;
     tab.selectedIndex=0;
 
