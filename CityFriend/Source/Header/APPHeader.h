@@ -15,7 +15,7 @@
 
 
 #import "LoginViewController.h"
-#import "RegisterViewController.h"
+#import "RegisteredViewController.h"
 
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
