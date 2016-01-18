@@ -10,7 +10,7 @@
 
 @implementation GetDataTools
 
-+(instancetype)shareGetDat
++(instancetype)shareGetData
 {
     static GetDataTools*gd=nil;
     if (gd == nil) {
