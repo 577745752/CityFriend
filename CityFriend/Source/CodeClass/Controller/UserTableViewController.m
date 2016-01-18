@@ -75,13 +75,13 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (indexPath.row == 0&&indexPath.section==1) {
-        cell.textLabel.text=@"我的订单";
+        cell.textLabel.text=@"我的活动";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
     }
     else if (indexPath.row == 1){
-    cell.textLabel.text=@"购物车";
+    cell.textLabel.text=@"我的约会";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
