@@ -21,32 +21,26 @@
     }
     return gd;
 }
--(void)getData:(NSString*) passValue
+-(void)getData:(NSString*)url Block:(PassValue)passValue;
 {
 
 //    dispatch_queue_t global=dispatch_get_global_queue(0, 0);// 创建全局队列, 全局队列的特点是所有任务都是在子线程中执行, 并且是并发执行.
 //    dispatch_async(global, ^{
         //1.创建URL
-        NSURL*url=[NSURL URLWithString:kURL_EatClassify];
+        NSURL*Url=[NSURL URLWithString:url];
         //2.创建Session
         NSURLSession*session=[NSURLSession sharedSession];
         //3.创建Task(内部处理了请求,默认使用GET请求,直接传递url即可)
-        NSURLSessionDataTask*dataTask=[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask*dataTask=[session dataTaskWithURL:Url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             //解析数据
             NSDictionary*dataDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments  error:nil];
             NSDictionary*dataDict1=[NSDictionary new];
             dataDict1=dataDict[@"data"];
-            NSArray*dataArray=[NSArray new];
+            NSMutableArray*dataArray=[NSMutableArray new];
             dataArray=dataDict1[@"cate"];
-            for (NSDictionary*dict in dataArray) {
-                FoodClassify*foodClassify=[FoodClassify new];
-                [foodClassify setValuesForKeysWithDictionary:dict];
-                [self.foodClassifyArray addObject:foodClassify];
-            }
-            for (FoodClassify* foodClassify in self.foodClassifyArray) {
-                NSLog(@"%@",foodClassify.foodID);
-            }
-        }];
+            passValue(dataArray);
+                    }];
+    
         //启动任务
         [dataTask resume];
 

@@ -18,6 +18,6 @@ typedef void(^PassValue) (NSMutableArray*dataArray);
 ////2.声明一个bolck属性
 //@property(nonatomic,copy)PassValue passValue;
 //-(void)getData:(PassValue) passValue;
--(void)getData:(NSString*) passValue;
+-(void)getData:(NSString*)url Block:(PassValue)passValue;
 +(instancetype)shareGetData;
 @end

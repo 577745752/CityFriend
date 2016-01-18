@@ -10,6 +10,9 @@
 		C20870E31C4CCCD0007EC7B6 /* FoodClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */; };
 		C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C20870E41C4CDFBC007EC7B6 /* 2.png */; };
 		C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */; };
+		C20870EB1C4CE665007EC7B6 /* ClassifyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870EA1C4CE665007EC7B6 /* ClassifyTableViewController.m */; };
+		C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */; };
+		C20870F11C4D0097007EC7B6 /* FoodShop.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870F01C4D0097007EC7B6 /* FoodShop.m */; };
 		C219D2CB1C489CBA00F6EEDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C219D2CA1C489CBA00F6EEDE /* main.m */; };
 		C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D21C489CBA00F6EEDE /* Main.storyboard */; };
 		C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D51C489CBA00F6EEDE /* Assets.xcassets */; };
@@ -33,6 +36,12 @@
 		C20870E41C4CDFBC007EC7B6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		C20870E91C4CE665007EC7B6 /* ClassifyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewController.h; sourceTree = "<group>"; };
+		C20870EA1C4CE665007EC7B6 /* ClassifyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewController.m; sourceTree = "<group>"; };
+		C20870EC1C4CE7BC007EC7B6 /* ClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewCell.h; sourceTree = "<group>"; };
+		C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewCell.m; sourceTree = "<group>"; };
+		C20870EF1C4D0097007EC7B6 /* FoodShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodShop.h; sourceTree = "<group>"; };
+		C20870F01C4D0097007EC7B6 /* FoodShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodShop.m; sourceTree = "<group>"; };
 		C219D2C61C489CBA00F6EEDE /* CityFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C219D2CA1C489CBA00F6EEDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C219D2D31C489CBA00F6EEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,6 +169,8 @@
 			children = (
 				C219D2EA1C489DBE00F6EEDE /* HomeViewController.h */,
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
+				C20870E91C4CE665007EC7B6 /* ClassifyTableViewController.h */,
+				C20870EA1C4CE665007EC7B6 /* ClassifyTableViewController.m */,
 				C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */,
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -179,6 +190,8 @@
 			children = (
 				C20870E11C4CCCD0007EC7B6 /* FoodClassify.h */,
 				C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */,
+				C20870EF1C4D0097007EC7B6 /* FoodShop.h */,
+				C20870F01C4D0097007EC7B6 /* FoodShop.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 		C219D2ED1C489DBE00F6EEDE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C20870EC1C4CE7BC007EC7B6 /* ClassifyTableViewCell.h */,
+				C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,7 +326,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
+				C20870EB1C4CE665007EC7B6 /* ClassifyTableViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
+				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
+				C20870F11C4D0097007EC7B6 /* FoodShop.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
