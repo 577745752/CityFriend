@@ -85,7 +85,7 @@
 		C2837B931C4E17C200686133 /* CateClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateClassify.h; sourceTree = "<group>"; };
 		C2837B941C4E17C200686133 /* CateClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateClassify.m; sourceTree = "<group>"; };
 		C2837B961C4E187300686133 /* Cate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cate.h; sourceTree = "<group>"; };
-		C2837B971C4E187300686133 /* Cate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cate.m; sourceTree = "<group>"; };
+		C2837B971C4E187300686133 /* Cate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cate.m; path = ../Model/Cate.m; sourceTree = "<group>"; };
 		C2837B991C4E199200686133 /* CateShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateShop.h; sourceTree = "<group>"; };
 		C2837B9A1C4E199200686133 /* CateShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateShop.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
@@ -232,6 +232,7 @@
 				C287653A1C48E3050093F42E /* LoginViewController.m */,
 				C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */,
 				C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */,
+				C2837B971C4E187300686133 /* Cate.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 				C2837B931C4E17C200686133 /* CateClassify.h */,
 				C2837B941C4E17C200686133 /* CateClassify.m */,
 				C2837B961C4E187300686133 /* Cate.h */,
-				C2837B971C4E187300686133 /* Cate.m */,
 				C2837B991C4E199200686133 /* CateShop.h */,
 				C2837B9A1C4E199200686133 /* CateShop.m */,
 				C2837B841C4DE73700686133 /* Coffee.h */,

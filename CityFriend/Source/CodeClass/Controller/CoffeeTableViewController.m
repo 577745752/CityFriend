@@ -87,7 +87,10 @@ static NSString*coffeeID=@"coffee";
     coffeeShopDetailVC.coffee=coffee;
     [self.navigationController pushViewController:coffeeShopDetailVC  animated:YES];
 }
-
+//行高
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return kWidth / 4;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

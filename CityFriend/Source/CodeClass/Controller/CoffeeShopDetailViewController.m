@@ -16,9 +16,13 @@
 -(instancetype)init
 {
     if (self=[super init]) {
+        self.view.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:self.shopNameLabel];
         [self.view addSubview:self.scrollView];
         [self.view addSubview:self.pageControl];
+        [self.view addSubview:self.addressLabel];
+        [self.view addSubview:self.telLabel];
+        [self.view addSubview:self.contentLabel];
     }
     return self;
 }
@@ -26,7 +30,9 @@
 {
     if (!_shopNameLabel) {
         _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
-        _shopNameLabel.backgroundColor=[UIColor orangeColor];
+        //_shopNameLabel.backgroundColor=[UIColor orangeColor];
+        _shopNameLabel.font = [UIFont systemFontOfSize:25];
+        _shopNameLabel.textColor = [UIColor colorWithRed:5/255.0 green:160/255.0 blue:174/255.0 alpha:1];
         _shopNameLabel.textAlignment=NSTextAlignmentCenter;
     }
     return _shopNameLabel;
@@ -58,6 +64,31 @@
         [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     }
     return _pageControl;
+}
+-(UILabel *)addressLabel{
+    if (!_addressLabel) {
+        _addressLabel = [[UILabel alloc]initWithFrame:CGRectMake(5*kGap, kHeight / 2 + 5 * kGap, kWidth - 10 * kGap, 6 * kGap)];
+        //_addressLabel.backgroundColor = [UIColor grayColor];
+        _addressLabel.font = [UIFont systemFontOfSize:20];
+    }
+    return _addressLabel;
+}
+-(UILabel *)telLabel{
+    if (!_telLabel) {
+        _telLabel = [[UILabel alloc]initWithFrame:CGRectMake(5*kGap, kHeight / 2 + 13 * kGap, kWidth - 10 * kGap, 5 * kGap)];
+        //_telLabel.backgroundColor = [UIColor greenColor];
+        _telLabel.font = [UIFont systemFontOfSize:20];
+    }
+    return _telLabel;
+}
+-(UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(5 * kGap, kHeight / 2 + 20 * kGap, kWidth - 10 * kGap, 20 * kGap)];
+        //_contentLabel.backgroundColor = [UIColor orangeColor];
+        _contentLabel.font = [UIFont systemFontOfSize:20];
+        _contentLabel.numberOfLines = 0;
+    }
+    return _contentLabel;
 }
 -(void)changePage:(UIPageControl*)pageControl
 {
@@ -105,6 +136,16 @@
             [_scrollView addSubview:imgView2];
             
             _shopNameLabel.text=self.coffeeShop.shopname;
+            _addressLabel.text = [NSString stringWithFormat:@"地址: %@",self.coffeeShop.address];
+            _telLabel.text = [NSString stringWithFormat:@"电话: %@",self.coffeeShop.tel];
+            
+            NSArray *array = [NSArray new];
+            array = [self.coffeeShop.content componentsSeparatedByString:@">"];
+            NSArray *array1 = [NSArray new];
+            array1 = [array[1] componentsSeparatedByString:@"<"];
+            
+            _contentLabel.text = [NSString stringWithFormat:@"简介: %@",array1[0]];
+            
         });
     }];
     //启动任务
@@ -112,7 +153,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(changePage) userInfo:self repeats:YES];
     // Do any additional setup after loading the view.
+}
+-(void)changePage{
+    
+    //每次方法执行的时候,"当前页加1"
+    self.currentIndex ++;//默认显示页面为0时
+    //越界判断
+    if(self.currentIndex == 3){
+        self.currentIndex = 0;
+    }
+    //根据"当前页"属性设置pagecontrol当前页
+    self.pageControl.currentPage = self.currentIndex;
+    //根据"当前页"来设置scrollview的偏移量
+    self.scrollView.contentOffset = CGPointMake(kWidth * self.currentIndex, 0);
 }
 
 - (void)didReceiveMemoryWarning {

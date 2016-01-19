@@ -134,6 +134,10 @@ static NSString*classifyID=@"classify";
 {
     return 8*kGap;
 }
+//行高
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return kWidth / 4;
+}
 
 /*
 // Override to support conditional editing of the table view.

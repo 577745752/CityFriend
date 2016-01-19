@@ -19,14 +19,24 @@
 }
 -(void)drawView
 {
+    [self.contentView addSubview:self.imgView];
     [self.contentView addSubview:self.shopNameLabel];
     
 }
+-(UIImageView *)imgView{
+    if(!_imgView){
+        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(kGap, kGap, kWidth / 4, kWidth / 5)];
+    }
+    return  _imgView;
+}
+
 -(UILabel*)shopNameLabel
 {
     if (!_shopNameLabel) {
-        _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, kWidth, 20)];
-        _shopNameLabel.backgroundColor=[UIColor grayColor];
+        _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth / 4 + 2 * kGap, kGap, kWidth / 3 * 2, kWidth / 5)];
+        //_shopNameLabel.backgroundColor=[UIColor grayColor];
+        _shopNameLabel.font = [UIFont systemFontOfSize:21];
+        _shopNameLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _shopNameLabel;
 }
@@ -37,6 +47,7 @@
         _cate=cate;
     }
     self.shopNameLabel.text=cate.shopname;
+     [self.imgView sd_setImageWithURL:[NSURL URLWithString:self.cate.logo]];
     
 }
 - (void)awakeFromNib {

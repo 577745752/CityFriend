@@ -11,4 +11,5 @@
 @interface ClassifyTableViewCell : UITableViewCell
 @property(nonatomic,strong)Cate*cate;
 @property(nonatomic,strong)UILabel*shopNameLabel;
+@property(nonatomic,strong)UIImageView *imgView;
 @end

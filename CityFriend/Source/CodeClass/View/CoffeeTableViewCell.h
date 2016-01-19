@@ -11,4 +11,5 @@
 @interface CoffeeTableViewCell : UITableViewCell
 @property(nonatomic,strong)Coffee*coffee;
 @property(nonatomic,strong)UILabel*shopNameLabel;
+@property(nonatomic,strong)UIImageView *imgView;
 @end
