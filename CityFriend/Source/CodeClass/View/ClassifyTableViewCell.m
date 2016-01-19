@@ -26,7 +26,7 @@
 {
     if (!_shopNameLabel) {
         _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, kWidth, 20)];
-        _shopNameLabel.backgroundColor=[UIColor redColor];
+        _shopNameLabel.backgroundColor=[UIColor grayColor];
     }
     return _shopNameLabel;
 }

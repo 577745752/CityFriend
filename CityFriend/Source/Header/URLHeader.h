@@ -10,4 +10,5 @@
 #define Project_URLHeader_h
 #define kURL_foodClassify @"http://saocheng.bjqttd.com/index.php/api/Food/navlist"
 #define kURL_foodShop @"http://saocheng.bjqttd.com/index.php/api/Food/shoplist"
+#define kURL_foodShopContent @"http://saocheng.bjqttd.com/index.php/api/Food/detail"
 #endif

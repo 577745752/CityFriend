@@ -80,7 +80,7 @@ static NSString *const cellReuseID= @"cellReuseID";
     if (indexPath.section==1){
         if(indexPath.item  == 0){
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"喝";
+            label.text = @"酒吧";
             [cell.contentView addSubview:label];
         }
         else{
@@ -92,7 +92,7 @@ static NSString *const cellReuseID= @"cellReuseID";
     if (indexPath.section==2){
         if(indexPath.item  == 0){
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"开黑";
+            label.text = @"咖啡";
             [cell.contentView addSubview:label];
         }
         else{

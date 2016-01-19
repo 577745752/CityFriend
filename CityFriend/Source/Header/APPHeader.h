@@ -9,9 +9,6 @@
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
 #import "HomeViewController.h"
-
-
-
 #import "ActivityViewController.h"
 #import "FriendViewController.h"
 #import "UserTableViewController.h"
@@ -24,10 +21,11 @@
 
 #import "FoodClassify.h"
 #import "FoodShop.h"
-
+#import "FoodShopContent.h"
 
 #import "ClassifyTableViewController.h"
 #import "ClassifyTableViewCell.h"
+#import "FoodShopDetailViewController.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50

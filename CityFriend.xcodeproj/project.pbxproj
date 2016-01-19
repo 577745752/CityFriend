@@ -24,6 +24,8 @@
 		C219D3101C48C2A400F6EEDE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D30F1C48C2A400F6EEDE /* 4.png */; };
 		C219D3121C48C3C600F6EEDE /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3111C48C3C600F6EEDE /* 1.png */; };
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
+		C2837B7A1C4DC9FF00686133 /* FoodShopContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B791C4DC9FF00686133 /* FoodShopContent.m */; };
+		C2837B7D1C4DCBF300686133 /* FoodShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -63,6 +65,10 @@
 		C219D30F1C48C2A400F6EEDE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C219D3111C48C3C600F6EEDE /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		C219D3131C48C40900F6EEDE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C2837B781C4DC9FF00686133 /* FoodShopContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodShopContent.h; sourceTree = "<group>"; };
+		C2837B791C4DC9FF00686133 /* FoodShopContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodShopContent.m; sourceTree = "<group>"; };
+		C2837B7B1C4DCBF300686133 /* FoodShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodShopDetailViewController.h; sourceTree = "<group>"; };
+		C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodShopDetailViewController.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
 				C20870E91C4CE665007EC7B6 /* ClassifyTableViewController.h */,
 				C20870EA1C4CE665007EC7B6 /* ClassifyTableViewController.m */,
+				C2837B7B1C4DCBF300686133 /* FoodShopDetailViewController.h */,
+				C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */,
 				C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */,
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -192,6 +200,8 @@
 				C20870E21C4CCCD0007EC7B6 /* FoodClassify.m */,
 				C20870EF1C4D0097007EC7B6 /* FoodShop.h */,
 				C20870F01C4D0097007EC7B6 /* FoodShop.m */,
+				C2837B781C4DC9FF00686133 /* FoodShopContent.h */,
+				C2837B791C4DC9FF00686133 /* FoodShopContent.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +340,7 @@
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
 				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
 				C20870F11C4D0097007EC7B6 /* FoodShop.m in Sources */,
+				C2837B7D1C4DCBF300686133 /* FoodShopDetailViewController.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
@@ -338,6 +349,7 @@
 				C20870E31C4CCCD0007EC7B6 /* FoodClassify.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C219D2F71C489DBE00F6EEDE /* HomeViewController.m in Sources */,
+				C2837B7A1C4DC9FF00686133 /* FoodShopContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
