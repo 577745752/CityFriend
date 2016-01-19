@@ -22,10 +22,18 @@
 #import "FoodClassify.h"
 #import "FoodShop.h"
 #import "FoodShopContent.h"
+#import "Coffee.h"
+#import "Coffeeshop.h"
+
+
+
 
 #import "ClassifyTableViewController.h"
 #import "ClassifyTableViewCell.h"
 #import "FoodShopDetailViewController.h"
+#import "CoffeeTableViewController.h"
+#import "CoffeeTableViewCell.h"
+#import "CoffeeShopDetailViewController.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50

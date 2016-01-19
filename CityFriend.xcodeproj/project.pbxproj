@@ -26,6 +26,11 @@
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
 		C2837B7A1C4DC9FF00686133 /* FoodShopContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B791C4DC9FF00686133 /* FoodShopContent.m */; };
 		C2837B7D1C4DCBF300686133 /* FoodShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */; };
+		C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */; };
+		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
+		C2837B861C4DE73700686133 /* Coffee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B851C4DE73700686133 /* Coffee.m */; };
+		C2837B891C4DE7E700686133 /* Coffeeshop.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B881C4DE7E700686133 /* Coffeeshop.m */; };
+		C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -69,6 +74,16 @@
 		C2837B791C4DC9FF00686133 /* FoodShopContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodShopContent.m; sourceTree = "<group>"; };
 		C2837B7B1C4DCBF300686133 /* FoodShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodShopDetailViewController.h; sourceTree = "<group>"; };
 		C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodShopDetailViewController.m; sourceTree = "<group>"; };
+		C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewController.h; sourceTree = "<group>"; };
+		C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewController.m; sourceTree = "<group>"; };
+		C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewCell.h; sourceTree = "<group>"; };
+		C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewCell.m; sourceTree = "<group>"; };
+		C2837B841C4DE73700686133 /* Coffee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coffee.h; sourceTree = "<group>"; };
+		C2837B851C4DE73700686133 /* Coffee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coffee.m; sourceTree = "<group>"; };
+		C2837B871C4DE7E700686133 /* Coffeeshop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coffeeshop.h; sourceTree = "<group>"; };
+		C2837B881C4DE7E700686133 /* Coffeeshop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coffeeshop.m; sourceTree = "<group>"; };
+		C2837B8A1C4E115900686133 /* CoffeeShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeShopDetailViewController.h; sourceTree = "<group>"; };
+		C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeShopDetailViewController.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -179,6 +194,10 @@
 				C20870EA1C4CE665007EC7B6 /* ClassifyTableViewController.m */,
 				C2837B7B1C4DCBF300686133 /* FoodShopDetailViewController.h */,
 				C2837B7C1C4DCBF300686133 /* FoodShopDetailViewController.m */,
+				C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */,
+				C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */,
+				C2837B8A1C4E115900686133 /* CoffeeShopDetailViewController.h */,
+				C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */,
 				C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */,
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -202,6 +221,10 @@
 				C20870F01C4D0097007EC7B6 /* FoodShop.m */,
 				C2837B781C4DC9FF00686133 /* FoodShopContent.h */,
 				C2837B791C4DC9FF00686133 /* FoodShopContent.m */,
+				C2837B841C4DE73700686133 /* Coffee.h */,
+				C2837B851C4DE73700686133 /* Coffee.m */,
+				C2837B871C4DE7E700686133 /* Coffeeshop.h */,
+				C2837B881C4DE7E700686133 /* Coffeeshop.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +234,8 @@
 			children = (
 				C20870EC1C4CE7BC007EC7B6 /* ClassifyTableViewCell.h */,
 				C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */,
+				C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */,
+				C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,13 +362,18 @@
 			files = (
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
 				C20870EB1C4CE665007EC7B6 /* ClassifyTableViewController.m in Sources */,
+				C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
 				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
 				C20870F11C4D0097007EC7B6 /* FoodShop.m in Sources */,
+				C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */,
 				C2837B7D1C4DCBF300686133 /* FoodShopDetailViewController.m in Sources */,
+				C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */,
+				C2837B891C4DE7E700686133 /* Coffeeshop.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
+				C2837B861C4DE73700686133 /* Coffee.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */,
 				C20870E31C4CCCD0007EC7B6 /* FoodClassify.m in Sources */,

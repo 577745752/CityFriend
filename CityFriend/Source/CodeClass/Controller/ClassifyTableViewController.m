@@ -13,12 +13,7 @@
 @end
 static NSString*classifyID=@"classify";
 @implementation ClassifyTableViewController
--(instancetype)initWithStyle:(UITableViewStyle)style
-{
-    if (self=[super initWithStyle:style]) {
-    }
-    return self;
-}
+
 -(void)reloadData
 {
     self.classifyArray=[[NSMutableArray alloc]init];

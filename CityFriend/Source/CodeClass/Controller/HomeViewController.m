@@ -73,7 +73,7 @@ static NSString *const cellReuseID= @"cellReuseID";
             [cell.contentView addSubview:label];
         }else{
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"出游";
+            label.text = @"咖啡";
             [cell.contentView addSubview:label];
         }
     }
@@ -92,7 +92,7 @@ static NSString *const cellReuseID= @"cellReuseID";
     if (indexPath.section==2){
         if(indexPath.item  == 0){
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"咖啡";
+            label.text = @"出游";
             [cell.contentView addSubview:label];
         }
         else{
@@ -114,7 +114,15 @@ static NSString *const cellReuseID= @"cellReuseID";
             classifyTC.shopURL=kURL_foodShop;
             [self.navigationController pushViewController:classifyTC animated:YES];
             
+        }else{
+            CoffeeTableViewController*coffeeTC=[CoffeeTableViewController new];
+            
+            [self.navigationController pushViewController:coffeeTC animated:YES];
+            
         }
+        
+        
+        
     }
 
 }
