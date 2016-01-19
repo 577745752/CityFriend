@@ -28,9 +28,9 @@
 
 
 
-#import "ClassifyTableViewController.h"
+#import "CateTableViewController.h"
 #import "ClassifyTableViewCell.h"
-#import "FoodShopDetailViewController.h"
+#import "CateShopDetailViewController.h"
 #import "CoffeeTableViewController.h"
 #import "CoffeeTableViewCell.h"
 #import "CoffeeShopDetailViewController.h"

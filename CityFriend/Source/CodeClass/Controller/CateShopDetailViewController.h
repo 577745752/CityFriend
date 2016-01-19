@@ -1,5 +1,5 @@
 //
-//  FoodShopDetailViewController.h
+//  CateShopDetailViewController.h
 //  CityFriend
 //
 //  Created by lanou3g on 16/1/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FoodShopDetailViewController : UIViewController
+@interface CateShopDetailViewController : UIViewController
 @property(nonatomic,strong)FoodShop*foodShop;
 @property(nonatomic,strong)FoodShopContent*foodShopContent;
 @property(nonatomic,strong)UILabel*shopNameLabel;
