@@ -1,5 +1,5 @@
 //
-//  FoodShopContent.h
+//  CateShop.h
 //  CityFriend
 //
 //  Created by lanou3g on 16/1/19.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FoodShopContent : NSObject
+@interface CateShop : NSObject
 @property(nonatomic,strong)NSString*address;//地址
 @property(nonatomic,strong)NSString*content;//详情
 @property(nonatomic,strong)NSString*gongid;//不知道

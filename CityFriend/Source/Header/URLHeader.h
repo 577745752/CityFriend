@@ -8,9 +8,9 @@
 
 #ifndef Project_URLHeader_h
 #define Project_URLHeader_h
-#define kURL_foodClassify @"http://saocheng.bjqttd.com/index.php/api/Food/navlist"
-#define kURL_foodShop @"http://saocheng.bjqttd.com/index.php/api/Food/shoplist"
-#define kURL_foodShopContent @"http://saocheng.bjqttd.com/index.php/api/Food/detail"
+#define kURL_cateClassify @"http://saocheng.bjqttd.com/index.php/api/Food/navlist"
+#define kURL_cate @"http://saocheng.bjqttd.com/index.php/api/Food/shoplist"
+#define kURL_cateShopContent @"http://saocheng.bjqttd.com/index.php/api/Food/detail"
 
 #define kURL_coffee @"http://saocheng.bjqttd.com/index.php/api/happy/shoplist?cateid=84"
 #define kURL_coffeeShopContent @"http://saocheng.bjqttd.com/index.php/api/happy/detail"

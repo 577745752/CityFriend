@@ -48,14 +48,14 @@
     //[self loadData];
     
 }
--(void)setFoodShop:(FoodShop *)foodShop
+-(void)setCate:(Cate *)cate
 {
-    if (_foodShop!=foodShop) {
-        _foodShop=nil;
-        _foodShop=foodShop;
+    if (_cate!=cate) {
+        _cate=nil;
+        _cate=cate;
     }
     //1.创建URL
-    NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?shopid=%@",kURL_foodShopContent,self.foodShop.shopID]];
+    NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?shopid=%@",kURL_cateShopContent,self.cate.shopID]];
     
     //2.创建Session
     NSURLSession*session=[NSURLSession sharedSession];
@@ -65,10 +65,10 @@
         NSDictionary*dataDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments  error:nil];
         NSMutableDictionary*dataDict1=[NSMutableDictionary new];
         dataDict1=dataDict[@"data"];
-        self.foodShopContent=[FoodShopContent new];
-        [self.foodShopContent setValuesForKeysWithDictionary:dataDict1];
+        self.cateShop=[CateShop new];
+        [self.cateShop setValuesForKeysWithDictionary:dataDict1];
         dispatch_async(dispatch_get_main_queue(), ^{
-            _shopNameLabel.text=self.foodShopContent.shopname;
+            _shopNameLabel.text=self.cateShop.shopname;
         });
         
     }];
@@ -80,7 +80,7 @@
 -(void)loadData
 {
     //1.创建url
-    NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?shopid=%@",kURL_foodShopContent,self.foodShop.shopID]];
+    NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?shopid=%@",kURL_cateShopContent,self.cate.shopID]];
     //2.创建请求对象
     NSMutableURLRequest*request=[[NSMutableURLRequest alloc]initWithURL:url];
     //设置请求方式(默认为GET,可以不写)
@@ -94,8 +94,8 @@
     NSDictionary*dataDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     NSMutableDictionary*dataDict1=[NSMutableDictionary new];
     dataDict1=dataDict[@"data"];
-    self.foodShopContent=[FoodShopContent new];
-    [self.foodShopContent setValuesForKeysWithDictionary:dataDict1];
+    self.cateShop=[CateShop new];
+    [self.cateShop setValuesForKeysWithDictionary:dataDict1];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

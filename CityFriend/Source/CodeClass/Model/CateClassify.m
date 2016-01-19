@@ -1,19 +1,18 @@
 //
-//  FoodShopContent.m
+//  CateClassify.m
 //  CityFriend
 //
 //  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "FoodShopContent.h"
+#import "CateClassify.h"
 
-@implementation FoodShopContent
+@implementation CateClassify
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     if ([key isEqualToString:@"id"]) {
-        _shopID=value;
+        _foodID=value;
     }
-
 }
 @end

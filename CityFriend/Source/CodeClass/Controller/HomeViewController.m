@@ -110,8 +110,8 @@ static NSString *const cellReuseID= @"cellReuseID";
     if (indexPath.section==0) {
         if (indexPath.item==0) {
             CateTableViewController*classifyTC=[CateTableViewController new];
-            classifyTC.classifyURL=kURL_foodClassify;
-            classifyTC.shopURL=kURL_foodShop;
+            classifyTC.classifyURL=kURL_cateClassify;
+            classifyTC.shopURL=kURL_cate;
             [self.navigationController pushViewController:classifyTC animated:YES];
             
         }else{

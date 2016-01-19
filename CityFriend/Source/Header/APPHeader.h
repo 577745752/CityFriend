@@ -19,9 +19,9 @@
 #import "GetDataTools.h"
 
 
-#import "FoodClassify.h"
-#import "FoodShop.h"
-#import "FoodShopContent.h"
+#import "CateClassify.h"
+#import "Cate.h"
+#import "CateShop.h"
 #import "Coffee.h"
 #import "Coffeeshop.h"
 

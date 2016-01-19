@@ -20,19 +20,19 @@ static NSString*classifyID=@"classify";
     self.shopArray=[[NSMutableArray alloc]init];
     [[GetDataTools shareGetData] getData:self.classifyURL Block:^(NSMutableArray *dataArray) {
         for (NSDictionary*dict in dataArray) {
-            FoodClassify*foodClassify=[FoodClassify new];
-            [foodClassify setValuesForKeysWithDictionary:dict];
-            [self.classifyArray addObject:foodClassify];
+            CateClassify*cateClassify=[CateClassify new];
+            [cateClassify setValuesForKeysWithDictionary:dict];
+            [self.classifyArray addObject:cateClassify];
         }
         
         [GetDataTools shareGetData].foodClassifyArray = self.classifyArray;
         
         dispatch_queue_t serailQueue = dispatch_queue_create(NULL,DISPATCH_QUEUE_SERIAL);
         
-        for (FoodClassify* foodClassify in self.classifyArray) {
+        for (CateClassify* cateClassify in self.classifyArray) {
             dispatch_async(serailQueue, ^{
                 //1.创建url
-                NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?cateid=%@",self.shopURL,foodClassify.foodID]];
+                NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?cateid=%@",self.shopURL,cateClassify.foodID]];
                 //2.创建请求对象
                 NSMutableURLRequest*request=[[NSMutableURLRequest alloc]initWithURL:url];
                 //设置请求方式(默认为GET,可以不写)
@@ -48,9 +48,9 @@ static NSString*classifyID=@"classify";
                 dataArray=dataDict[@"data"];
                 NSMutableArray*dataArray1=[NSMutableArray new];
                 for (NSDictionary*dict in dataArray) {
-                    FoodShop*foodShop=[FoodShop new];
-                    [foodShop setValuesForKeysWithDictionary:dict];
-                    [dataArray1 addObject:foodShop];
+                    Cate*cate=[Cate new];
+                    [cate setValuesForKeysWithDictionary:dict];
+                    [dataArray1 addObject:cate];
                 }
                 [self.shopArray addObject:dataArray1];
                 
@@ -88,9 +88,9 @@ static NSString*classifyID=@"classify";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ClassifyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:classifyID forIndexPath:indexPath];
-    FoodShop*foodShop=[FoodShop new];
-    foodShop=self.shopArray[indexPath.section][indexPath.row];
-    cell.foodShop=foodShop;
+    Cate*cate=[Cate new];
+    cate=self.shopArray[indexPath.section][indexPath.row];
+    cell.cate=cate;
     
     // Configure the cell...
     
@@ -100,9 +100,9 @@ static NSString*classifyID=@"classify";
 {
     
     CateShopDetailViewController*foodShopDetailVC=[CateShopDetailViewController new];
-    FoodShop*foodShop=[FoodShop new];
-    foodShop=self.shopArray[indexPath.section][indexPath.row];
-    foodShopDetailVC.foodShop=foodShop;
+    Cate*cate=[Cate new];
+    cate=self.shopArray[indexPath.section][indexPath.row];
+    foodShopDetailVC.cate=cate;
     [self.navigationController pushViewController:foodShopDetailVC animated:YES];
 }
 //设置区头
@@ -119,9 +119,9 @@ static NSString*classifyID=@"classify";
 //}
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    FoodClassify*foodClassify=[FoodClassify new];
-    foodClassify=self.classifyArray[section];
-    return foodClassify.name;
+    CateClassify*cateClassify=[CateClassify new];
+    cateClassify=self.classifyArray[section];
+    return cateClassify.name;
     //    if (section!=4) {
     //        FoodShop*foodShop=[FoodShop new];
     //        foodShop=self.shopArray[section][0];

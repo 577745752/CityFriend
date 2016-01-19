@@ -1,14 +1,14 @@
 //
-//  FoodShop.h
+//  Cate.h
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/18.
+//  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface FoodShop : NSObject
+@interface Cate : NSObject
 @property(nonatomic,strong)NSString*discount;//折扣
 @property(nonatomic,strong)NSString*shopID;//店铺id
 @property(nonatomic,strong)NSString*lat;//纬度

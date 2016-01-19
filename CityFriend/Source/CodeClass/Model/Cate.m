@@ -1,14 +1,14 @@
 //
-//  FoodShop.m
+//  Cate.m
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/18.
+//  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "FoodShop.h"
+#import "Cate.h"
 
-@implementation FoodShop
+@implementation Cate
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     if ([key isEqualToString:@"id"]) {

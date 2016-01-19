@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CateShopDetailViewController : UIViewController
-@property(nonatomic,strong)FoodShop*foodShop;
-@property(nonatomic,strong)FoodShopContent*foodShopContent;
+@property(nonatomic,strong)Cate*cate;
+@property(nonatomic,strong)CateShop*cateShop;
 @property(nonatomic,strong)UILabel*shopNameLabel;
 @end

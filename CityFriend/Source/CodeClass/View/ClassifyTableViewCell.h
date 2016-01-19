@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassifyTableViewCell : UITableViewCell
-@property(nonatomic,strong)FoodShop*foodShop;
+@property(nonatomic,strong)Cate*cate;
 @property(nonatomic,strong)UILabel*shopNameLabel;
 @end

@@ -1,18 +1,19 @@
 //
-//  FoodClassify.m
+//  CateShop.m
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/18.
+//  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "FoodClassify.h"
+#import "CateShop.h"
 
-@implementation FoodClassify
+@implementation CateShop
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     if ([key isEqualToString:@"id"]) {
-        _foodID=value;
+        _shopID=value;
     }
+    
 }
 @end

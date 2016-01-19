@@ -30,13 +30,13 @@
     }
     return _shopNameLabel;
 }
--(void)setFoodShop:(FoodShop *)foodShop
+-(void)setCate:(Cate *)cate
 {
-    if (_foodShop!=foodShop) {
-        _foodShop=nil;
-        _foodShop=foodShop;
+    if (_cate!=cate) {
+        _cate=nil;
+        _cate=cate;
     }
-    self.shopNameLabel.text=foodShop.shopname;
+    self.shopNameLabel.text=cate.shopname;
     
 }
 - (void)awakeFromNib {
