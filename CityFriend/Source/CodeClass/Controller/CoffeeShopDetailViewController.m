@@ -8,7 +8,7 @@
 
 #import "CoffeeShopDetailViewController.h"
 
-@interface CoffeeShopDetailViewController ()
+@interface CoffeeShopDetailViewController ()<UIScrollViewDelegate>
 
 @end
 
@@ -18,6 +18,7 @@
     if (self=[super init]) {
         [self.view addSubview:self.shopNameLabel];
         [self.view addSubview:self.scrollView];
+        [self.view addSubview:self.pageControl];
     }
     return self;
 }
@@ -37,9 +38,42 @@
         _scrollView.pagingEnabled=YES;
         _scrollView.bounces=NO;
         _scrollView.contentSize=CGSizeMake(kWidth*3, 30*kGap);
-        //_scrollView.delegate=self;
+        _scrollView.delegate=self;
     }
     return _scrollView;
+}
+-(UIPageControl*)pageControl
+{
+    if (!_pageControl) {
+        _pageControl=[[UIPageControl alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+        _pageControl.center=CGPointMake(self.view.bounds.size.width/2,44+35*kGap);
+        //设置圆点个数
+        _pageControl.numberOfPages=3;
+        //设置(选中)圆点颜色
+        _pageControl.currentPageIndicatorTintColor=[UIColor whiteColor];
+        //设置默认选中的圆点
+        _pageControl.currentPage=0;
+        
+        //事件
+        [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _pageControl;
+}
+-(void)changePage:(UIPageControl*)pageControl
+{
+    //根据pageControl的当前页来设定scrollView的偏移量
+    CGPoint point=CGPointMake(pageControl.currentPage*kWidth, 0);
+    //让scrollView根据pageControl的当前页计算出来的偏移量进行偏移
+    _scrollView.contentOffset=point;
+    
+}
+//代理方法  结束减速时执行
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //获取偏移量
+    CGFloat x = self.scrollView.contentOffset.x;
+    //根据偏移量控制pageControl的当前页
+    self.pageControl.currentPage = x/kWidth;
 }
 -(void)setCoffee:(Coffee *)coffee
 {

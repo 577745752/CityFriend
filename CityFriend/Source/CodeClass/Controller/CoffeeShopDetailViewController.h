@@ -13,4 +13,5 @@
 @property(nonatomic,strong)Coffeeshop*coffeeShop;
 @property(nonatomic,strong)UILabel*shopNameLabel;
 @property(nonatomic,strong)UIScrollView*scrollView;
+@property(nonatomic,strong)UIPageControl*pageControl;
 @end
