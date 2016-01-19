@@ -33,10 +33,10 @@
 -(UIScrollView*)scrollView
 {
     if (!_scrollView) {
-        _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, 25*kGap)];
+        _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, 30*kGap)];
         _scrollView.pagingEnabled=YES;
         _scrollView.bounces=NO;
-        _scrollView.contentSize=CGSizeMake(kWidth*3, 25*kGap);
+        _scrollView.contentSize=CGSizeMake(kWidth*3, 30*kGap);
         //_scrollView.delegate=self;
     }
     return _scrollView;
@@ -60,6 +60,16 @@
         self.coffeeShop=[Coffeeshop new];
         [self.coffeeShop setValuesForKeysWithDictionary:dataDict1];
         dispatch_async(dispatch_get_main_queue(), ^{
+            UIImageView*imgView0=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 30*kGap)];
+            [imgView0 sd_setImageWithURL:[NSURL URLWithString:self.coffee.logo]];
+            UIImageView*imgView1=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, 30*kGap)];
+            [imgView1 sd_setImageWithURL:[NSURL URLWithString:self.coffeeShop.picture]];
+            UIImageView*imgView2=[[UIImageView alloc]initWithFrame:CGRectMake(2*kWidth, 0, kWidth, 30*kGap)];
+            [imgView2 sd_setImageWithURL:[NSURL URLWithString:self.coffeeShop.specialpic]];
+            [_scrollView addSubview:imgView0];
+            [_scrollView addSubview:imgView1];
+            [_scrollView addSubview:imgView2];
+            
             _shopNameLabel.text=self.coffeeShop.shopname;
         });
     }];
