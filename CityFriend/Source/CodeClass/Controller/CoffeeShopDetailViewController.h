@@ -12,4 +12,5 @@
 @property(nonatomic,strong)Coffee*coffee;
 @property(nonatomic,strong)Coffeeshop*coffeeShop;
 @property(nonatomic,strong)UILabel*shopNameLabel;
+@property(nonatomic,strong)UIScrollView*scrollView;
 @end

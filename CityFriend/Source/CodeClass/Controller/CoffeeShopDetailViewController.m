@@ -17,6 +17,7 @@
 {
     if (self=[super init]) {
         [self.view addSubview:self.shopNameLabel];
+        [self.view addSubview:self.scrollView];
     }
     return self;
 }
@@ -25,8 +26,20 @@
     if (!_shopNameLabel) {
         _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
         _shopNameLabel.backgroundColor=[UIColor orangeColor];
+        _shopNameLabel.textAlignment=NSTextAlignmentCenter;
     }
     return _shopNameLabel;
+}
+-(UIScrollView*)scrollView
+{
+    if (!_scrollView) {
+        _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, 25*kGap)];
+        _scrollView.pagingEnabled=YES;
+        _scrollView.bounces=NO;
+        _scrollView.contentSize=CGSizeMake(kWidth*3, 25*kGap);
+        //_scrollView.delegate=self;
+    }
+    return _scrollView;
 }
 -(void)setCoffee:(Coffee *)coffee
 {
@@ -34,10 +47,8 @@
         _coffee=nil;
         _coffee=coffee;
     }
-    
     //1.创建URL
     NSURL*url=[NSURL URLWithString:[NSString stringWithFormat:@"%@?shopid=%@",kURL_coffeeShopContent,self.coffee.shopID]];
-    
     //2.创建Session
     NSURLSession*session=[NSURLSession sharedSession];
     //3.创建Task(内部处理了请求,默认使用GET请求,直接传递url即可)
@@ -51,19 +62,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             _shopNameLabel.text=self.coffeeShop.shopname;
         });
-        
     }];
-    
     //启动任务
     [dataTask resume];
-
-    
-    
-    
-    
-    
-    
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
