@@ -31,11 +31,17 @@
 		C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBF1C4F83C500EB2925 /* Categories.xml */; };
 		C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */; };
 		C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */; };
+<<<<<<< HEAD
 		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C255EEF51C4FC8DE00EB2925 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEF41C4FC8DE00EB2925 /* ShopTableViewController.m */; };
 		C255EEF81C4FC92500EB2925 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEF71C4FC92500EB2925 /* Shop.m */; };
 		C255EEFB1C4FC9C100EB2925 /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEFA1C4FC9C100EB2925 /* ShopTableViewCell.m */; };
 		C255EEFD1C4FCA6600EB2925 /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C255EEFC1C4FCA6600EB2925 /* 8.jpeg */; };
+=======
+		C255EEDF1C4F9D3800EB2925 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C255EED81C4F8E0000EB2925 /* libxml2.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		C255EEE21C4F9E7300EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEE01C4F9E7300EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C255EEE71C4FAD9E00EB2925 /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C255EEE61C4FAD9E00EB2925 /* 8.jpeg */; };
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -86,6 +92,7 @@
 		C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewCell.m; sourceTree = "<group>"; };
 		C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionReusableView.h; sourceTree = "<group>"; };
 		C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionReusableView.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		C255EEF31C4FC8DE00EB2925 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
@@ -95,6 +102,13 @@
 		C255EEF91C4FC9C100EB2925 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C255EEFA1C4FC9C100EB2925 /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		C255EEFC1C4FCA6600EB2925 /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
+=======
+		C255EED81C4F8E0000EB2925 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		C255EEDA1C4F8F8500EB2925 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		C255EEE01C4F9E7300EB2925 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		C255EEE11C4F9E7300EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		C255EEE61C4FAD9E00EB2925 /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -108,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C255EEDF1C4F9D3800EB2925 /* libxml2.tbd in Frameworks */,
 				4A975765D4179F6E8C8BD3C4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +142,8 @@
 		62B3998D1701ACFFE5337CBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C255EEDA1C4F8F8500EB2925 /* libxml2.2.tbd */,
+				C255EED81C4F8E0000EB2925 /* libxml2.tbd */,
 				59203E4E1893743622BDE49C /* libPods.a */,
 			);
 			name = Frameworks;
@@ -177,7 +194,6 @@
 			children = (
 				C219D2E41C489DBE00F6EEDE /* Application */,
 				C219D2E71C489DBE00F6EEDE /* BaseClass */,
-				C219D2E81C489DBE00F6EEDE /* CodeClass */,
 				C219D2EE1C489DBE00F6EEDE /* Framework */,
 				C219D2EF1C489DBE00F6EEDE /* Header */,
 				C219D2F41C489DBE00F6EEDE /* Resources */,
@@ -199,8 +215,14 @@
 			isa = PBXGroup;
 			children = (
 				C255EEA81C4F322000EB2925 /* SHA1加密 */,
+<<<<<<< HEAD
 				C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */,
 				C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */,
+=======
+				C255EEE11C4F9E7300EB2925 /* GDataXMLNode.h */,
+				C255EEE01C4F9E7300EB2925 /* GDataXMLNode.m */,
+				C219D2E81C489DBE00F6EEDE /* CodeClass */,
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -212,7 +234,8 @@
 				C219D2EC1C489DBE00F6EEDE /* Model */,
 				C219D2ED1C489DBE00F6EEDE /* View */,
 			);
-			path = CodeClass;
+			name = CodeClass;
+			path = ../CodeClass;
 			sourceTree = "<group>";
 		};
 		C219D2E91C489DBE00F6EEDE /* Controller */ = {
@@ -222,8 +245,11 @@
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
 				C255EEAF1C4F36AE00EB2925 /* LocationViewController.h */,
 				C255EEB01C4F36AE00EB2925 /* LocationViewController.m */,
+<<<<<<< HEAD
 				C255EEF31C4FC8DE00EB2925 /* ShopTableViewController.h */,
 				C255EEF41C4FC8DE00EB2925 /* ShopTableViewController.m */,
+=======
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */,
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -241,8 +267,11 @@
 		C219D2EC1C489DBE00F6EEDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				C255EEF61C4FC92500EB2925 /* Shop.h */,
 				C255EEF71C4FC92500EB2925 /* Shop.m */,
+=======
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,8 +287,11 @@
 				C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */,
 				C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */,
 				C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */,
+<<<<<<< HEAD
 				C255EEF91C4FC9C100EB2925 /* ShopTableViewCell.h */,
 				C255EEFA1C4FC9C100EB2925 /* ShopTableViewCell.m */,
+=======
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,7 +322,11 @@
 				C28765371C48E1150093F42E /* 5.png */,
 				C255EEAD1C4F338C00EB2925 /* 6.png */,
 				C255EEBA1C4F65F500EB2925 /* 7.png */,
+<<<<<<< HEAD
 				C255EEFC1C4FCA6600EB2925 /* 8.jpeg */,
+=======
+				C255EEE61C4FAD9E00EB2925 /* 8.jpeg */,
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				C219D3021C48A4DF00F6EEDE /* tabbarImage */,
 			);
 			path = Resources;
@@ -389,6 +425,7 @@
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
 				C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */,
+				C255EEE71C4FAD9E00EB2925 /* 8.jpeg in Resources */,
 				C219D3101C48C2A400F6EEDE /* 4.png in Resources */,
 				C255EEAE1C4F338C00EB2925 /* 6.png in Resources */,
 				C28765381C48E1150093F42E /* 5.png in Resources */,
@@ -460,15 +497,23 @@
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
+<<<<<<< HEAD
 				C255EEF51C4FC8DE00EB2925 /* ShopTableViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
+=======
+				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
+				C255EEE21C4F9E7300EB2925 /* GDataXMLNode.m in Sources */,
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
+<<<<<<< HEAD
 				C255EEF81C4FC92500EB2925 /* Shop.m in Sources */,
+=======
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
@@ -585,15 +630,23 @@
 			baseConfigurationReference = 44AB0814F09E4F28D161C1CA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = /Users/lanou3g/Desktop/CityFriend/CityFriend/Source/BaseClass;
 				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+<<<<<<< HEAD
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+=======
+					"${PODS_ROOT}/Headers/Public",
+					"${PODS_ROOT}/Headers/Public/SDWebImage",
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = CityFriend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -602,6 +655,10 @@
 					"\"ImageIO\"",
 					"-lxml2",
 				);
+=======
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/CityFriend/Source/BaseClass";
+				OTHER_LDFLAGS = "-lxml2";
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -612,15 +669,23 @@
 			baseConfigurationReference = 1169E02E10524DE5D525EF22 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = /Users/lanou3g/Desktop/CityFriend/CityFriend/Source/BaseClass;
 				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+<<<<<<< HEAD
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+=======
+					"${PODS_ROOT}/Headers/Public",
+					"${PODS_ROOT}/Headers/Public/SDWebImage",
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = CityFriend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -629,6 +694,10 @@
 					"\"ImageIO\"",
 					"-lxml2",
 				);
+=======
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/CityFriend/Source/BaseClass";
+				OTHER_LDFLAGS = "-lxml2";
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

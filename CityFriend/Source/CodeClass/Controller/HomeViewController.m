@@ -106,6 +106,10 @@ static NSString *headerReuse = @"headerReuse";
 #pragma mark ----解析XML文件----
 //解析XML文件
 -(void)xmlAnalysis{
+<<<<<<< HEAD
+=======
+    NSLog(@"XML文件DOM解析");
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
     //获取文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Categories.xml" ofType:nil];
     //2,将文件读入data中
@@ -152,6 +156,7 @@ static NSString *headerReuse = @"headerReuse";
 }
 //增补视图
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+<<<<<<< HEAD
     ClassificationCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReuse forIndexPath:indexPath];
     view.label.text = _nameArray[indexPath.section];
     view.backgroundColor = [UIColor greenColor];
@@ -163,6 +168,12 @@ static NSString *headerReuse = @"headerReuse";
     shopTC.cityName=self.cityName;
     shopTC.category=_subArray[indexPath.section][indexPath.row];
     [self.navigationController pushViewController:shopTC animated:YES];
+=======
+        ClassificationCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReuse forIndexPath:indexPath];
+        view.label.text = _nameArray[indexPath.section];
+        view.backgroundColor = [UIColor greenColor];
+        return view;
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 }
 #pragma mark-----------定位.代理方法
 //定位成功之后返回

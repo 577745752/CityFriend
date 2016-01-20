@@ -12,7 +12,11 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self setSubViews];
+<<<<<<< HEAD
         //        self.backgroundColor=[UIColor redColor];
+=======
+//        self.backgroundColor=[UIColor redColor];
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
     }
     return self;
 }
@@ -29,4 +33,8 @@
     _LabName.font = [UIFont systemFontOfSize:12];
     [self addSubview:_LabName];
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 @end

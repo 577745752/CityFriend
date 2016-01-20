@@ -8,7 +8,11 @@
 
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
+<<<<<<< HEAD
 //第一个界面
+=======
+
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 #import "HomeViewController.h"
 
 #import "LocationViewController.h"
@@ -34,8 +38,24 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 
+<<<<<<< HEAD
 
 
+=======
+#import "LocationViewController.h"
+#import "LocationCollectionViewCell.h"
+#import "LocationCollectionReusableView.h"
+
+#import "ClassificationCollectionViewCell.h"
+#import "ClassificationCollectionReusableView.h"
+
+
+
+
+
+
+
+>>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50
