@@ -8,6 +8,7 @@
 
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
+
 #import "HomeViewController.h"
 #import "ActivityViewController.h"
 #import "FriendViewController.h"
@@ -16,31 +17,19 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 
-#import "GetDataTools.h"
-
-
-#import "CateClassify.h"
-#import "Cate.h"
-#import "CateShop.h"
-#import "Coffee.h"
-#import "Coffeeshop.h"
-
-
 #import "LocationViewController.h"
 #import "LocationCollectionViewCell.h"
 #import "LocationCollectionReusableView.h"
-#import "ClassificationCollectionViewController.h"
+
 #import "ClassificationCollectionViewCell.h"
 #import "ClassificationCollectionReusableView.h"
 
-#import "ClassifyTableViewController.h"
 
-#import "CateTableViewController.h"
-#import "ClassifyTableViewCell.h"
-#import "CateShopDetailViewController.h"
-#import "CoffeeTableViewController.h"
-#import "CoffeeTableViewCell.h"
-#import "CoffeeShopDetailViewController.h"
+
+
+
+
+
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50
