@@ -8,12 +8,8 @@
 
 #ifndef Project_URLHeader_h
 #define Project_URLHeader_h
-#define kURL_cateClassify @"http://saocheng.bjqttd.com/index.php/api/Food/navlist"
-#define kURL_cate @"http://saocheng.bjqttd.com/index.php/api/Food/shoplist"
-#define kURL_cateShopContent @"http://saocheng.bjqttd.com/index.php/api/Food/detail"
-
-#define kURL_coffee @"http://saocheng.bjqttd.com/index.php/api/happy/shoplist?cateid=84"
-#define kURL_coffeeShopContent @"http://saocheng.bjqttd.com/index.php/api/happy/detail"
+#define kBASE_SERVER_URL @"http://api.dianping.com"
+#define kAPP_KEY  @"42960815" //@"955330803"
 #define cityKey @"cityKey"
 #define ud [NSUserDefaults standardUserDefaults]
 #endif

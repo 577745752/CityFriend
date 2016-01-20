@@ -8,20 +8,32 @@
 
 #import "HomeViewController.h"
 #import <CoreLocation/CoreLocation.h>//导入框架
+#import "GDataXMLNode.h"
+//#import "GDataXMLNode.h"
+
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,CLLocationManagerDelegate>
-//定位管理类
+//定位地点定位管理类
 @property(nonatomic,strong)CLLocationManager*manager;
 //编码和反编码
 @property(nonatomic,strong)CLGeocoder*geo;
+//当前城市
+@property(nonatomic,strong)NSString*cityName;
 //城市label
 @property(nonatomic,strong)UILabel*cityNameLabel;
 //collectionView
 @property(strong,nonatomic)UICollectionView *collectionView;
 @property(strong,nonatomic)UICollectionViewFlowLayout *flowLayout;
+//分类名数组
+@property (nonatomic, retain) NSMutableArray *nameArray;
+//详细分类名数组
+@property (nonatomic, retain) NSMutableArray *subArray;
 @end
 
-//cell重用标识符
-static NSString *const cellReuseID= @"cellReuseID";
+//重用标识符
+static NSString * const reuseIdentifier = @"Cell";
+//增补视图
+static NSString *headerReuse = @"headerReuse";
+//static NSString *footerReuse = @"footerReuse";
 
 @implementation HomeViewController
 -(instancetype)init
@@ -40,7 +52,6 @@ static NSString *const cellReuseID= @"cellReuseID";
 -(void)leftClick:(UIBarButtonItem *)sender{
     LocationViewController*locationVC=[LocationViewController new];
     [self.navigationController pushViewController:locationVC animated:YES];
-
 }
 
 - (void)viewDidLoad {
@@ -74,125 +85,84 @@ static NSString *const cellReuseID= @"cellReuseID";
     self.manager.desiredAccuracy=kCLLocationAccuracyBest;
     //开启定位
     [self.manager startUpdatingLocation];
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 #pragma mark----------collectionView---------------
     self.flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    self.flowLayout.itemSize = CGSizeMake(kWidth / 3, kWidth / 3);
+    self.flowLayout.itemSize = CGSizeMake(12*kGap, 14*kGap);
     self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-10*kGap-64) collectionViewLayout:self.flowLayout];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    
-    self.flowLayout.sectionInset = UIEdgeInsetsMake(kWidth/18, kWidth/9, kWidth/18, kWidth/9);
-    
+    self.flowLayout.sectionInset = UIEdgeInsetsMake(3.5*kGap, 3.5*kGap, 3.5*kGap, 3.5*kGap);
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor=[UIColor yellowColor];
-    
-    //注册cell
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellReuseID];
-    
+    self.flowLayout.headerReferenceSize=CGSizeMake(kWidth, 5*kGap);
+    //注册
+    [self.collectionView registerClass:[ClassificationCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    //注册增补视图
+    [self.collectionView registerClass:[ClassificationCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerReuse];
     [self.view addSubview:self.collectionView];
+    [self xmlAnalysis];
+    
 }
+#pragma mark ----解析XML文件----
+//解析XML文件
+-(void)xmlAnalysis{
+    //获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Categories.xml" ofType:nil];
+    //2,将文件读入data中
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    //3,创建GDataXMLNode对象,此时xml文件内所有的节点以树的形式存在GDataXMLDocument
+    GDataXMLDocument *xmlDocument = [[GDataXMLDocument alloc] initWithData:data options:0 error:nil];
+    //    GDataXMLElement *rootElement = [xmlDocument rootElement];
+    NSArray *array = [xmlDocument.rootElement elementsForName:@"categories"];
+    self.nameArray = [NSMutableArray array];
+    self.subArray = [NSMutableArray array];
+    for (int i = 0; i < array.count; i++) {
+        GDataXMLElement *element = [[[array objectAtIndex:i] elementsForName:@"category_name"] firstObject];
+        [_nameArray addObject:[element stringValue]];
+        
+        NSMutableArray *arr = [NSMutableArray array];
+        NSArray *subArr = [[array objectAtIndex:i] elementsForName:@"subcategories"];
+        for (GDataXMLElement *xml in subArr) {
+            [arr addObject:[xml stringValue]];
+        }
+        [_subArray addObject:arr];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
-
-    
-    NSString*city=[ud objectForKey:cityKey];
-    NSString*cityName=[NSString stringWithFormat:@"%@市",city];
+    self.cityName=[ud objectForKey:cityKey];
+    NSString*cityName=[NSString stringWithFormat:@"%@市",self.cityName];
     self.cityNameLabel.text=cityName;
-
 }
-//设置分区个数
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    
-    return 3;
-    
+//返回分区数
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return _nameArray.count;
 }
-//每一个分区有多少个Item
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
-    
+//返回各分区的行数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSArray *array = _subArray[section];
+    return array.count;
 }
-
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseID forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-    cell.layer.cornerRadius=kWidth/6;
-    cell.layer.masksToBounds=YES;
-    
-    
-    
-    
-    if (indexPath.section==0) {
-        if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"吃";
-            [cell.contentView addSubview:label];
-        }else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"咖啡";
-            [cell.contentView addSubview:label];
-        }
-    }
-    if (indexPath.section==1){
-        if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"酒吧";
-            [cell.contentView addSubview:label];
-        }
-        else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"KTV";
-            [cell.contentView addSubview:label];
-        }
-    }
-    if (indexPath.section==2){
-        if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"出游";
-            [cell.contentView addSubview:label];
-        }
-        else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"电影";
-            [cell.contentView addSubview:label];
-        }
-    }
-    
+//返回cell
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ClassificationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.LabName.text = _subArray[indexPath.section][indexPath.row];
     return cell;
 }
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section==0) {
-        if (indexPath.item==0) {
-            CateTableViewController*classifyTC=[CateTableViewController new];
-            classifyTC.classifyURL=kURL_cateClassify;
-            classifyTC.shopURL=kURL_cate;
-            [self.navigationController pushViewController:classifyTC animated:YES];
-            
-        }else{
-            CoffeeTableViewController*coffeeTC=[CoffeeTableViewController new];
-            
-            [self.navigationController pushViewController:coffeeTC animated:YES];
-            
-        }
-        
-        
-        
-    }
-
+//增补视图
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    ClassificationCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReuse forIndexPath:indexPath];
+    view.label.text = _nameArray[indexPath.section];
+    view.backgroundColor = [UIColor greenColor];
+    return view;
+}
+//cell点击事件
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ShopTableViewController*shopTC=[ShopTableViewController new];
+    shopTC.cityName=self.cityName;
+    shopTC.category=_subArray[indexPath.section][indexPath.row];
+    [self.navigationController pushViewController:shopTC animated:YES];
 }
 #pragma mark-----------定位.代理方法
 //定位成功之后返回
@@ -218,19 +188,11 @@ static NSString *const cellReuseID= @"cellReuseID";
             NSLog(@"反编码失败:%@",error);
         }
         CLPlacemark*placeMark=[placemarks lastObject];
-        //遍历字典
-        //[placeMark.addressDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-           // NSLog(@"%@",placeMark.addressDictionary[@"City"]);
         NSString*cityName=placeMark.addressDictionary[@"City"];
         self.cityNameLabel.text=cityName;
-        NSString*city=[[cityName componentsSeparatedByString:@"市"]firstObject];
-        //NSLog(@"%@",city);
-       // NSUserDefaults*userCity=[NSUserDefaults standardUserDefaults];
-        [ud setValue:city forKey:cityKey];
-//        NSString*homePath=NSHomeDirectory();//沙盒主路径
-//        NSLog(@"%@",homePath);
+        self.cityName=[[cityName componentsSeparatedByString:@"市"]firstObject];
+        [ud setValue:self.cityName forKey:cityKey];
         NSLog(@"%@",[ud objectForKey:cityKey]);
-        //}];
     }];
 }
 // Do any additional setup after loading the view.
