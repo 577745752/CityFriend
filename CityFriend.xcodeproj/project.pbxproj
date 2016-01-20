@@ -29,23 +29,13 @@
 		C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */; };
 		C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */; };
 		C255EEBB1C4F65F500EB2925 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBA1C4F65F500EB2925 /* 7.png */; };
-		C255EEBE1C4F72E200EB2925 /* ClassifyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */; };
 		C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBF1C4F83C500EB2925 /* Categories.xml */; };
-		C255EEC61C4F86F300EB2925 /* ClassificationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */; };
 		C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */; };
 		C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */; };
 		C255EECE1C4F897D00EB2925 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EECD1C4F897D00EB2925 /* 8.png */; };
 		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */; };
+		C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */; };
 		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
-		C2837B861C4DE73700686133 /* Coffee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B851C4DE73700686133 /* Coffee.m */; };
-		C2837B891C4DE7E700686133 /* Coffeeshop.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B881C4DE7E700686133 /* Coffeeshop.m */; };
-		C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */; };
-		C2837B8F1C4E161200686133 /* CateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B8E1C4E161200686133 /* CateTableViewController.m */; };
-		C2837B921C4E16D300686133 /* CateShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B911C4E16D300686133 /* CateShopDetailViewController.m */; };
-		C2837B951C4E17C200686133 /* CateClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B941C4E17C200686133 /* CateClassify.m */; };
-		C2837B981C4E187300686133 /* Cate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B971C4E187300686133 /* Cate.m */; };
-		C2837B9B1C4E199200686133 /* CateShop.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B9A1C4E199200686133 /* CateShop.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -93,11 +83,7 @@
 		C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCollectionReusableView.h; sourceTree = "<group>"; };
 		C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCollectionReusableView.m; sourceTree = "<group>"; };
 		C255EEBA1C4F65F500EB2925 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
-		C255EEBC1C4F72E200EB2925 /* ClassifyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewController.h; sourceTree = "<group>"; };
-		C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewController.m; sourceTree = "<group>"; };
 		C255EEBF1C4F83C500EB2925 /* Categories.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Categories.xml; sourceTree = "<group>"; };
-		C255EEC41C4F86F300EB2925 /* ClassificationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionViewController.h; sourceTree = "<group>"; };
-		C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewController.m; sourceTree = "<group>"; };
 		C255EEC71C4F88CF00EB2925 /* ClassificationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionViewCell.h; sourceTree = "<group>"; };
 		C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewCell.m; sourceTree = "<group>"; };
 		C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionReusableView.h; sourceTree = "<group>"; };
@@ -105,26 +91,10 @@
 		C255EECD1C4F897D00EB2925 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
-		C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewController.h; sourceTree = "<group>"; };
-		C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewController.m; sourceTree = "<group>"; };
+		C255EEFE1C4FD49900EB2925 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
+		C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewController.m; sourceTree = "<group>"; };
 		C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewCell.h; sourceTree = "<group>"; };
 		C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewCell.m; sourceTree = "<group>"; };
-		C2837B841C4DE73700686133 /* Coffee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coffee.h; sourceTree = "<group>"; };
-		C2837B851C4DE73700686133 /* Coffee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coffee.m; sourceTree = "<group>"; };
-		C2837B871C4DE7E700686133 /* Coffeeshop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coffeeshop.h; sourceTree = "<group>"; };
-		C2837B881C4DE7E700686133 /* Coffeeshop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coffeeshop.m; sourceTree = "<group>"; };
-		C2837B8A1C4E115900686133 /* CoffeeShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeShopDetailViewController.h; sourceTree = "<group>"; };
-		C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeShopDetailViewController.m; sourceTree = "<group>"; };
-		C2837B8D1C4E161200686133 /* CateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateTableViewController.h; sourceTree = "<group>"; };
-		C2837B8E1C4E161200686133 /* CateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateTableViewController.m; sourceTree = "<group>"; };
-		C2837B901C4E16D300686133 /* CateShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateShopDetailViewController.h; sourceTree = "<group>"; };
-		C2837B911C4E16D300686133 /* CateShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateShopDetailViewController.m; sourceTree = "<group>"; };
-		C2837B931C4E17C200686133 /* CateClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateClassify.h; sourceTree = "<group>"; };
-		C2837B941C4E17C200686133 /* CateClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateClassify.m; sourceTree = "<group>"; };
-		C2837B961C4E187300686133 /* Cate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cate.h; sourceTree = "<group>"; };
-		C2837B971C4E187300686133 /* Cate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cate.m; path = ../Model/Cate.m; sourceTree = "<group>"; };
-		C2837B991C4E199200686133 /* CateShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CateShop.h; sourceTree = "<group>"; };
-		C2837B9A1C4E199200686133 /* CateShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CateShop.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -252,18 +222,8 @@
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
 				C255EEAF1C4F36AE00EB2925 /* LocationViewController.h */,
 				C255EEB01C4F36AE00EB2925 /* LocationViewController.m */,
-				C255EEC41C4F86F300EB2925 /* ClassificationCollectionViewController.h */,
-				C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */,
-				C255EEBC1C4F72E200EB2925 /* ClassifyTableViewController.h */,
-				C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */,
-				C2837B8D1C4E161200686133 /* CateTableViewController.h */,
-				C2837B8E1C4E161200686133 /* CateTableViewController.m */,
-				C2837B901C4E16D300686133 /* CateShopDetailViewController.h */,
-				C2837B911C4E16D300686133 /* CateShopDetailViewController.m */,
-				C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */,
-				C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */,
-				C2837B8A1C4E115900686133 /* CoffeeShopDetailViewController.h */,
-				C2837B8B1C4E115900686133 /* CoffeeShopDetailViewController.m */,
+				C255EEFE1C4FD49900EB2925 /* ShopTableViewController.h */,
+				C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */,
 				C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */,
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -274,7 +234,6 @@
 				C287653A1C48E3050093F42E /* LoginViewController.m */,
 				C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */,
 				C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */,
-				C2837B971C4E187300686133 /* Cate.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,15 +241,6 @@
 		C219D2EC1C489DBE00F6EEDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C2837B931C4E17C200686133 /* CateClassify.h */,
-				C2837B941C4E17C200686133 /* CateClassify.m */,
-				C2837B961C4E187300686133 /* Cate.h */,
-				C2837B991C4E199200686133 /* CateShop.h */,
-				C2837B9A1C4E199200686133 /* CateShop.m */,
-				C2837B841C4DE73700686133 /* Coffee.h */,
-				C2837B851C4DE73700686133 /* Coffee.m */,
-				C2837B871C4DE7E700686133 /* Coffeeshop.h */,
-				C2837B881C4DE7E700686133 /* Coffeeshop.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,33 +455,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2837B8F1C4E161200686133 /* CateTableViewController.m in Sources */,
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
-				C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */,
+				C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
-				C255EEC61C4F86F300EB2925 /* ClassificationCollectionViewController.m in Sources */,
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
 				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
-				C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */,
-				C255EEBE1C4F72E200EB2925 /* ClassifyTableViewController.m in Sources */,
 				C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */,
-				C2837B891C4DE7E700686133 /* Coffeeshop.m in Sources */,
-				C2837B981C4E187300686133 /* Cate.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
-				C2837B861C4DE73700686133 /* Coffee.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
-				C2837B951C4E17C200686133 /* CateClassify.m in Sources */,
-				C2837B9B1C4E199200686133 /* CateShop.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
-				C2837B921C4E16D300686133 /* CateShopDetailViewController.m in Sources */,
 				C219D2F71C489DBE00F6EEDE /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
