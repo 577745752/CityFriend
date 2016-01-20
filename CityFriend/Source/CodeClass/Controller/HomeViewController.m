@@ -165,11 +165,6 @@ static NSString *headerReuse = @"headerReuse";
     shopTC.category=_subArray[indexPath.section][indexPath.row];
     [self.navigationController pushViewController:shopTC animated:YES];
     
-    ClassificationCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReuse forIndexPath:indexPath];
-    view.label.text = _nameArray[indexPath.section];
-    view.backgroundColor = [UIColor greenColor];
-    return view;
-    
 }
 #pragma mark-----------定位.代理方法
 //定位成功之后返回
