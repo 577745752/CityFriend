@@ -31,11 +31,11 @@
 		C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBF1C4F83C500EB2925 /* Categories.xml */; };
 		C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */; };
 		C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */; };
-		C255EECE1C4F897D00EB2925 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EECD1C4F897D00EB2925 /* 8.png */; };
 		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */; };
 		C255EF031C4FD53700EB2925 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF021C4FD53700EB2925 /* Shop.m */; };
 		C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */; };
+		C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C255EF071C4FD78F00EB2925 /* 8.jpeg */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -86,7 +86,6 @@
 		C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewCell.m; sourceTree = "<group>"; };
 		C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionReusableView.h; sourceTree = "<group>"; };
 		C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionReusableView.m; sourceTree = "<group>"; };
-		C255EECD1C4F897D00EB2925 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		C255EEFE1C4FD49900EB2925 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		C255EF021C4FD53700EB2925 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 		C255EF041C4FD61600EB2925 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
+		C255EF071C4FD78F00EB2925 /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 				C28765371C48E1150093F42E /* 5.png */,
 				C255EEAD1C4F338C00EB2925 /* 6.png */,
 				C255EEBA1C4F65F500EB2925 /* 7.png */,
-				C255EECD1C4F897D00EB2925 /* 8.png */,
+				C255EF071C4FD78F00EB2925 /* 8.jpeg */,
 				C219D3021C48A4DF00F6EEDE /* tabbarImage */,
 			);
 			path = Resources;
@@ -384,8 +384,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C255EECE1C4F897D00EB2925 /* 8.png in Resources */,
 				C219D3141C48C40900F6EEDE /* 3.png in Resources */,
+				C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */,
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
 				C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */,
