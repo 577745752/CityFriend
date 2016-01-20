@@ -29,6 +29,13 @@
 		C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */; };
 		C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */; };
 		C255EEBB1C4F65F500EB2925 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBA1C4F65F500EB2925 /* 7.png */; };
+		C255EEBE1C4F72E200EB2925 /* ClassifyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */; };
+		C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBF1C4F83C500EB2925 /* Categories.xml */; };
+		C255EEC61C4F86F300EB2925 /* ClassificationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */; };
+		C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */; };
+		C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */; };
+		C255EECE1C4F897D00EB2925 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EECD1C4F897D00EB2925 /* 8.png */; };
+		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; };
 		C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */; };
 		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
 		C2837B861C4DE73700686133 /* Coffee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B851C4DE73700686133 /* Coffee.m */; };
@@ -87,6 +94,18 @@
 		C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCollectionReusableView.h; sourceTree = "<group>"; };
 		C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCollectionReusableView.m; sourceTree = "<group>"; };
 		C255EEBA1C4F65F500EB2925 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		C255EEBC1C4F72E200EB2925 /* ClassifyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewController.h; sourceTree = "<group>"; };
+		C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewController.m; sourceTree = "<group>"; };
+		C255EEBF1C4F83C500EB2925 /* Categories.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Categories.xml; sourceTree = "<group>"; };
+		C255EEC41C4F86F300EB2925 /* ClassificationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionViewController.h; sourceTree = "<group>"; };
+		C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewController.m; sourceTree = "<group>"; };
+		C255EEC71C4F88CF00EB2925 /* ClassificationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionViewCell.h; sourceTree = "<group>"; };
+		C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionViewCell.m; sourceTree = "<group>"; };
+		C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationCollectionReusableView.h; sourceTree = "<group>"; };
+		C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollectionReusableView.m; sourceTree = "<group>"; };
+		C255EECD1C4F897D00EB2925 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewController.h; sourceTree = "<group>"; };
 		C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewController.m; sourceTree = "<group>"; };
 		C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewCell.h; sourceTree = "<group>"; };
@@ -215,6 +234,8 @@
 				C255EEA81C4F322000EB2925 /* SHA1加密 */,
 				C2D157101C4A25640068FC6E /* GetDataTools.h */,
 				C2D157111C4A25640068FC6E /* GetDataTools.m */,
+				C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */,
+				C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -236,6 +257,10 @@
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
 				C255EEAF1C4F36AE00EB2925 /* LocationViewController.h */,
 				C255EEB01C4F36AE00EB2925 /* LocationViewController.m */,
+				C255EEC41C4F86F300EB2925 /* ClassificationCollectionViewController.h */,
+				C255EEC51C4F86F300EB2925 /* ClassificationCollectionViewController.m */,
+				C255EEBC1C4F72E200EB2925 /* ClassifyTableViewController.h */,
+				C255EEBD1C4F72E200EB2925 /* ClassifyTableViewController.m */,
 				C2837B8D1C4E161200686133 /* CateTableViewController.h */,
 				C2837B8E1C4E161200686133 /* CateTableViewController.m */,
 				C2837B901C4E16D300686133 /* CateShopDetailViewController.h */,
@@ -286,6 +311,10 @@
 				C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */,
 				C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */,
 				C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */,
+				C255EEC71C4F88CF00EB2925 /* ClassificationCollectionViewCell.h */,
+				C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */,
+				C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */,
+				C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,9 +341,11 @@
 			isa = PBXGroup;
 			children = (
 				C255EEB21C4F3C0500EB2925 /* cities.plist */,
+				C255EEBF1C4F83C500EB2925 /* Categories.xml */,
 				C28765371C48E1150093F42E /* 5.png */,
 				C255EEAD1C4F338C00EB2925 /* 6.png */,
 				C255EEBA1C4F65F500EB2925 /* 7.png */,
+				C255EECD1C4F897D00EB2925 /* 8.png */,
 				C219D3021C48A4DF00F6EEDE /* tabbarImage */,
 			);
 			path = Resources;
@@ -408,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C255EECE1C4F897D00EB2925 /* 8.png in Resources */,
 				C219D3141C48C40900F6EEDE /* 3.png in Resources */,
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
@@ -419,6 +451,7 @@
 				C255EEBB1C4F65F500EB2925 /* 7.png in Resources */,
 				C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */,
 				C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */,
+				C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,8 +517,11 @@
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
 				C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
+				C255EEC61C4F86F300EB2925 /* ClassificationCollectionViewController.m in Sources */,
+				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
 				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
 				C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */,
+				C255EEBE1C4F72E200EB2925 /* ClassifyTableViewController.m in Sources */,
 				C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */,
 				C2837B891C4DE7E700686133 /* Coffeeshop.m in Sources */,
 				C2837B981C4E187300686133 /* Cate.m in Sources */,
@@ -494,10 +530,12 @@
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C2837B861C4DE73700686133 /* Coffee.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
+				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C2837B951C4E17C200686133 /* CateClassify.m in Sources */,
 				C2837B9B1C4E199200686133 /* CateShop.m in Sources */,
 				C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */,
+				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C2837B921C4E16D300686133 /* CateShopDetailViewController.m in Sources */,
 				C219D2F71C489DBE00F6EEDE /* HomeViewController.m in Sources */,

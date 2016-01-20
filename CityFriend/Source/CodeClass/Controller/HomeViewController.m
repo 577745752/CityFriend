@@ -13,6 +13,8 @@
 @property(nonatomic,strong)CLLocationManager*manager;
 //编码和反编码
 @property(nonatomic,strong)CLGeocoder*geo;
+//当前城市
+@property(nonatomic,strong)NSString*cityName;
 //城市label
 @property(nonatomic,strong)UILabel*cityNameLabel;
 //collectionView
@@ -74,16 +76,6 @@ static NSString *const cellReuseID= @"cellReuseID";
     self.manager.desiredAccuracy=kCLLocationAccuracyBest;
     //开启定位
     [self.manager startUpdatingLocation];
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 #pragma mark----------collectionView---------------
     self.flowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -106,8 +98,8 @@ static NSString *const cellReuseID= @"cellReuseID";
 {
 
     
-    NSString*city=[ud objectForKey:cityKey];
-    NSString*cityName=[NSString stringWithFormat:@"%@市",city];
+    self.cityName=[ud objectForKey:cityKey];
+    NSString*cityName=[NSString stringWithFormat:@"%@市",self.cityName];
     self.cityNameLabel.text=cityName;
 
 }
@@ -136,36 +128,36 @@ static NSString *const cellReuseID= @"cellReuseID";
     
     if (indexPath.section==0) {
         if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"吃";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"美食";
             [cell.contentView addSubview:label];
         }else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"咖啡";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"娱乐";
             [cell.contentView addSubview:label];
         }
     }
     if (indexPath.section==1){
         if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"酒吧";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"妹子专区";
             [cell.contentView addSubview:label];
         }
         else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"KTV";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"休闲健身";
             [cell.contentView addSubview:label];
         }
     }
     if (indexPath.section==2){
         if(indexPath.item  == 0){
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"出游";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"酒店";
             [cell.contentView addSubview:label];
         }
         else{
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
-            label.text = @"电影";
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 70, 50)];
+            label.text = @"游玩";
             [cell.contentView addSubview:label];
         }
     }
@@ -175,12 +167,19 @@ static NSString *const cellReuseID= @"cellReuseID";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    ClassifyTableViewController*classifyTVC=[ClassifyTableViewController new];
     if (indexPath.section==0) {
         if (indexPath.item==0) {
-            CateTableViewController*classifyTC=[CateTableViewController new];
-            classifyTC.classifyURL=kURL_cateClassify;
-            classifyTC.shopURL=kURL_cate;
-            [self.navigationController pushViewController:classifyTC animated:YES];
+            classifyTVC.cityName=self.cityName;
+                     
+            
+            
+            
+//            CateTableViewController*classifyTC=[CateTableViewController new];
+//            classifyTC.classifyURL=kURL_cateClassify;
+//            classifyTC.shopURL=kURL_cate;
+//            [self.navigationController pushViewController:classifyTC animated:YES];
             
         }else{
             CoffeeTableViewController*coffeeTC=[CoffeeTableViewController new];
@@ -218,19 +217,11 @@ static NSString *const cellReuseID= @"cellReuseID";
             NSLog(@"反编码失败:%@",error);
         }
         CLPlacemark*placeMark=[placemarks lastObject];
-        //遍历字典
-        //[placeMark.addressDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-           // NSLog(@"%@",placeMark.addressDictionary[@"City"]);
         NSString*cityName=placeMark.addressDictionary[@"City"];
         self.cityNameLabel.text=cityName;
-        NSString*city=[[cityName componentsSeparatedByString:@"市"]firstObject];
-        //NSLog(@"%@",city);
-       // NSUserDefaults*userCity=[NSUserDefaults standardUserDefaults];
-        [ud setValue:city forKey:cityKey];
-//        NSString*homePath=NSHomeDirectory();//沙盒主路径
-//        NSLog(@"%@",homePath);
+        self.cityName=[[cityName componentsSeparatedByString:@"市"]firstObject];
+        [ud setValue:self.cityName forKey:cityKey];
         NSLog(@"%@",[ud objectForKey:cityKey]);
-        //}];
     }];
 }
 // Do any additional setup after loading the view.

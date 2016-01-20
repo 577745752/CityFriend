@@ -29,7 +29,11 @@
 #import "LocationViewController.h"
 #import "LocationCollectionViewCell.h"
 #import "LocationCollectionReusableView.h"
+#import "ClassificationCollectionViewController.h"
+#import "ClassificationCollectionViewCell.h"
+#import "ClassificationCollectionReusableView.h"
 
+#import "ClassifyTableViewController.h"
 
 #import "CateTableViewController.h"
 #import "ClassifyTableViewCell.h"
