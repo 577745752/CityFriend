@@ -35,7 +35,7 @@
 		C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */; };
 		C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */; };
 		C255EECE1C4F897D00EB2925 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EECD1C4F897D00EB2925 /* 8.png */; };
-		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; };
+		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */; };
 		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
 		C2837B861C4DE73700686133 /* Coffee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B851C4DE73700686133 /* Coffee.m */; };
@@ -49,7 +49,6 @@
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
-		C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D157111C4A25640068FC6E /* GetDataTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,8 +131,6 @@
 		C2D1570C1C49D23C0068FC6E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		C2D157101C4A25640068FC6E /* GetDataTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDataTools.h; sourceTree = "<group>"; };
-		C2D157111C4A25640068FC6E /* GetDataTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDataTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,8 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				C255EEA81C4F322000EB2925 /* SHA1加密 */,
-				C2D157101C4A25640068FC6E /* GetDataTools.h */,
-				C2D157111C4A25640068FC6E /* GetDataTools.m */,
 				C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */,
 				C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */,
 			);
@@ -534,7 +529,6 @@
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C2837B951C4E17C200686133 /* CateClassify.m in Sources */,
 				C2837B9B1C4E199200686133 /* CateShop.m in Sources */,
-				C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C2837B921C4E16D300686133 /* CateShopDetailViewController.m in Sources */,
@@ -652,8 +646,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = CityFriend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"SDWebImage\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-lxml2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -665,8 +673,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = /Users/lanou3g/Desktop/CityFriend/CityFriend/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = CityFriend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"SDWebImage\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-lxml2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = XY2.CityFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

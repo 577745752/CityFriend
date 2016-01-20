@@ -32,7 +32,7 @@ static NSString *footerReuse = @"footerReuse";
     //注册增补视图
     [self.collectionView registerClass:[ClassificationCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerReuse];
     [self.collectionView registerClass:[ClassificationCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuse];
-    [self xmlAnalysis];
+    //[self xmlAnalysis];
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -43,30 +43,30 @@ static NSString *footerReuse = @"footerReuse";
 }
 #pragma mark ----解析XML文件----
 //解析XML文件
--(void)xmlAnalysis{
-    NSLog(@"XML文件DOM解析");
-    //获取文件路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Categories.xml" ofType:nil];
-    //2,将文件读入data中
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    //3,创建GDataXMLNode对象,此时xml文件内所有的节点以树的形式存在GDataXMLDocument
-    GDataXMLDocument *xmlDocument = [[GDataXMLDocument alloc] initWithData:data options:0 error:nil];
-    //    GDataXMLElement *rootElement = [xmlDocument rootElement];
-    NSArray *array = [xmlDocument.rootElement elementsForName:@"categories"];
-    self.nameArray = [NSMutableArray array];
-    self.subArray = [NSMutableArray array];
-    for (int i = 0; i < array.count; i++) {
-        GDataXMLElement *element = [[[array objectAtIndex:i] elementsForName:@"category_name"] firstObject];
-        [_nameArray addObject:[element stringValue]];
-        
-        NSMutableArray *arr = [NSMutableArray array];
-        NSArray *subArr = [[array objectAtIndex:i] elementsForName:@"subcategories"];
-        for (GDataXMLElement *xml in subArr) {
-            [arr addObject:[xml stringValue]];
-        }
-        [_subArray addObject:arr];
-    }
-}
+//-(void)xmlAnalysis{
+//    NSLog(@"XML文件DOM解析");
+//    //获取文件路径
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"Categories.xml" ofType:nil];
+//    //2,将文件读入data中
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+//    //3,创建GDataXMLNode对象,此时xml文件内所有的节点以树的形式存在GDataXMLDocument
+//    GDataXMLDocument *xmlDocument = [[GDataXMLDocument alloc] initWithData:data options:0 error:nil];
+//    //    GDataXMLElement *rootElement = [xmlDocument rootElement];
+//    NSArray *array = [xmlDocument.rootElement elementsForName:@"categories"];
+//    self.nameArray = [NSMutableArray array];
+//    self.subArray = [NSMutableArray array];
+//    for (int i = 0; i < array.count; i++) {
+//        GDataXMLElement *element = [[[array objectAtIndex:i] elementsForName:@"category_name"] firstObject];
+//        [_nameArray addObject:[element stringValue]];
+//        
+//        NSMutableArray *arr = [NSMutableArray array];
+//        NSArray *subArr = [[array objectAtIndex:i] elementsForName:@"subcategories"];
+//        for (GDataXMLElement *xml in subArr) {
+//            [arr addObject:[xml stringValue]];
+//        }
+//        [_subArray addObject:arr];
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
