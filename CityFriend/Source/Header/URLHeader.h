@@ -14,4 +14,6 @@
 
 #define kURL_coffee @"http://saocheng.bjqttd.com/index.php/api/happy/shoplist?cateid=84"
 #define kURL_coffeeShopContent @"http://saocheng.bjqttd.com/index.php/api/happy/detail"
+#define cityKey @"cityKey"
+#define ud [NSUserDefaults standardUserDefaults]
 #endif

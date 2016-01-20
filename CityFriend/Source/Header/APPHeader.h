@@ -26,6 +26,9 @@
 #import "Coffeeshop.h"
 
 
+#import "LocationViewController.h"
+#import "LocationCollectionViewCell.h"
+#import "LocationCollectionReusableView.h"
 
 
 #import "CateTableViewController.h"

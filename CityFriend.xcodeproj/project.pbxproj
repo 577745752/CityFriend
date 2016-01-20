@@ -22,6 +22,13 @@
 		C219D3101C48C2A400F6EEDE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D30F1C48C2A400F6EEDE /* 4.png */; };
 		C219D3121C48C3C600F6EEDE /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3111C48C3C600F6EEDE /* 1.png */; };
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
+		C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */; };
+		C255EEAE1C4F338C00EB2925 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EEAD1C4F338C00EB2925 /* 6.png */; };
+		C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB01C4F36AE00EB2925 /* LocationViewController.m */; };
+		C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = C255EEB21C4F3C0500EB2925 /* cities.plist */; };
+		C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */; };
+		C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */; };
+		C255EEBB1C4F65F500EB2925 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EEBA1C4F65F500EB2925 /* 7.png */; };
 		C2837B801C4DE6AB00686133 /* CoffeeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */; };
 		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
 		C2837B861C4DE73700686133 /* Coffee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B851C4DE73700686133 /* Coffee.m */; };
@@ -68,6 +75,18 @@
 		C219D30F1C48C2A400F6EEDE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C219D3111C48C3C600F6EEDE /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		C219D3131C48C40900F6EEDE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C255EEA91C4F322000EB2925 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		C255EEAA1C4F322000EB2925 /* SignatrueEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatrueEncryption.h; sourceTree = "<group>"; };
+		C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatrueEncryption.m; sourceTree = "<group>"; };
+		C255EEAD1C4F338C00EB2925 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		C255EEAF1C4F36AE00EB2925 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		C255EEB01C4F36AE00EB2925 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		C255EEB21C4F3C0500EB2925 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
+		C255EEB41C4F62DD00EB2925 /* LocationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCollectionViewCell.h; sourceTree = "<group>"; };
+		C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCollectionViewCell.m; sourceTree = "<group>"; };
+		C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCollectionReusableView.h; sourceTree = "<group>"; };
+		C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCollectionReusableView.m; sourceTree = "<group>"; };
+		C255EEBA1C4F65F500EB2925 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		C2837B7E1C4DE6AB00686133 /* CoffeeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewController.h; sourceTree = "<group>"; };
 		C2837B7F1C4DE6AB00686133 /* CoffeeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewController.m; sourceTree = "<group>"; };
 		C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +212,7 @@
 		C219D2E71C489DBE00F6EEDE /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				C255EEA81C4F322000EB2925 /* SHA1加密 */,
 				C2D157101C4A25640068FC6E /* GetDataTools.h */,
 				C2D157111C4A25640068FC6E /* GetDataTools.m */,
 			);
@@ -214,6 +234,8 @@
 			children = (
 				C219D2EA1C489DBE00F6EEDE /* HomeViewController.h */,
 				C219D2EB1C489DBE00F6EEDE /* HomeViewController.m */,
+				C255EEAF1C4F36AE00EB2925 /* LocationViewController.h */,
+				C255EEB01C4F36AE00EB2925 /* LocationViewController.m */,
 				C2837B8D1C4E161200686133 /* CateTableViewController.h */,
 				C2837B8E1C4E161200686133 /* CateTableViewController.m */,
 				C2837B901C4E16D300686133 /* CateShopDetailViewController.h */,
@@ -260,6 +282,10 @@
 				C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */,
 				C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */,
 				C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */,
+				C255EEB41C4F62DD00EB2925 /* LocationCollectionViewCell.h */,
+				C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */,
+				C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */,
+				C255EEB81C4F65C200EB2925 /* LocationCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,7 +311,10 @@
 		C219D2F41C489DBE00F6EEDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C255EEB21C4F3C0500EB2925 /* cities.plist */,
 				C28765371C48E1150093F42E /* 5.png */,
+				C255EEAD1C4F338C00EB2925 /* 6.png */,
+				C255EEBA1C4F65F500EB2925 /* 7.png */,
 				C219D3021C48A4DF00F6EEDE /* tabbarImage */,
 			);
 			path = Resources;
@@ -307,6 +336,16 @@
 				C219D30F1C48C2A400F6EEDE /* 4.png */,
 			);
 			path = tabbarImage;
+			sourceTree = "<group>";
+		};
+		C255EEA81C4F322000EB2925 /* SHA1加密 */ = {
+			isa = PBXGroup;
+			children = (
+				C255EEA91C4F322000EB2925 /* CommonDefine.h */,
+				C255EEAA1C4F322000EB2925 /* SignatrueEncryption.h */,
+				C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */,
+			);
+			path = "SHA1加密";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,9 +411,12 @@
 				C219D3141C48C40900F6EEDE /* 3.png in Resources */,
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
+				C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */,
 				C219D3101C48C2A400F6EEDE /* 4.png in Resources */,
+				C255EEAE1C4F338C00EB2925 /* 6.png in Resources */,
 				C28765381C48E1150093F42E /* 5.png in Resources */,
 				C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */,
+				C255EEBB1C4F65F500EB2925 /* 7.png in Resources */,
 				C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */,
 				C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */,
 			);
@@ -437,6 +479,9 @@
 			files = (
 				C2837B8F1C4E161200686133 /* CateTableViewController.m in Sources */,
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
+				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
+				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
+				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
 				C2837B8C1C4E115900686133 /* CoffeeShopDetailViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
 				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
@@ -449,6 +494,7 @@
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C2837B861C4DE73700686133 /* Coffee.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
+				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C2837B951C4E17C200686133 /* CateClassify.m in Sources */,
 				C2837B9B1C4E199200686133 /* CateShop.m in Sources */,
 				C2D157121C4A25640068FC6E /* GetDataTools.m in Sources */,
