@@ -15,12 +15,13 @@
     }
     return self;
 }
+
 -(void)setSubViews{
     self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     _imgView.image = [UIImage imageNamed:@"7"];
     [self addSubview:_imgView];
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, self.frame.size.width - 30, self.frame.size.height)];
-    _label.font = [UIFont boldSystemFontOfSize:20];
+    _label.font = [UIFont boldSystemFontOfSize:15];
     [_imgView addSubview:_label];
 }
 

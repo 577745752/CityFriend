@@ -8,56 +8,42 @@
 
 #ifndef Project_APPHeader_h
 #define Project_APPHeader_h
-<<<<<<< HEAD
-//第一个界面
-=======
-
->>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 #import "HomeViewController.h"
-
-#import "LocationViewController.h"
-#import "LocationCollectionViewCell.h"
-#import "LocationCollectionReusableView.h"
-
-#import "ClassificationCollectionViewCell.h"
-#import "ClassificationCollectionReusableView.h"
-
-
-
-#import "ShopTableViewController.h"
-#import "ShopTableViewCell.h"
-#import "Shop.h"
-
-//第二个界面
 #import "ActivityViewController.h"
-//第三个界面
 #import "FriendViewController.h"
-//第四个界面
 #import "UserTableViewController.h"
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 
-<<<<<<< HEAD
+#import "GetDataTools.h"
 
 
-=======
+#import "CateClassify.h"
+#import "Cate.h"
+#import "CateShop.h"
+#import "Coffee.h"
+#import "Coffeeshop.h"
+
+
 #import "LocationViewController.h"
 #import "LocationCollectionViewCell.h"
 #import "LocationCollectionReusableView.h"
-
+#import "ClassificationCollectionViewController.h"
 #import "ClassificationCollectionViewCell.h"
 #import "ClassificationCollectionReusableView.h"
 
+#import "ClassifyTableViewController.h"
 
-
-
-
-
-
->>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
+#import "CateTableViewController.h"
+#import "ClassifyTableViewCell.h"
+#import "CateShopDetailViewController.h"
+#import "CoffeeTableViewController.h"
+#import "CoffeeTableViewCell.h"
+#import "CoffeeShopDetailViewController.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
 #define kGap kWidth/50
+
 
 #endif

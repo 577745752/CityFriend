@@ -12,29 +12,21 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self setSubViews];
-<<<<<<< HEAD
-        //        self.backgroundColor=[UIColor redColor];
-=======
-//        self.backgroundColor=[UIColor redColor];
->>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
     }
     return self;
 }
 
 -(void)setSubViews{
-    self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(kGap, 0, 10*kGap, 10*kGap)];
+    self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 60, 60)];
     _imgView.backgroundColor = [UIColor whiteColor];
     _imgView.layer.masksToBounds = YES;
-    _imgView.layer.cornerRadius = 5*kGap;
-    _imgView.image = [UIImage imageNamed:@"8.jpeg"];
+    _imgView.layer.cornerRadius = 30;
+    _imgView.image = [UIImage imageNamed:@"8"];
     [self addSubview:_imgView];
-    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 11*kGap,12*kGap, 2*kGap)];
+    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 80, 20)];
     _LabName.textAlignment = 1;
-    _LabName.font = [UIFont systemFontOfSize:12];
+    _LabName.font = [UIFont systemFontOfSize:11];
     [self addSubview:_LabName];
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 2e370d3cd2600a1fcf406e06096483b793ebacc1
 @end

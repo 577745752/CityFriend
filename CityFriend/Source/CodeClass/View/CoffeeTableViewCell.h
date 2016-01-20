@@ -1,15 +1,15 @@
 //
-//  ShopTableViewCell.h
+//  CoffeeTableViewCell.h
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/20.
+//  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Shop.h"
-@interface ShopTableViewCell : UITableViewCell
-@property(nonatomic,strong)Shop*shop;
+
+@interface CoffeeTableViewCell : UITableViewCell
+@property(nonatomic,strong)Coffee*coffee;
 @property(nonatomic,strong)UILabel*shopNameLabel;
 @property(nonatomic,strong)UIImageView *imgView;
 @end

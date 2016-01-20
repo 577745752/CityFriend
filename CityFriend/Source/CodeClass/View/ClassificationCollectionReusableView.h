@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassificationCollectionReusableView : UICollectionReusableView
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) UIImageView *imgView;
+@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain) UIImageView *imgView;
 @end

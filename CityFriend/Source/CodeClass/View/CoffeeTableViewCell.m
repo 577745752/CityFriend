@@ -1,14 +1,14 @@
 //
-//  ShopTableViewCell.m
+//  CoffeeTableViewCell.m
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/20.
+//  Created by lanou3g on 16/1/19.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "ShopTableViewCell.h"
+#import "CoffeeTableViewCell.h"
 
-@implementation ShopTableViewCell
+@implementation CoffeeTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -40,23 +40,22 @@
     }
     return _shopNameLabel;
 }
--(void)setShop:(Shop *)shop
+-(void)setCoffee:(Coffee *)coffee
 {
-    if (_shop!=shop) {
-        _shop=nil;
-        _shop=shop;
+    if (_coffee!=coffee) {
+        _coffee=nil;
+        _coffee=coffee;
     }
-    self.shopNameLabel.text=self.shop.title;
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:self.shop.s_image_url]];
+    self.shopNameLabel.text=self.coffee.shopname;
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:self.coffee.logo]];
 }
-
 - (void)awakeFromNib {
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
+
     // Configure the view for the selected state
 }
 
