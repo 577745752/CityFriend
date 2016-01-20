@@ -10,7 +10,6 @@
 		4A975765D4179F6E8C8BD3C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59203E4E1893743622BDE49C /* libPods.a */; };
 		C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C20870E41C4CDFBC007EC7B6 /* 2.png */; };
 		C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */; };
-		C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */; };
 		C219D2CB1C489CBA00F6EEDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C219D2CA1C489CBA00F6EEDE /* main.m */; };
 		C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D21C489CBA00F6EEDE /* Main.storyboard */; };
 		C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D51C489CBA00F6EEDE /* Assets.xcassets */; };
@@ -35,7 +34,8 @@
 		C255EECE1C4F897D00EB2925 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EECD1C4F897D00EB2925 /* 8.png */; };
 		C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */; };
-		C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */; };
+		C255EF031C4FD53700EB2925 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF021C4FD53700EB2925 /* Shop.m */; };
+		C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
@@ -48,8 +48,6 @@
 		C20870E41C4CDFBC007EC7B6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
-		C20870EC1C4CE7BC007EC7B6 /* ClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewCell.h; sourceTree = "<group>"; };
-		C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewCell.m; sourceTree = "<group>"; };
 		C219D2C61C489CBA00F6EEDE /* CityFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C219D2CA1C489CBA00F6EEDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C219D2D31C489CBA00F6EEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,8 +91,10 @@
 		C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		C255EEFE1C4FD49900EB2925 /* ShopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewController.h; sourceTree = "<group>"; };
 		C255EEFF1C4FD49900EB2925 /* ShopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewController.m; sourceTree = "<group>"; };
-		C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoffeeTableViewCell.h; sourceTree = "<group>"; };
-		C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoffeeTableViewCell.m; sourceTree = "<group>"; };
+		C255EF011C4FD53700EB2925 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		C255EF021C4FD53700EB2925 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
+		C255EF041C4FD61600EB2925 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
+		C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -241,6 +241,8 @@
 		C219D2EC1C489DBE00F6EEDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C255EF011C4FD53700EB2925 /* Shop.h */,
+				C255EF021C4FD53700EB2925 /* Shop.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,10 +250,6 @@
 		C219D2ED1C489DBE00F6EEDE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C20870EC1C4CE7BC007EC7B6 /* ClassifyTableViewCell.h */,
-				C20870ED1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m */,
-				C2837B811C4DE6E800686133 /* CoffeeTableViewCell.h */,
-				C2837B821C4DE6E800686133 /* CoffeeTableViewCell.m */,
 				C255EEB41C4F62DD00EB2925 /* LocationCollectionViewCell.h */,
 				C255EEB51C4F62DD00EB2925 /* LocationCollectionViewCell.m */,
 				C255EEB71C4F65C200EB2925 /* LocationCollectionReusableView.h */,
@@ -260,6 +258,8 @@
 				C255EEC81C4F88CF00EB2925 /* ClassificationCollectionViewCell.m */,
 				C255EECA1C4F891800EB2925 /* ClassificationCollectionReusableView.h */,
 				C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */,
+				C255EF041C4FD61600EB2925 /* ShopTableViewCell.h */,
+				C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,20 +456,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
+				C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
 				C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */,
 				C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */,
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
-				C20870EE1C4CE7BC007EC7B6 /* ClassifyTableViewCell.m in Sources */,
-				C2837B831C4DE6E800686133 /* CoffeeTableViewCell.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
+				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C219D2F71C489DBE00F6EEDE /* HomeViewController.m in Sources */,

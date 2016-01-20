@@ -12,21 +12,23 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self setSubViews];
+        
+        //        self.backgroundColor=[UIColor redColor];
+        
     }
     return self;
 }
 
 -(void)setSubViews{
-    self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 60, 60)];
+    self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(kGap, 0, 10*kGap, 10*kGap)];
     _imgView.backgroundColor = [UIColor whiteColor];
     _imgView.layer.masksToBounds = YES;
-    _imgView.layer.cornerRadius = 30;
-    _imgView.image = [UIImage imageNamed:@"8"];
+    _imgView.layer.cornerRadius = 5*kGap;
+    _imgView.image = [UIImage imageNamed:@"8.jpeg"];
     [self addSubview:_imgView];
-    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 80, 20)];
+    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 11*kGap,12*kGap, 2*kGap)];
     _LabName.textAlignment = 1;
-    _LabName.font = [UIFont systemFontOfSize:11];
+    _LabName.font = [UIFont systemFontOfSize:12];
     [self addSubview:_LabName];
 }
-
 @end
