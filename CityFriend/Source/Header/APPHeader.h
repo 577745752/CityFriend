@@ -23,6 +23,7 @@
 
 #import "ShopTableViewController.h"
 #import "ShopTableViewCell.h"
+#import "ShopViewController.h"
 #import "Shop.h"
 
 //第二个界面

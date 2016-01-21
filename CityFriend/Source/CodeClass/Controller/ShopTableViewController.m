@@ -20,16 +20,14 @@ static NSString*shopID=@"shop";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.backgroundColor=[UIColor redColor];
     NSLog(@"%@,%@",self.cityName,self.category);
     [self.tableView registerClass:[ShopTableViewCell class] forCellReuseIdentifier:shopID];
-    
     [self setUrlCategory:_category andCityName:_cityName];
     [self loadData];
 }
 //解析网址(将中文类型和城市用NSUTF8StringEncoding转码,生成网址)
 -(void)setUrlCategory:(NSString *)category andCityName:(NSString *)cityName{
-    self.navigationItem.title = [NSString stringWithFormat:@"%@-%@", cityName, category];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@",category];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:cityName, @"city", category, @"category", @"30", @"limit", @"1", @"page", nil];
     self.dataDic = [SignatrueEncryption encryptedParamsWithBaseParams:dictionary];
     self.urlStr = [NSString stringWithFormat:@"%@/v1/deal/find_deals?appkey=%@&sign=%@&city=%@&category=%@&limit=30&page=1", kBASE_SERVER_URL, kAPP_KEY, _dataDic[@"sign"], dictionary[@"city"], dictionary[@"category"]];
@@ -60,18 +58,16 @@ static NSString*shopID=@"shop";
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
-            //  验证model
-            for (Shop*shop in self.dataArray) {
-                NSLog(@"%@",shop.title);
-            }
-            
+//            //  验证model
+//            for (Shop*shop in self.dataArray) {
+//                NSLog(@"%@",shop.title);
+//            }
         }else{
             UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"没有网络啊,亲" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
             [alertController addAction:action];
             [self presentViewController:alertController animated:YES completion:nil];
         }
-        
     }];
     //启动任务
     [dataTask resume];
@@ -103,8 +99,17 @@ static NSString*shopID=@"shop";
     
     return cell;
 }
-
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kWidth/4+2*kGap;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShopViewController*shopVC=[ShopViewController new];
+    Shop*shop=self.dataArray[indexPath.row];
+    shopVC.shop=shop;
+    [self.navigationController pushViewController:shopVC animated:YES];
+}
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

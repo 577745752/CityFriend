@@ -14,6 +14,7 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self drawView];
+        self.contentView.backgroundColor=[UIColor orangeColor];
     }
     return self;
 }
@@ -21,22 +22,19 @@
 {
     [self.contentView addSubview:self.imgView];
     [self.contentView addSubview:self.shopNameLabel];
-    
-    
 }
 -(UIImageView *)imgView{
     if(!_imgView){
-        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(kGap, kGap, kWidth / 4, kWidth / 5)];
+        _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(kGap, kGap, kWidth / 4, kWidth / 4)];
     }
     return  _imgView;
 }
 -(UILabel*)shopNameLabel
 {
     if (!_shopNameLabel) {
-        _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth / 4 + 2 * kGap, kGap, kWidth / 3 * 2, kWidth / 5)];
+        _shopNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kWidth / 4 + kGap, 5*kGap,3*kWidth/4-3*kGap,5*kGap)];
         _shopNameLabel.font = [UIFont systemFontOfSize:21];
         _shopNameLabel.textAlignment = NSTextAlignmentCenter;
-        //_shopNameLabel.backgroundColor=[UIColor grayColor];
     }
     return _shopNameLabel;
 }

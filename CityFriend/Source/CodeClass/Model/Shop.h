@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *s_image_url;
 @property (nonatomic, strong) NSString *image_url;
 @property (nonatomic, strong) NSString *nameAndClass;
+@property (nonatomic, strong) NSString *deal_h5_url;
+@property (nonatomic, strong) NSString *deal_url;
 @end
