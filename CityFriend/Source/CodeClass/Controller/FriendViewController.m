@@ -55,7 +55,7 @@ static NSString*const cellID=@"cell";
                 //如果返回的用户数组不为空
                 if ([objects count]) {
                     //向对方发送添加好友的请求(这里实际上是给对方发送一条消息)
-                    [self SendMessage:[NSString stringWithFormat:@"%@想添加你为好友>_<",[AVUser currentUser].username]];
+                    [self SendMessage:[NSString stringWithFormat:@"%@想添加你为好友>_<",[AVUser currentUser].username]toUserName:text.text];
                 }else{
                     NSLog(@"用户不存在");
                 }
@@ -78,16 +78,15 @@ static NSString*const cellID=@"cell";
     
 }
 // 添加好友的方法(实际上是用了发送消息的方法)
--(void)SendMessage:(NSString*)message{
+-(void)SendMessage:(NSString*)message toUserName:(NSString*)username{
     // 首先 创建了一个 client 来发送消息
     self.client = [[AVIMClient alloc] init];
     //用户登陆状态
     AVUser *currentUser = [AVUser currentUser];
-    
     // 用自己的名字作为 ClientId 打开 client
     [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
         // "我" 建立了与 "对方" 的会话
-        [self.client createConversationWithName:@"好友请求" clientIds:@[self.addFriendId] callback:^(AVIMConversation *conversation, NSError *error) {
+        [self.client createConversationWithName:@"好友请求" clientIds:@[username] callback:^(AVIMConversation *conversation, NSError *error) {
             // 我 发了一条消息给 对方
             [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
@@ -158,7 +157,7 @@ static NSString*const cellID=@"cell";
             });
             
             //给请求添加我为好友的用户返回同意添加的结果(让对方同时成功也添加我为好友)
-            [self SendMessage:[NSString stringWithFormat:@"%@已经通过了你的好友请求>_<",[AVUser currentUser].username]];
+            [self SendMessage:[NSString stringWithFormat:@"%@已经通过了你的好友请求>_<",[AVUser currentUser].username]toUserName:idString];
         }];
         UIAlertAction*no=[UIAlertAction actionWithTitle:@"残忍拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
