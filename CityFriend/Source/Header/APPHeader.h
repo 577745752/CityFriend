@@ -30,6 +30,7 @@
 #import "ActivityViewController.h"
 //第三个界面
 #import "FriendViewController.h"
+#import "MyButton.h"
 //第四个界面
 #import "UserTableViewController.h"
 

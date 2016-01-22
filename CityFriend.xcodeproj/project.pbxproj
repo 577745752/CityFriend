@@ -10,6 +10,7 @@
 		4A975765D4179F6E8C8BD3C4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59203E4E1893743622BDE49C /* libPods.a */; };
 		C2020E321C51C42C0055641C /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = C2020E311C51C42C0055641C /* 10.png */; };
 		C2020E361C51C6020055641C /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = C2020E351C51C6020055641C /* 9.png */; };
+		C2020E3F1C524E110055641C /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C2020E3E1C524E110055641C /* MyButton.m */; };
 		C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C20870E41C4CDFBC007EC7B6 /* 2.png */; };
 		C20870E81C4CE04E007EC7B6 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */; };
 		C210148D1C507E1D0043B98E /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C210148C1C507E1D0043B98E /* ShopViewController.m */; };
@@ -59,6 +60,8 @@
 		59203E4E1893743622BDE49C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2020E311C51C42C0055641C /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
 		C2020E351C51C6020055641C /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		C2020E3D1C524E110055641C /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		C2020E3E1C524E110055641C /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		C20870E41C4CDFBC007EC7B6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		C20870E61C4CE04E007EC7B6 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				C255EECB1C4F891800EB2925 /* ClassificationCollectionReusableView.m */,
 				C255EF041C4FD61600EB2925 /* ShopTableViewCell.h */,
 				C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */,
+				C2020E3D1C524E110055641C /* MyButton.h */,
+				C2020E3E1C524E110055641C /* MyButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C210148D1C507E1D0043B98E /* ShopViewController.m in Sources */,
+				C2020E3F1C524E110055641C /* MyButton.m in Sources */,
 				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,

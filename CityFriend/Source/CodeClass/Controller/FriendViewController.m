@@ -22,6 +22,12 @@
 @property(nonatomic,strong)NSString*addFriendGroup;
 //聊天 相关属性
 @property (nonatomic, strong) AVIMClient *client;
+//用来存储好友列表的数组
+@property(nonatomic,strong)NSMutableArray*friendsArray;
+//用来存储好友分组的数组
+@property(nonatomic,strong)NSMutableArray*groupArray;
+//用字典来存储某个分组的状态是展开还是关闭
+@property(nonatomic,strong)NSMutableDictionary*foldDict;
 @end
 
 static NSString*const cellID=@"cell";
@@ -237,12 +243,41 @@ static NSString*const cellID=@"cell";
         
 #pragma mark------------TableView
         //TableView的数据
+        self.friendsArray=[NSMutableArray new];
+        self.groupArray=[NSMutableArray new];
+        self.foldDict=[NSMutableDictionary dictionary];
         AVQuery *query = [AVQuery queryWithClassName:@"Friends"];
         [query whereKey:@"username" equalTo:[AVUser currentUser].username];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            // 检索成功
             if (!error) {
-                // 检索成功
-                NSLog(@"%@",objects);
+                //给分组名数组赋值
+                for (NSMutableDictionary * dict in objects) {
+                    NSString*groupName=dict[@"localData"][@"groupname"];
+                    BOOL add=YES;
+                    for (NSString*string in self.groupArray) {
+                        if ([groupName isEqualToString:string]) {
+                            add=NO;
+                        }
+                    }
+                    if (add) {
+                        [self.groupArray addObject:groupName];
+                    }
+                }
+                //给好友列表数组赋值
+                for (int i=0; i<[self.groupArray count]; i++) {
+                    NSMutableArray*array=[NSMutableArray new];
+                    for (NSMutableDictionary * dict in objects) {
+                        if ([dict[@"localData"][@"groupname"]isEqualToString:self.groupArray[i]]) {
+                            [array addObject:objects[i][@"localData"][@"friendname"]];
+                        }
+                    }
+                    [self.friendsArray addObject:array];
+                  }
+                //刷新ui
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.friendTableView reloadData];
+                });
             } else {
                 // 输出错误信息
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -272,29 +307,44 @@ static NSString*const cellID=@"cell";
 //设置分区个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.groupArray count];
 }
 //设置某一个分区的行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    if ([[self.foldDict valueForKey:self.groupArray[section]] boolValue]) {
+        return [self.friendsArray[section] count];
+    }else{
+        return 0;
+    }
 }
 //设置cell
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
-    cell.textLabel.text=@"王国维";
+    
+    cell.textLabel.text=self.friendsArray[indexPath.section][indexPath.row];
     //        CGFloat red=arc4random()%256/255.0;
     //        CGFloat green=arc4random()%256/255.0;
     //        CGFloat blue=arc4random()%256/255.0;
     //        cell.contentView.backgroundColor=[UIColor colorWithRed:red green:green blue:blue alpha:1];
     return cell;
 }
-
+//设置区头
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    MyButton*button=[MyButton buttonWithType:UIButtonTypeSystem];
+    button.backgroundColor=[UIColor purpleColor];
+    [button setTitle:self.groupArray[section] forState:(UIControlStateNormal)];
+    button.section=section;
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    return button;
+}
+//返回区头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.0000000000001;
+    return 50;
 }
 
 //设置区尾的高度
@@ -302,6 +352,19 @@ static NSString*const cellID=@"cell";
 {
     return 0.000000001;
 }
+-(void)buttonAction:(MyButton*)sender
+{
+    NSUInteger section=sender.section;
+    if ([[self.foldDict valueForKey:self.groupArray[section]] boolValue]==NO) {
+        [self.foldDict setValue:@(YES) forKey:self.groupArray[section]];
+    }else{
+        [self
+         .foldDict setValue:@(NO) forKey:self.groupArray[section]];
+    }
+    [self.friendTableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationTop];
+    
+}
+
 ////设置区头标题
 //-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 //{
