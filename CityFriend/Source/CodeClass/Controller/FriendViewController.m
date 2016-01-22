@@ -31,7 +31,7 @@ static NSString*const cellID=@"cell";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"好友" image:[UIImage imageNamed:@"3"] selectedImage:[UIImage imageNamed:@"3"]];
         self.view.backgroundColor=[UIColor greenColor];
         self.right=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightClick:)];
-        self.navigationItem.rightBarButtonItem = self.right;
+        
 
     }
     return self;
@@ -148,7 +148,7 @@ static NSString*const cellID=@"cell";
         [self.view addSubview:self.loginButton];
     }else{
         
-        
+     self.navigationItem.rightBarButtonItem = self.right;   
     self.headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
     [self.view addSubview:self.headerView];
     self.friendButton=[[UIButton alloc]initWithFrame:CGRectMake(10*kGap, 0, 10*kGap, 10*kGap)];
@@ -165,9 +165,10 @@ static NSString*const cellID=@"cell";
     [self.friendTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     self.friendTableView.backgroundColor=[UIColor redColor];
     [self.view addSubview:self.friendTableView];
+      [self jerryReceiveMessageFromTom];
     }
     
-    [self jerryReceiveMessageFromTom];
+    
 
     // Do any additional setup after loading the view.
 }
