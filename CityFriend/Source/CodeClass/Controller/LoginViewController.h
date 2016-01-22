@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface LoginViewController : UIViewController
 @property(nonatomic,strong)UILabel*userNameLabel;
 @property(nonatomic,strong)UILabel*pswLabel;

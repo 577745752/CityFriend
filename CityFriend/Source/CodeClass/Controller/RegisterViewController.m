@@ -158,8 +158,62 @@
 }
 -(void)register1:(UIBarButtonItem*)item
 {
-    
-    
+    if ([_userNameTextField.text isEqualToString:@""]) {
+        UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"用户名不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:action];
+        [self presentViewController:alertController animated:YES completion:nil];
+
+    }else if([_pswTextField.text isEqualToString:@""]){
+        UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"密码不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:action];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else if(![_psw1TextField.text isEqualToString:_pswTextField.text]){
+        UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"两次密码输入不一致哦,亲" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:action];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+//    else if(![_mailTextField.text hasSuffix:@".com"]){
+//        UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"请输入正确的邮箱地址" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+//        [alertController addAction:action];
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }else if([_phoneNumberTextField.text length]!=11){
+//        UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"请输入正确的手机号码" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+//        [alertController addAction:action];
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+    else{
+            AVUser *user = [AVUser user];
+            user.username =_userNameTextField.text;
+            user.password =_pswTextField.text;
+            user.email = _mailTextField.text;
+            user.mobilePhoneNumber=_phoneNumberTextField.text;
+        
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+
+                    
+                    UIAlertController*succeded=[UIAlertController alertControllerWithTitle:@"提示" message:@"注册成功" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction*ok=[UIAlertAction actionWithTitle:@"去登陆吧,骚年" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
+                    [succeded addAction:ok];
+                    [self presentViewController:succeded animated:YES completion:nil];
+                    
+                } else {
+                    UIAlertController*fail=[UIAlertController alertControllerWithTitle:@"注册失败" message:[NSString stringWithFormat:@"%@",error.userInfo[@"error"]] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction*again=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
+                    [fail addAction:again];
+                    [self presentViewController:fail animated:YES completion:nil];
+                    
+                    
+                }
+            }];
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

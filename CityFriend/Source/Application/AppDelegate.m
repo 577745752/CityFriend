@@ -17,13 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // applicationId 即 App Id，clientKey 是 App Key。
+    [AVOSCloud setApplicationId:@"0QSAP49r6CUTyaXyuWaxqFqu-gzGzoHsz"
+                      clientKey:@"kykFAkFURKUf91MYWvi5waaw"];
+    //如果想跟踪统计应用的打开情况，后面还可以添加下列代码：
+    //[AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+    
+    
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     UINavigationController*homeNC=[[UINavigationController alloc]initWithRootViewController:[HomeViewController new]];
      UINavigationController*activityNC=[[UINavigationController alloc]initWithRootViewController:[ActivityViewController new]];
-     UINavigationController*friendNC=[[UINavigationController alloc]initWithRootViewController:[FriendViewController new]];
+     UINavigationController*friendNC=[[UINavigationController alloc]initWithRootViewController:[[FriendViewController alloc] init]];
      UINavigationController*userNC=[[UINavigationController alloc]initWithRootViewController:[UserTableViewController new]];
     
     

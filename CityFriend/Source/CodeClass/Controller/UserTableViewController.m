@@ -9,7 +9,8 @@
 #import "UserTableViewController.h"
 
 @interface UserTableViewController ()
-
+@property(nonatomic,strong)UILabel*label;
+@property(nonatomic,strong)UIBarButtonItem*right;
 @end
 
 @implementation UserTableViewController
@@ -19,12 +20,34 @@
     if (self) {
         self.navigationItem.title=@"我的";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"我的" image:[UIImage imageNamed:@"4"] selectedImage:[UIImage imageNamed:@"4"]];
+        self.label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];//删掉
+        //右按钮
+        self.right=[[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStylePlain target:self action:@selector(rightClick:)];
+        self.navigationItem.rightBarButtonItem = self.right;
     }
     return self;
 }
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    AVUser *currentUser = [AVUser currentUser];
+    if (currentUser != nil) {
+        // 允许用户使用应用
+        [self.right setTitle:@"注销"];
+    }
+//    else {
+//        [self.right setTitle:@"登陆"];
+//    }
+//    NSLog(@"1");
+//    if ([[ud objectForKey:@"state"]isEqualToString:@"已登陆"]) {
+//        self.label.text=[ud objectForKey:@"state"];
+//    }else{
+//    self.label.text=@"未登陆";
+//    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -70,6 +93,7 @@
         [registeredButton addTarget:self action:@selector(registered:) forControlEvents:UIControlEventTouchUpInside];
 
         [cell.contentView addSubview:registeredButton];
+        [cell.contentView addSubview:self.label];
         return cell;
     }
 
@@ -120,9 +144,20 @@
     }
     return 8*kGap;
 }
+-(void)rightClick:(UIBarButtonItem*)item
+{
+    if ([self.right.title isEqualToString:@"登陆"]) {
+        LoginViewController *login=[LoginViewController new];
+        [self.navigationController pushViewController:login animated:YES];
+    }else{
+        [AVUser logOut];  //清除缓存用户对象
+        AVUser *currentUser = [AVUser currentUser]; // 现在的currentUser是nil了
+        [self.right setTitle:@"登陆"];
+    }
+   
+}
 -(void)login:(UIButton *)button
-{  LoginViewController *login=[LoginViewController new];
-    [self.navigationController pushViewController:login animated:YES];
+{
     
 }
 -(void)registered:(UIButton *)button

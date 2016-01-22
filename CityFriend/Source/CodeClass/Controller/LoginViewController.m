@@ -116,7 +116,15 @@
 }
 -(void)login:(UIButton*)button
 {
-    
+
+    [AVUser logInWithUsernameInBackground:_userNameTextField.text password:_pswTextField.text block:^(AVUser *user, NSError *error) {
+        if (user != nil) {
+            NSLog(@"登陆成功");
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            NSLog(@"登陆失败");
+        }
+    }];
 }
 -(void)registerAction:(UIButton*)button
 {
@@ -125,7 +133,8 @@
 }
 -(void)getPasswordAction:(UIButton*)button
 {
-    
+    GetBackPwdViewController*getBackPwdVC=[GetBackPwdViewController new];
+    [self.navigationController pushViewController:getBackPwdVC animated:YES];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
