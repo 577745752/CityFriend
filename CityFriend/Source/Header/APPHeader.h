@@ -31,6 +31,7 @@
 //第三个界面
 #import "FriendViewController.h"
 #import "MyButton.h"
+#import "ChatViewController.h"
 //第四个界面
 #import "UserTableViewController.h"
 

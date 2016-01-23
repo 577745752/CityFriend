@@ -22,7 +22,7 @@
 		C21014991C50B1290043B98E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21014981C50B1290043B98E /* CoreLocation.framework */; };
 		C210149B1C50B1390043B98E /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C210149A1C50B1390043B98E /* libicucore.tbd */; };
 		C210149E1C50D96B0043B98E /* GetBackPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C210149D1C50D96B0043B98E /* GetBackPwdViewController.m */; };
-		C21014A11C50DE4A0043B98E /* TomAndJerryEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = C21014A01C50DE4A0043B98E /* TomAndJerryEpisode.m */; };
+		C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C212E4041C530AFB00E1FC1D /* ChatViewController.m */; };
 		C219D2CB1C489CBA00F6EEDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C219D2CA1C489CBA00F6EEDE /* main.m */; };
 		C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D21C489CBA00F6EEDE /* Main.storyboard */; };
 		C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C219D2D51C489CBA00F6EEDE /* Assets.xcassets */; };
@@ -76,8 +76,8 @@
 		C210149A1C50B1390043B98E /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		C210149C1C50D96B0043B98E /* GetBackPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetBackPwdViewController.h; sourceTree = "<group>"; };
 		C210149D1C50D96B0043B98E /* GetBackPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBackPwdViewController.m; sourceTree = "<group>"; };
-		C210149F1C50DE4A0043B98E /* TomAndJerryEpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomAndJerryEpisode.h; sourceTree = "<group>"; };
-		C21014A01C50DE4A0043B98E /* TomAndJerryEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomAndJerryEpisode.m; sourceTree = "<group>"; };
+		C212E4031C530AFB00E1FC1D /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		C212E4041C530AFB00E1FC1D /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		C219D2C61C489CBA00F6EEDE /* CityFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C219D2CA1C489CBA00F6EEDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C219D2D31C489CBA00F6EEDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -274,8 +274,8 @@
 				C20870E71C4CE04E007EC7B6 /* ActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
 				C219D2FD1C489F3B00F6EEDE /* FriendViewController.m */,
-				C210149F1C50DE4A0043B98E /* TomAndJerryEpisode.h */,
-				C21014A01C50DE4A0043B98E /* TomAndJerryEpisode.m */,
+				C212E4031C530AFB00E1FC1D /* ChatViewController.h */,
+				C212E4041C530AFB00E1FC1D /* ChatViewController.m */,
 				C219D2FF1C489F4E00F6EEDE /* UserTableViewController.h */,
 				C219D3001C489F4E00F6EEDE /* UserTableViewController.m */,
 				C28765391C48E3050093F42E /* LoginViewController.h */,
@@ -515,6 +515,7 @@
 				C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
+				C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */,
 				C210149E1C50D96B0043B98E /* GetBackPwdViewController.m in Sources */,
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
 				C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */,
@@ -522,7 +523,6 @@
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
-				C21014A11C50DE4A0043B98E /* TomAndJerryEpisode.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,

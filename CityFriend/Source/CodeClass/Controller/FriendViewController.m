@@ -157,10 +157,8 @@ static NSString*const cellID=@"cell";
             [post setObject:idString forKey:@"friendname"];
             [post setObject:self.addFriendGroup forKey:@"groupname"];
             [post save];
-            //刷新ui
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.friendTableView reloadData];
-            });
+            //刷新数据
+                [self loadData];
             
             //给请求添加我为好友的用户返回同意添加的结果(让对方同时成功也添加我为好友)
             [self SendMessage:[NSString stringWithFormat:@"%@已经通过了你的好友请求>_<",[AVUser currentUser].username]toUserName:idString];
@@ -190,10 +188,8 @@ static NSString*const cellID=@"cell";
             [post setObject:idString forKey:@"friendname"];
             [post setObject:self.addFriendGroup forKey:@"groupname"];
             [post save];
-            //刷新ui
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.friendTableView reloadData];
-            });
+            //刷新数据
+            [self loadData];
         }];
         [getFriend addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField.placeholder=@"请输入分组名";
@@ -242,48 +238,8 @@ static NSString*const cellID=@"cell";
         [self.headerView addSubview:self.groupButton];
         
 #pragma mark------------TableView
-        //TableView的数据
-        self.friendsArray=[NSMutableArray new];
-        self.groupArray=[NSMutableArray new];
-        self.foldDict=[NSMutableDictionary dictionary];
-        AVQuery *query = [AVQuery queryWithClassName:@"Friends"];
-        [query whereKey:@"username" equalTo:[AVUser currentUser].username];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            // 检索成功
-            if (!error) {
-                //给分组名数组赋值
-                for (NSMutableDictionary * dict in objects) {
-                    NSString*groupName=dict[@"localData"][@"groupname"];
-                    BOOL add=YES;
-                    for (NSString*string in self.groupArray) {
-                        if ([groupName isEqualToString:string]) {
-                            add=NO;
-                        }
-                    }
-                    if (add) {
-                        [self.groupArray addObject:groupName];
-                    }
-                }
-                //给好友列表数组赋值
-                for (int i=0; i<[self.groupArray count]; i++) {
-                    NSMutableArray*array=[NSMutableArray new];
-                    for (NSMutableDictionary * dict in objects) {
-                        if ([dict[@"localData"][@"groupname"]isEqualToString:self.groupArray[i]]) {
-                            [array addObject:objects[i][@"localData"][@"friendname"]];
-                        }
-                    }
-                    [self.friendsArray addObject:array];
-                  }
-                //刷新ui
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.friendTableView reloadData];
-                });
-            } else {
-                // 输出错误信息
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-        
+
+        [self loadData];
         
         self.friendTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-64-10*kGap) style:UITableViewStyleGrouped];
         self.friendTableView.delegate=self;
@@ -297,6 +253,52 @@ static NSString*const cellID=@"cell";
     
     
     // Do any additional setup after loading the view.
+}
+-(void)loadData
+{
+    //TableView的数据
+    self.friendsArray=[NSMutableArray new];
+    self.groupArray=[NSMutableArray new];
+    self.foldDict=[NSMutableDictionary dictionary];
+    AVQuery *query = [AVQuery queryWithClassName:@"Friends"];
+    [query whereKey:@"username" equalTo:[AVUser currentUser].username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        // 检索成功
+        if (!error) {
+            //给分组名数组赋值
+            for (NSMutableDictionary * dict in objects) {
+                NSString*groupName=dict[@"localData"][@"groupname"];
+                BOOL add=YES;
+                for (NSString*string in self.groupArray) {
+                    if ([groupName isEqualToString:string]) {
+                        add=NO;
+                    }
+                }
+                if (add) {
+                    [self.groupArray addObject:groupName];
+                }
+            }
+            //给好友列表数组赋值
+            for (int i=0; i<[self.groupArray count]; i++) {
+                NSMutableArray*array=[NSMutableArray new];
+                
+                for (int j=0; j<[objects count]; j++) {
+                    NSMutableDictionary*dict=objects[j];
+                    if ([dict[@"localData"][@"groupname"]isEqualToString:self.groupArray[i]]) {
+                        [array addObject:objects[j][@"localData"][@"friendname"]];
+                    }
+                }
+                [self.friendsArray addObject:array];
+            }
+            //刷新u
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.friendTableView reloadData];
+            });
+        } else {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 -(void)loginButtonAction:(UIButton*)button
 {
@@ -365,41 +367,12 @@ static NSString*const cellID=@"cell";
     
 }
 
-////设置区头标题
-//-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if (section==0) {
-//        return @"A";
-//    }else if(section==1)
-//    {
-//        return @"B";
-//    }
-//    return @"D";
-//}
-////设置区尾标题
-//-(NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-//{
-//    return @"吃粑粑";
-//}
-////设置右侧索引   (点击对应的索引,跳到对应的分区,数组元素下标和分区编号对应)
-//-(NSArray*)sectionIndexTitlesForTableView:(UITableView*)tableView{
-//    NSArray*array=@[@"1",@"2",@"3"];
-//    return array;
-//}
-////选中cell触发的事件
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section==0) {
-//        if (indexPath.row==0) {
-//            YyViewController*a=[YyViewController new];
-//            [self.navigationController pushViewController:a animated:YES];
-//        }else if(indexPath.row==1)
-//        {
-//            YechaViewController*b=[YechaViewController new];
-//            [self.navigationController pushViewController:b animated:YES];
-//        }
-//    }
-//}
+//选中cell触发的事件
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ChatViewController*chatVC=[ChatViewController new];
+    [self.navigationController pushViewController:chatVC animated:YES];
+}
 
 
 
