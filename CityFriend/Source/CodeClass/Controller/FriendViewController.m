@@ -9,13 +9,20 @@
 #import "FriendViewController.h"
 
 @interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
+//右按钮
 @property(nonatomic,strong)UIBarButtonItem*right;
+//提示登陆的背景视图
+@property(nonatomic,strong)UIView*loginBackView;
+//提示登陆按钮
 @property(nonatomic,strong)UIButton*loginButton;
+//好友或者群组的底视图
 @property(nonatomic,strong)UIView*headerView;
+//好友
 @property(nonatomic,strong)UIButton*friendButton;
-@property(nonatomic,strong)UIButton*groupButton;
+//群组
+@property(nonatomic,strong)UIButton*qunButton;
+//显示好友的tableView(和群组共用)
 @property(nonatomic,strong)UITableView*friendTableView;
-@property(nonatomic,strong)UITableView*groupTableView;
 //用来记录要添加好友的id
 @property(nonatomic,strong)NSString*addFriendId;
 //用来记录要添加好友的分组
@@ -26,62 +33,84 @@
 @property(nonatomic,strong)NSMutableArray*friendsArray;
 //用来存储好友分组的数组
 @property(nonatomic,strong)NSMutableArray*groupArray;
+//用来存储群列表的数组
+@property(nonatomic,strong)NSMutableArray*qunArray;
 //用字典来存储某个分组的状态是展开还是关闭
 @property(nonatomic,strong)NSMutableDictionary*foldDict;
+//用一个BOOL值来标记显示好友还是是群组   好友为yes
+@property(nonatomic,assign)BOOL page;
 @end
 
 static NSString*const cellID=@"cell";
 @implementation FriendViewController
+//初始化
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         self.navigationItem.title=@"好友";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"好友" image:[UIImage imageNamed:@"3"] selectedImage:[UIImage imageNamed:@"3"]];
-        self.view.backgroundColor=[UIColor greenColor];
         self.right=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightClick:)];
-        
-        
+        //默认显示好友界面
+        self.page=YES;
     }
     return self;
 }
 -(void)rightClick:(UIBarButtonItem*)item
 {
-    //点击弹窗
-    UIAlertController*friendName=[UIAlertController alertControllerWithTitle:@"" message:@"请输入要添加的好友id" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction*ok=[UIAlertAction actionWithTitle:@"确认添加" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        //获取要添加的用户id
-        UITextField*text=(UITextField*)[friendName.view viewWithTag:105];
-        self.addFriendId=text.text;
-        //在user表中查询用户是否存在
-        AVQuery *query = [AVUser query];
-        [query whereKey:@"username" equalTo:text.text];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (error == nil) {
-                //如果返回的用户数组不为空
-                if ([objects count]) {
-                    //向对方发送添加好友的请求(这里实际上是给对方发送一条消息)
-                    [self SendMessage:[NSString stringWithFormat:@"%@想添加你为好友>_<",[AVUser currentUser].username]toUserName:text.text];
-                }else{
-                    NSLog(@"用户不存在");
+    if (self.page) {//好友界面
+        //点击弹窗
+        UIAlertController*friendName=[UIAlertController alertControllerWithTitle:@"" message:@"请输入要添加的好友id" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*ok=[UIAlertAction actionWithTitle:@"确认添加" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //获取要添加的用户id
+            UITextField*text=(UITextField*)[friendName.view viewWithTag:105];
+            self.addFriendId=text.text;
+            //在user表中查询用户是否存在
+            AVQuery *query = [AVUser query];
+            [query whereKey:@"username" equalTo:text.text];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (error == nil) {
+                    //如果返回的用户数组不为空
+                    if ([objects count]) {
+                        //接下来要判断要添加的用户是否已经是好友了
+                        BOOL friend=NO;
+                        for (NSArray*array in self.friendsArray) {
+                            for (NSString*string in array) {
+                                if ([text.text isEqualToString:string]) {
+                                    friend=YES;
+                                }
+                            }
+                        }
+                        if (friend) {
+                            //已经是好友了
+                            UIAlertController*yijingshihaoyou=[UIAlertController alertControllerWithTitle:@"提示" message:@"你们已经是好友了" preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertAction*zhidaole=[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            }];
+                            [yijingshihaoyou addAction:zhidaole];
+                            [self presentViewController:yijingshihaoyou animated:YES completion:nil];
+                        }else{
+                            //向对方发送添加好友的请求(这里实际上是给对方发送一条消息)
+                            [self SendMessage:[NSString stringWithFormat:@"%@想添加你为好友>_<",[AVUser currentUser].username]toUserName:text.text];
+                        }
+                    }else{
+                        NSLog(@"用户不存在");
+                    }
+                } else {
+                    NSLog(@"%@",error);
                 }
-            } else {
-                NSLog(@"%@",error);
-            }
+            }];
         }];
-        
-    }];
-    UIAlertAction*no=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [friendName addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder=@"请输入好友id";
-        textField.tag=105;
-    }];
-    [friendName addAction:no];
-    [friendName addAction:ok];
-    [self presentViewController:friendName animated:YES completion:nil];
-    
+        UIAlertAction*no=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [friendName addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder=@"请输入好友id";
+            textField.tag=105;
+        }];
+        [friendName addAction:no];
+        [friendName addAction:ok];
+        [self presentViewController:friendName animated:YES completion:nil];
+    }else{//群组界面
+    }
 }
 // 添加好友的方法(实际上是用了发送消息的方法)
 -(void)SendMessage:(NSString*)message toUserName:(NSString*)username{
@@ -101,14 +130,13 @@ static NSString*const cellID=@"cell";
             }];
         }];
     }];
-
 }
 //- (void)SendMessage{
 //    // 首先 创建了一个 client 来发送消息
 //    self.client = [[AVIMClient alloc] init];
 //    //用户登陆状态
 //    AVUser *currentUser = [AVUser currentUser];
-//    
+//
 //    // 用自己的名字作为 ClientId 打开 client
 //    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
 //        // "我" 建立了与 "对方" 的会话
@@ -158,7 +186,7 @@ static NSString*const cellID=@"cell";
             [post setObject:self.addFriendGroup forKey:@"groupname"];
             [post save];
             //刷新数据
-                [self loadData];
+            [self loadDataOfFriends];
             
             //给请求添加我为好友的用户返回同意添加的结果(让对方同时成功也添加我为好友)
             [self SendMessage:[NSString stringWithFormat:@"%@已经通过了你的好友请求>_<",[AVUser currentUser].username]toUserName:idString];
@@ -170,7 +198,7 @@ static NSString*const cellID=@"cell";
             textField.placeholder=@"请输入分组名";
             textField.tag=106;
         }];
-
+        
         [getFriend addAction:no];
         [getFriend addAction:ok];
         [self presentViewController:getFriend animated:YES completion:nil];
@@ -189,7 +217,7 @@ static NSString*const cellID=@"cell";
             [post setObject:self.addFriendGroup forKey:@"groupname"];
             [post save];
             //刷新数据
-            [self loadData];
+            [self loadDataOfFriends];
         }];
         [getFriend addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField.placeholder=@"请输入分组名";
@@ -201,7 +229,7 @@ static NSString*const cellID=@"cell";
         
         //正常聊天
     }
-   
+    
 }
 
 
@@ -209,52 +237,110 @@ static NSString*const cellID=@"cell";
 
 -(void)viewWillAppear:(BOOL)animated
 {
+//    if ([AVUser currentUser] == nil) {
+//        
+//        [self.view bringSubviewToFront:self.loginBackView];
+//    }else{
+//        [self.view sendSubviewToBack:self.loginBackView];
+//        //刷新ui
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.friendTableView reloadData];
+//        });
+//    }
     [self viewDidLoad];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    AVUser *currentUser = [AVUser currentUser];
-    if (currentUser == nil) {
-        self.loginButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20*kGap, 10*kGap)];
-        [self.loginButton setTitle:@"马上去登陆" forState:UIControlStateNormal];
-        self.loginButton.center=self.view.center;
-        [self.loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headerView removeFromSuperview];
-        [self.friendTableView removeFromSuperview];
-        [self.view addSubview:self.loginButton];
+
+    if ([AVUser currentUser] == nil) {
+        [self.view addSubview:self.loginBackView];
     }else{
-        
-        
-        
-        self.navigationItem.rightBarButtonItem = self.right;
-        self.headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
         [self.view addSubview:self.headerView];
-        self.friendButton=[[UIButton alloc]initWithFrame:CGRectMake(10*kGap, 0, 10*kGap, 10*kGap)];
-        [self.friendButton setImage:[UIImage imageNamed:@"9"] forState:UIControlStateNormal];
-        [self.headerView addSubview:self.friendButton];
-        self.groupButton=[[UIButton alloc]initWithFrame:CGRectMake(30*kGap, 0, 10*kGap, 10*kGap)];
-        [self.groupButton setImage:[UIImage imageNamed:@"10"] forState:UIControlStateNormal];
-        [self.headerView addSubview:self.groupButton];
         
 #pragma mark------------TableView
-
-        [self loadData];
-        
-        self.friendTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-64-10*kGap) style:UITableViewStyleGrouped];
-        self.friendTableView.delegate=self;
-        self.friendTableView.dataSource=self;
-        [self.friendTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-        self.friendTableView.backgroundColor=[UIColor redColor];
         [self.view addSubview:self.friendTableView];
+        if (self.page) {
+            self.navigationItem.rightBarButtonItem = self.right;
+            [self loadDataOfFriends];
+        }else{
+            [self loadDataOfGroup];
+        }
         [self ReceiveMessage];
     }
-    
-    
-    
     // Do any additional setup after loading the view.
 }
--(void)loadData
+-(UIView*)loginBackView
+{
+    if (!_loginBackView) {
+        _loginBackView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _loginBackView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"8.jpeg"]];
+        [_loginBackView addSubview:self.loginButton];
+    }
+    return _loginBackView;
+}
+-(UIButton*)loginButton
+{
+    if (!_loginButton) {
+        _loginButton=[UIButton buttonWithType:UIButtonTypeSystem];
+        _loginButton.frame=CGRectMake(0, 0, 20*kGap, 10*kGap);
+        [_loginButton setTitle:@"马上去登陆" forState:UIControlStateNormal];
+        _loginButton.center=self.view.center;
+        [_loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        _loginButton.backgroundColor=[UIColor redColor];
+    }
+    return _loginButton;
+}
+-(UIView*)headerView
+{
+    if (!_headerView) {
+        _headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
+        [_headerView addSubview:self.friendButton];
+        [_headerView addSubview:self.qunButton];
+    }
+    return _headerView;
+}
+-(UIButton*)friendButton
+{
+    if (!_friendButton) {
+        
+        _friendButton=[[UIButton alloc]initWithFrame:CGRectMake(10*kGap, 0, 10*kGap, 10*kGap)];
+        [_friendButton setImage:[UIImage imageNamed:@"9"] forState:UIControlStateNormal];
+        [_friendButton addTarget:self action:@selector(friendButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _friendButton;
+}
+-(UIButton*)qunButton
+{
+    if (!_qunButton) {
+        _qunButton=[[UIButton alloc]initWithFrame:CGRectMake(30*kGap, 0, 10*kGap, 10*kGap)];
+        [_qunButton setImage:[UIImage imageNamed:@"10"] forState:UIControlStateNormal];
+        [_qunButton addTarget:self action:@selector(groupButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _qunButton;
+}
+-(UITableView*)friendTableView
+{
+    if (!_friendTableView) {
+        _friendTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-64-10*kGap) style:UITableViewStyleGrouped];
+        _friendTableView.delegate=self;
+        _friendTableView.dataSource=self;
+        [_friendTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+        _friendTableView.backgroundColor=[UIColor redColor];
+    }
+    return _friendTableView;
+}
+-(void)friendButtonAction:(UIButton*)button
+{
+    self.page=YES;
+    [self loadDataOfFriends];
+}
+-(void)groupButtonAction:(UIButton*)button
+{
+    self.page=NO;
+    [self loadDataOfGroup];
+}
+-(void)loadDataOfFriends
 {
     //TableView的数据
     self.friendsArray=[NSMutableArray new];
@@ -265,31 +351,50 @@ static NSString*const cellID=@"cell";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         // 检索成功
         if (!error) {
-            //给分组名数组赋值
-            for (NSMutableDictionary * dict in objects) {
-                NSString*groupName=dict[@"localData"][@"groupname"];
-                BOOL add=YES;
-                for (NSString*string in self.groupArray) {
-                    if ([groupName isEqualToString:string]) {
-                        add=NO;
+            /*
+             //给分组名数组赋值
+             for (NSMutableDictionary * dict in objects) {
+             NSString*groupName=dict[@"localData"][@"groupname"];
+             BOOL add=YES;
+             for (NSString*string in self.groupArray) {
+             if ([groupName isEqualToString:string]) {
+             add=NO;
+             }
+             }
+             if (add) {
+             [self.groupArray addObject:groupName];
+             }
+             }
+             //给好友列表数组赋值
+             for (int i=0; i<[self.groupArray count]; i++) {
+             NSMutableArray*array=[NSMutableArray new];
+             
+             for (int j=0; j<[objects count]; j++) {
+             NSMutableDictionary*dict=objects[j];
+             if ([dict[@"localData"][@"groupname"]isEqualToString:self.groupArray[i]]) {
+             [array addObject:objects[j][@"localData"][@"friendname"]];
+             }
+             }
+             [self.friendsArray addObject:array];
+             }
+             */
+            for (AVObject * obj in objects) {
+                // 分组名数组
+                if (![self.groupArray containsObject:[obj valueForKey:@"groupname"]]) {
+                    [self.groupArray addObject:[obj valueForKey:@"groupname"]];
+                    // 拿到分组之后, 立刻将所有该分组下的好友添加到一个小数组
+                    NSMutableArray * array = [ NSMutableArray array];
+                    for (AVObject * obj1 in objects) {
+                        if ([obj1 valueForKey:@"groupname"] == [obj valueForKey:@"groupname"] ) {
+                            [array addObject:[obj1 valueForKey:@"friendname"]];
+                        }
                     }
-                }
-                if (add) {
-                    [self.groupArray addObject:groupName];
+                    [self.friendsArray addObject:array];
+                    // 将该小数组添加到大数组.
                 }
             }
-            //给好友列表数组赋值
-            for (int i=0; i<[self.groupArray count]; i++) {
-                NSMutableArray*array=[NSMutableArray new];
-                
-                for (int j=0; j<[objects count]; j++) {
-                    NSMutableDictionary*dict=objects[j];
-                    if ([dict[@"localData"][@"groupname"]isEqualToString:self.groupArray[i]]) {
-                        [array addObject:objects[j][@"localData"][@"friendname"]];
-                    }
-                }
-                [self.friendsArray addObject:array];
-            }
+            //            NSLog(@"%@",self.groupArray);
+            //            NSLog(@"%@",self.friendsArray);
             //刷新u
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.friendTableView reloadData];
@@ -298,7 +403,17 @@ static NSString*const cellID=@"cell";
             // 输出错误信息
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        
     }];
+}
+-(void)loadDataOfGroup
+{
+    self.qunArray=[NSMutableArray new];
+    
+    //刷新u
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.friendTableView reloadData];
+    });
 }
 -(void)loginButtonAction:(UIButton*)button
 {
@@ -309,44 +424,56 @@ static NSString*const cellID=@"cell";
 //设置分区个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.groupArray count];
+    if (self.page) {
+        return [self.groupArray count];
+    }
+    return 1;
 }
 //设置某一个分区的行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([[self.foldDict valueForKey:self.groupArray[section]] boolValue]) {
-        return [self.friendsArray[section] count];
-    }else{
-        return 0;
+    if (self.page) {
+        if ([[self.foldDict valueForKey:self.groupArray[section]] boolValue]) {
+            return [self.friendsArray[section] count];
+        }else{
+            return 0;
+        }
     }
+    return [self.qunArray count];
 }
 //设置cell
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+    if (self.page) {
+        cell.textLabel.text=self.friendsArray[indexPath.section][indexPath.row];
+    }else{
+        cell.textLabel.text=@"群名字";
+    }
     
-    cell.textLabel.text=self.friendsArray[indexPath.section][indexPath.row];
-    //        CGFloat red=arc4random()%256/255.0;
-    //        CGFloat green=arc4random()%256/255.0;
-    //        CGFloat blue=arc4random()%256/255.0;
-    //        cell.contentView.backgroundColor=[UIColor colorWithRed:red green:green blue:blue alpha:1];
     return cell;
 }
 //设置区头
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    MyButton*button=[MyButton buttonWithType:UIButtonTypeSystem];
-    button.backgroundColor=[UIColor purpleColor];
-    [button setTitle:self.groupArray[section] forState:(UIControlStateNormal)];
-    button.section=section;
-    [button addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
-    return button;
+    if (self.page) {
+        MyButton*button=[MyButton buttonWithType:UIButtonTypeSystem];
+        button.backgroundColor=[UIColor purpleColor];
+        [button setTitle:self.groupArray[section] forState:(UIControlStateNormal)];
+        button.section=section;
+        [button addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        return button;
+    }
+    return nil;
 }
 //返回区头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    if (self.page) {
+        return 50;
+    }
+    return 0.000000000001;
 }
 
 //设置区尾的高度
@@ -370,22 +497,13 @@ static NSString*const cellID=@"cell";
 //选中cell触发的事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatViewController*chatVC=[ChatViewController new];
-    [self.navigationController pushViewController:chatVC animated:YES];
+    if (self.page) {
+        ChatViewController*chatVC=[ChatViewController new];
+        NSArray * arraySection = self.friendsArray[indexPath.section];
+        chatVC.friendName = arraySection[indexPath.row];
+        [self.navigationController pushViewController:chatVC animated:YES];
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

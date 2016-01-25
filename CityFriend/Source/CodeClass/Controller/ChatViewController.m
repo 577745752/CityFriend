@@ -9,138 +9,123 @@
 #import "ChatViewController.h"
 
 @interface ChatViewController ()<UITextViewDelegate>
-@property(nonatomic,strong)UITextView*textview;
+@property(nonatomic,strong)UITextView*textView;
 @property(nonatomic ,strong)UIView*myView;
-
 @end
-
 @implementation ChatViewController
 
-//重写视图控制器
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+// 重写父类视图控制器
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     
-    if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        //标题
-        self.navigationItem.title=@"好友id";
-//        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(Cancle:)];
-        
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
     }
     
     return self;
 }
+-(void)setFriendName:(NSString *)friendName
+{
+    if (_friendName!=friendName) {
+        _friendName=nil;
+        _friendName=friendName;
+    }
+    self.navigationItem.title = self.friendName;
+}
 
+-(void)viewWillAppear:(BOOL)animated{
 
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-#define Height [UIScreen mainScreen].bounds.size.height
-#define Width [UIScreen mainScreen].bounds.size.width
-    self.view.backgroundColor=[UIColor cyanColor];
+
+    // 初始化myView
+    self.myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 70)];
+    self.myView.backgroundColor = [UIColor grayColor];
+    self.myView.center = CGPointMake(kWidth/2, kHeight-84);
     
-    
-    //创建一个View    tabbar下面的高度是49
-    _myView=[[UIView alloc]initWithFrame:CGRectMake(0, kHeight-10*kGap-49, kWidth, 10*kGap)];
-    _myView.backgroundColor=[UIColor grayColor];
-    //初始化textView
-    _textview=[[UITextView alloc] initWithFrame:CGRectMake(0, 0, kWidth-5*kGap,10*kGap)];
-    _textview.delegate=self;
-    //设置拖动
-    _textview.scrollEnabled=YES;
-    //设置编辑使用属性 (默认是Yes,当设置为NO 时,依然可以进行拷贝)
-    self.textview.editable=YES;
-    
-    self.textview.layer.cornerRadius=kGap;
-    self.textview.layer.masksToBounds=YES;
-    self.textview.layer.borderWidth=2;
-    self.textview.layer.borderColor=[[UIColor yellowColor] CGColor];
-    
-    [_myView  addSubview:_textview];
-    
-    
-    //创建一个Butoon
-    UIButton *rightButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    rightButton.center=CGPointMake(Width-30,70/2);
-    rightButton.layer.cornerRadius=60/2;
-    rightButton.layer.masksToBounds=YES;
+    // 初始化textView
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 300, 70)];
+    self.textView.center = CGPointMake(kWidth/2, 70/2);
+    // 设置代理
+    self.textView.delegate = self;
+    //
+    self.textView.backgroundColor = [UIColor magentaColor];
+    //
+    self.textView.font = [UIFont systemFontOfSize:23];
+    // 设置是否拖动
+    self.textView.scrollEnabled = YES;
+    // 设置编辑使用的属性(默认是yes,当设置为NO的时候,依然可以拷贝)
+    self.textView.editable = YES;
+    // 设置textView的边框的属性
+    self.textView.layer.cornerRadius = 35;
+    self.textView.layer.masksToBounds = YES;
+    self.textView.layer.borderWidth = 5;
+    self.textView.layer.borderColor = [UIColor yellowColor].CGColor;
+    // 添加到自定义的self.myView上
+    [self.myView addSubview:self.textView];
+    // 创建Button
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame = CGRectMake(0, 0, 60, 60);
+    rightButton.center = CGPointMake(kWidth-30, 35);
     [rightButton setTitle:@"发送" forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(action1:) forControlEvents:UIControlEventTouchUpInside];
-    [ _myView addSubview: rightButton];
+    // 添加事件
+//    [rightButton addTarget:self action:@selector(Action1:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.myView addSubview:rightButton];
     
     
-    //创建一个左边的相机
-    UIButton*leftButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
     
-    [leftButton setImage:[UIImage imageNamed:@"2"] forState:UIControlStateNormal];
-    leftButton.center=CGPointMake(30, 70/2);
-    [leftButton addTarget:self action:@selector(action2:) forControlEvents:UIControlEventTouchUpInside];
-    [_myView addSubview:leftButton];
+    [self.view addSubview:self.myView];
     
-    
-    [self.view addSubview:_myView];
+    self.view.backgroundColor = [UIColor cyanColor];
+    // Do any additional setup after loading the view.
 }
 
-//在将要开始编辑的时候,触发方法
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    
+
+// 在开始编辑的时候 textView 和键盘一起弹出
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
     
     [UIView beginAnimations:nil context:NULL];
+    // 设置动画持续时间(返回时间)
     [UIView setAnimationDuration:0.3];
+    // 设置代理
     [UIView setAnimationDelegate:self];
-    self.myView.center = CGPointMake(Width/2, Height-300+40);
-    //使用动画才会使用
-    [UIView commitAnimations];
-    
-    
+    self.myView.center = CGPointMake(kWidth/2, kHeight-300);
     return YES;
 }
 
-//导航视图控制器按钮
--(void)Cancle:(UIBarButtonItem *)Item{
+// 点击空白的区域回收键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
+    // 回收键盘的同时textView返回底部
     [self.view endEditing:YES];
-    
-    [self keybordBack];
-    
+    [self keyBoardBack];
 }
-
-
-//右button事件
--(void)action1:(UIButton *)button{
-    
+// 点击右按钮回收键盘
+- (void) Cancel:(UIButton *)button
+{
+    // 回收键盘的同时textView返回底部
     [self.view endEditing:YES];
-    
-    [self keybordBack];
-    
-}
-
-//相机
--(void)action2:(UIButton *)button{
-    CGFloat red=arc4random()%256/255.0;
-    CGFloat green=arc4random()%256/255.0;
-    CGFloat blue=arc4random()%256/255.0;
-    self.view.backgroundColor=[UIColor colorWithRed:red green:green blue:blue alpha:1];
-}
-
-//点击空白键盘回收
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    [self.view endEditing:YES];
-    
-    [self keybordBack];
+    [self keyBoardBack];
     
 }
 
 
-//封装方法
-
--(void)keybordBack{
+// 封装一个textView的位置方法
+- (void)keyBoardBack
+{
     
     [UIView beginAnimations:nil context:NULL];
+    // 设置动画持续时间(返回时间)
     [UIView setAnimationDuration:0.3];
+    // 设置代理
     [UIView setAnimationDelegate:self];
-    self.myView.center = CGPointMake(Width/2, Height-35);
-    [UIView commitAnimations];
-    
+    self.myView.center = CGPointMake(kWidth/2, kHeight-84);
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

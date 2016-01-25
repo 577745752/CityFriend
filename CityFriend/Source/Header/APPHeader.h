@@ -27,7 +27,8 @@
 #import "Shop.h"
 
 //第二个界面
-#import "ActivityViewController.h"
+#import "ActivityTableViewController.h"
+#import "AddActivityViewController.h"
 //第三个界面
 #import "FriendViewController.h"
 #import "MyButton.h"

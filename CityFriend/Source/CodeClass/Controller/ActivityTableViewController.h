@@ -1,5 +1,5 @@
 //
-//  ChatViewController.h
+//  ActivityTableViewController.h
 //  CityFriend
 //
 //  Created by lanou3g on 16/1/23.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewController : UIViewController
-@property(nonatomic,strong)NSString*friendName;
+@interface ActivityTableViewController : UITableViewController
+
 @end

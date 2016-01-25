@@ -30,7 +30,7 @@
     [self.window makeKeyAndVisible];
     
     UINavigationController*homeNC=[[UINavigationController alloc]initWithRootViewController:[HomeViewController new]];
-     UINavigationController*activityNC=[[UINavigationController alloc]initWithRootViewController:[ActivityViewController new]];
+     UINavigationController*activityNC=[[UINavigationController alloc]initWithRootViewController:[ActivityTableViewController new]];
      UINavigationController*friendNC=[[UINavigationController alloc]initWithRootViewController:[[FriendViewController alloc] init]];
      UINavigationController*userNC=[[UINavigationController alloc]initWithRootViewController:[UserTableViewController new]];
     
