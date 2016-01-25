@@ -8,11 +8,13 @@
 
 #import "ChatViewController.h"
 
-@interface ChatViewController ()<UITextViewDelegate>
+@interface ChatViewController ()<UITextViewDelegate,ReceiveMessageToolDelegate>
 @property(nonatomic,strong)UITextView*textView;
 @property(nonatomic ,strong)UIView*myView;
 //聊天 相关属性
 @property (nonatomic, strong) AVIMClient *client;
+//对话id
+@property(nonatomic,strong)NSString*conversationID;
 @end
 @implementation ChatViewController
 
@@ -83,6 +85,7 @@
     [self.view addSubview:self.myView];
     
     self.view.backgroundColor = [UIColor cyanColor];
+    [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
     // Do any additional setup after loading the view.
 }
 -(void)Action1:(UIButton*)button
@@ -141,6 +144,7 @@
         // "我" 建立了与 "对方" 的会话
         [self.client createConversationWithName:@"聊天" clientIds:@[self.friendName] callback:^(AVIMConversation *conversation, NSError *error) {
             // 我 发了一条消息给 对方
+            self.conversationID=conversation.conversationId;
             [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"发送成功！");
@@ -149,28 +153,45 @@
         }];
     }];
 }
-//接收消息
-//- (void)ReceiveMessage{
-//    // 用户 创建了一个 client 来接收消息
-//    self.client = [[AVIMClient alloc] init];
-//    // 设置 client 的 delegate，并实现 delegate 方法
-//    self.client.delegate = self;
-//    
-//    // 用户 用自己的名字作为 ClientId 打开了 client
-//    [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-//        // ...
-//    }];
-//    NSLog(@"聊天页面正在接收消息");
-//}
+// 接收消息的回调函数
+- (void)conversation:(AVIMConversation *)conversation onDidReceiveTypedMessage:(AVIMTypedMessage *)message
+{
+    //判断接收到的消息是否是好友请求
+    if ([message.text hasSuffix:@"想添加你为好友>_<"]) {//好友请求的处理
+        
+    }else if([message.text hasSuffix:@"已经通过了你的好友请求>_<"]){
 
-#pragma mark - AVIMClientDelegate
+    }else{
+        if ([conversation.conversationId isEqualToString:self.conversationID]) {
+            //正常聊天
+            NSLog(@"接收到消息了");
+            NSLog(@"%@",message.text);
+            //正常聊天
+            //我 用自己的名字作为 ClientId 打开 client
+            [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+                // 我 创建查询会话的 query
+                AVIMConversationQuery *query = [self.client conversationQuery];
+                // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+                [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
+                    // 查询对话中最后 10 条消息
+                    [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+                        for (AVIMTextMessage * msg in objects) {
+                            NSString * str = [msg text];
+                            NSLog(@"%@",str);
+                        }
+//                        NSLog(@"%@", [[objects[0] class] description]);
+//                        NSLog(@"%@",[objects[0] text]);
+                        //AVIMTextMessage
+                        NSLog(@"查询成功！");
+                    }];
+                }];
+            }];
 
-//// 接收消息的回调函数
-//- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-//
-//
-//    
-//}
+        }
+    }
+    
+}
+
 
 
 
