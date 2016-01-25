@@ -228,6 +228,22 @@ static NSString*const cellID=@"cell";
     }else{
         
         //正常聊天
+        NSLog(@"接收到消息了");
+        NSLog(@"%@",message.text);
+        //正常聊天
+        //我 用自己的名字作为 ClientId 打开 client
+        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+            // 我 创建查询会话的 query
+            AVIMConversationQuery *query = [self.client conversationQuery];
+            // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+            [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
+                // 查询对话中最后 10 条消息
+                [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+                    NSLog(@"%@",objects);
+                    NSLog(@"查询成功！");
+                }];
+            }];
+        }];
     }
     
 }

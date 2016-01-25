@@ -8,7 +8,7 @@
 
 #import "ChatViewController.h"
 
-@interface ChatViewController ()<UITextViewDelegate,AVIMClientDelegate>
+@interface ChatViewController ()<UITextViewDelegate>
 @property(nonatomic,strong)UITextView*textView;
 @property(nonatomic ,strong)UIView*myView;
 //聊天 相关属性
@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self ReceiveMessage];
+    //[self ReceiveMessage];
 
     // 初始化myView
     self.myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 70)];
@@ -135,6 +135,7 @@
 }
 // 发送消息的方法
 -(void)SendMessage:(NSString*)message{
+
     // 用自己的名字作为 ClientId 打开 client
     [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
         // "我" 建立了与 "对方" 的会话
@@ -149,41 +150,27 @@
     }];
 }
 //接收消息
-- (void)ReceiveMessage{
-    // 用户 创建了一个 client 来接收消息
-    self.client = [[AVIMClient alloc] init];
-    // 设置 client 的 delegate，并实现 delegate 方法
-    self.client.delegate = self;
-    
-    // 用户 用自己的名字作为 ClientId 打开了 client
-    [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-        // ...
-    }];
-    NSLog(@"聊天页面正在接收消息");
-}
+//- (void)ReceiveMessage{
+//    // 用户 创建了一个 client 来接收消息
+//    self.client = [[AVIMClient alloc] init];
+//    // 设置 client 的 delegate，并实现 delegate 方法
+//    self.client.delegate = self;
+//    
+//    // 用户 用自己的名字作为 ClientId 打开了 client
+//    [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+//        // ...
+//    }];
+//    NSLog(@"聊天页面正在接收消息");
+//}
 
 #pragma mark - AVIMClientDelegate
 
-// 接收消息的回调函数
-- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-    
-        //正常聊天
-    // 我 用自己的名字作为 ClientId 打开 client
-    [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-        // 我 创建查询会话的 query
-        AVIMConversationQuery *query = [self.client conversationQuery];
-        // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
-        [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
-            // 查询对话中最后 10 条消息
-            [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
-                NSLog(@"%@",objects);
-                NSLog(@"查询成功！");
-            }];
-        }];
-    }];
-
-    
-}
+//// 接收消息的回调函数
+//- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+//
+//
+//    
+//}
 
 
 
