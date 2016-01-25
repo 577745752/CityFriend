@@ -163,7 +163,7 @@ static NSString*const cellID=@"cell";
     [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
         // ...
     }];
-    NSLog(@"接收消息");
+    NSLog(@"好友页面正在接收消息");
 }
 
 #pragma mark - AVIMClientDelegate
