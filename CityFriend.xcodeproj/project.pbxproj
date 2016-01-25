@@ -35,6 +35,8 @@
 		C219D3101C48C2A400F6EEDE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D30F1C48C2A400F6EEDE /* 4.png */; };
 		C219D3121C48C3C600F6EEDE /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3111C48C3C600F6EEDE /* 1.png */; };
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
+		C241C1201C56119F00143EE8 /* GCDMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */; };
+		C241C1231C56123F00143EE8 /* ReceiveMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C241C1221C56123F00143EE8 /* ReceiveMessageTool.m */; };
 		C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */; };
 		C255EEAE1C4F338C00EB2925 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C255EEAD1C4F338C00EB2925 /* 6.png */; };
 		C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEB01C4F36AE00EB2925 /* LocationViewController.m */; };
@@ -102,6 +104,10 @@
 		C219D30F1C48C2A400F6EEDE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C219D3111C48C3C600F6EEDE /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		C219D3131C48C40900F6EEDE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C241C11E1C56119F00143EE8 /* GCDMulticastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDMulticastDelegate.h; sourceTree = "<group>"; };
+		C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDMulticastDelegate.m; sourceTree = "<group>"; };
+		C241C1211C56123F00143EE8 /* ReceiveMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveMessageTool.h; sourceTree = "<group>"; };
+		C241C1221C56123F00143EE8 /* ReceiveMessageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiveMessageTool.m; sourceTree = "<group>"; };
 		C255EEA91C4F322000EB2925 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		C255EEAA1C4F322000EB2925 /* SignatrueEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatrueEncryption.h; sourceTree = "<group>"; };
 		C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatrueEncryption.m; sourceTree = "<group>"; };
@@ -245,6 +251,10 @@
 		C219D2E71C489DBE00F6EEDE /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				C241C11E1C56119F00143EE8 /* GCDMulticastDelegate.h */,
+				C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */,
+				C241C1211C56123F00143EE8 /* ReceiveMessageTool.h */,
+				C241C1221C56123F00143EE8 /* ReceiveMessageTool.m */,
 				C255EEA81C4F322000EB2925 /* SHA1加密 */,
 				C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */,
 				C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */,
@@ -520,6 +530,7 @@
 				C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
+				C241C1231C56123F00143EE8 /* ReceiveMessageTool.m in Sources */,
 				C212E40B1C53594700E1FC1D /* ActivityTableViewController.m in Sources */,
 				C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */,
 				C210149E1C50D96B0043B98E /* GetBackPwdViewController.m in Sources */,
@@ -532,6 +543,7 @@
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
+				C241C1201C56119F00143EE8 /* GCDMulticastDelegate.m in Sources */,
 				C210148D1C507E1D0043B98E /* ShopViewController.m in Sources */,
 				C2020E3F1C524E110055641C /* MyButton.m in Sources */,
 				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "FriendViewController.h"
 
-@interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
+@interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,ReceiveMessageToolDelegate>
 //右按钮
 @property(nonatomic,strong)UIBarButtonItem*right;
 //提示登陆的背景视图
@@ -151,25 +151,26 @@ static NSString*const cellID=@"cell";
 //    }];
 //}
 //接收消息
-- (void)ReceiveMessage{
-    // 用户 创建了一个 client 来接收消息
-    self.client = [[AVIMClient alloc] init];
-    //用户登陆状态
-    AVUser *currentUser = [AVUser currentUser];
-    // 设置 client 的 delegate，并实现 delegate 方法
-    self.client.delegate = self;
-    
-    // 用户 用自己的名字作为 ClientId 打开了 client
-    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
-        // ...
-    }];
-    NSLog(@"好友页面正在接收消息");
-}
-
-#pragma mark - AVIMClientDelegate
+//- (void)ReceiveMessage{
+//    // 用户 创建了一个 client 来接收消息
+//    self.client = [[AVIMClient alloc] init];
+//    //用户登陆状态
+//    AVUser *currentUser = [AVUser currentUser];
+//    // 设置 client 的 delegate，并实现 delegate 方法
+//    self.client.delegate = self;
+//    
+//    // 用户 用自己的名字作为 ClientId 打开了 client
+//    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
+//        // ...
+//    }];
+//    NSLog(@"好友页面正在接收消息");
+//}
+//
+//#pragma mark - AVIMClientDelegate
 
 // 接收消息的回调函数
-- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+- (void)conversation:(AVIMConversation *)conversation onDidReceiveTypedMessage:(AVIMTypedMessage *)message
+{
     //判断接收到的消息是否是好友请求
     if ([message.text hasSuffix:@"想添加你为好友>_<"]) {//好友请求的处理
         //截取对方的id
@@ -226,27 +227,38 @@ static NSString*const cellID=@"cell";
         [getFriend addAction:ok];
         [self presentViewController:getFriend animated:YES completion:nil];
     }else{
-        
-        //正常聊天
-        NSLog(@"接收到消息了");
-        NSLog(@"%@",message.text);
-        //正常聊天
-        //我 用自己的名字作为 ClientId 打开 client
-        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-            // 我 创建查询会话的 query
-            AVIMConversationQuery *query = [self.client conversationQuery];
-            // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
-            [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
-                // 查询对话中最后 10 条消息
-                [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
-                    NSLog(@"%@",objects);
-                    NSLog(@"查询成功！");
-                }];
-            }];
-        }];
+//        
+//        //正常聊天
+//        NSLog(@"接收到消息了");
+//        NSLog(@"%@",message.text);
+//        //正常聊天
+//        //我 用自己的名字作为 ClientId 打开 client
+//        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+//            // 我 创建查询会话的 query
+//            AVIMConversationQuery *query = [self.client conversationQuery];
+//            // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+//            [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
+//                // 查询对话中最后 10 条消息
+//                [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+//                    
+//                    for (AVIMTextMessage * msg in objects) {
+//                        NSString * str = [msg text];
+//                    }
+//                    
+//                    
+//                    NSLog(@"%@", [[objects[0] class] description]);
+//                    NSLog(@"%@",[objects[0] text]);
+//                    //AVIMTextMessage
+//                    NSLog(@"查询成功！");
+//                }];
+//            }];
+//        }];
     }
-    
+
 }
+//- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+//    
+//}
 
 
 
@@ -282,7 +294,7 @@ static NSString*const cellID=@"cell";
         }else{
             [self loadDataOfGroup];
         }
-        [self ReceiveMessage];
+        [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
     }
     // Do any additional setup after loading the view.
 }

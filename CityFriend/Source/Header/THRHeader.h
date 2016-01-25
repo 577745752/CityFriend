@@ -13,4 +13,8 @@
 #import <AVOSCloud/AVOSCloud.h>
 //如果使用了实时通信模块，请添加下列导入语句到头部：
 #import <AVOSCloudIM/AVOSCloudIM.h>
+//多播代理
+#import "GCDMulticastDelegate.h"
+//接收消息工具
+#import "ReceiveMessageTool.h"
 #endif
