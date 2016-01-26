@@ -33,7 +33,9 @@
 #import "FriendViewController.h"
 #import "MyButton.h"
 #import "ChatViewController.h"
+#import "ChatTableViewCell.h"
 #import "Chat.h"
+#import "HintLoginView.h"
 //第四个界面
 #import "UserTableViewController.h"
 
