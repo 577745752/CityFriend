@@ -8,7 +8,7 @@
 
 #import "FriendViewController.h"
 
-@interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,ReceiveMessageToolDelegate>
+@interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
 //右按钮
 @property(nonatomic,strong)UIBarButtonItem*right;
 //提示登陆的背景视图
@@ -151,35 +151,59 @@ static NSString*const cellID=@"cell";
 //    }];
 //}
 //接收消息
-//- (void)ReceiveMessage{
-//    // 用户 创建了一个 client 来接收消息
-//    self.client = [[AVIMClient alloc] init];
-//    //用户登陆状态
-//    AVUser *currentUser = [AVUser currentUser];
-//    // 设置 client 的 delegate，并实现 delegate 方法
-//    self.client.delegate = self;
-//    
-//    // 用户 用自己的名字作为 ClientId 打开了 client
-//    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
-//        // ...
-//    }];
-//    NSLog(@"好友页面正在接收消息");
-//}
-//
-//#pragma mark - AVIMClientDelegate
+- (void)ReceiveMessage{
+    // 用户 创建了一个 client 来接收消息
+    self.client = [[AVIMClient alloc] init];
+    //用户登陆状态
+    AVUser *currentUser = [AVUser currentUser];
+    // 设置 client 的 delegate，并实现 delegate 方法
+    self.client.delegate = self;
+    
+    // 用户 用自己的名字作为 ClientId 打开了 client
+    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+    NSLog(@"好友页面正在接收消息");
+}
+
+#pragma mark - AVIMClientDelegate
 
 // 接收消息的回调函数
-- (void)conversation:(AVIMConversation *)conversation onDidReceiveTypedMessage:(AVIMTypedMessage *)message
-{
+
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
     //判断接收到的消息是否是好友请求
     if ([message.text hasSuffix:@"想添加你为好友>_<"]) {//好友请求的处理
         //截取对方的id
         NSString*idString=[[message.text componentsSeparatedByString:@"想"] firstObject];
         UIAlertController*getFriend=[UIAlertController alertControllerWithTitle:@"" message:message.text preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*ok=[UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //东八区时间
+            //            NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
+            //            NSString*time=(NSString*)bjdate;
             //获取要添加的用户分组
             UITextField*text=(UITextField*)[getFriend.view viewWithTag:106];
             self.addFriendGroup=text.text;
+            //向本地数据库中添加数据
+            NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+            NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+            DataBaseTool*db=[DataBaseTool shareDataBase];
+            //连接数据库
+            [db connectDB:dataBasePath];
+            //建表
+            [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_%@(\
+                            name text not null,\
+                            content text not null,\
+                            time text not null\
+                            )",[AVUser currentUser].username,idString]];
+            [db disconnectDB];
+            NSLog(@"%@",dataBasePath);
+            
+            
+            
+            
+            
+            
+            
             //向云端服务器表中添加数据(更新好友表)
             AVObject *post = [AVObject objectWithClassName:@"Friends"];
             [post setObject:[AVUser currentUser].username forKey:@"username"];
@@ -211,6 +235,20 @@ static NSString*const cellID=@"cell";
             //获取要添加的用户分组
             UITextField*text=(UITextField*)[getFriend.view viewWithTag:107];
             self.addFriendGroup=text.text;
+            //向本地数据库中添加数据
+            NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+            NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+            DataBaseTool*db=[DataBaseTool shareDataBase];
+            //连接数据库
+            [db connectDB:dataBasePath];
+            //建表
+            [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_%@(\
+                            name text not null,\
+                            content text not null,\
+                            time text not null\
+                            )",[AVUser currentUser].username,idString]];
+            [db disconnectDB];
+            NSLog(@"%@",dataBasePath);
             //向云端服务器表中添加数据(更新好友表)
             AVObject *post = [AVObject objectWithClassName:@"Friends"];
             [post setObject:[AVUser currentUser].username forKey:@"username"];
@@ -227,60 +265,83 @@ static NSString*const cellID=@"cell";
         [getFriend addAction:ok];
         [self presentViewController:getFriend animated:YES completion:nil];
     }else{
-//        
-//        //正常聊天
-//        NSLog(@"接收到消息了");
-//        NSLog(@"%@",message.text);
-//        //正常聊天
-//        //我 用自己的名字作为 ClientId 打开 client
-//        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-//            // 我 创建查询会话的 query
-//            AVIMConversationQuery *query = [self.client conversationQuery];
-//            // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
-//            [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
-//                // 查询对话中最后 10 条消息
-//                [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
-//                    
-//                    for (AVIMTextMessage * msg in objects) {
-//                        NSString * str = [msg text];
-//                    }
-//                    
-//                    
-//                    NSLog(@"%@", [[objects[0] class] description]);
-//                    NSLog(@"%@",[objects[0] text]);
-//                    //AVIMTextMessage
-//                    NSLog(@"查询成功！");
-//                }];
-//            }];
-//        }];
+        /*
+         //正常聊天
+         NSLog(@"接收到消息了");
+         NSLog(@"%@",message.text);
+         //正常聊天
+         //我 用自己的名字作为 ClientId 打开 client
+         [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+         // 我 创建查询会话的 query
+         AVIMConversationQuery *query = [self.client conversationQuery];
+         // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+         [query getConversationById:conversation.conversationId callback:^(AVIMConversation *conversation, NSError *error) {
+         // 查询对话中最后 10 条消息
+         [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+         
+         for (AVIMTextMessage * msg in objects) {
+         NSString * str = [msg text];
+         }
+         
+         
+         NSLog(@"%@", [[objects[0] class] description]);
+         NSLog(@"%@",[objects[0] text]);
+         //AVIMTextMessage
+         NSLog(@"查询成功！");
+         }];
+         }];
+         }];
+         */
+        //东八区时间
+        NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
+        NSString*time=(NSString*)bjdate;
+        //NSString*time1=[[time componentsSeparatedByString:@"+"] firstObject];
+        //向本地数据库中添加数据
+        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+        DataBaseTool*db=[DataBaseTool shareDataBase];
+        //连接数据库
+        [db connectDB:dataBasePath];
+        //更新本地数据库的聊天记录
+//        Chat*chat=[Chat new];
+//        chat.name=conversation.creator;
+//        chat.content=message.text;
+//        chat.time=@"time";
+//        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
+//        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
+        [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,conversation.creator,conversation.creator,message.text,time]];
+        [db disconnectDB];
+        NSLog(@"%@",dataBasePath);
+        //广播通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Message" object:nil userInfo:@{@"1":@"1"}];
     }
-
+    
 }
-//- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-//    
+
+//- (void)conversation:(AVIMConversation *)conversation onDidReceiveTypedMessage:(AVIMTypedMessage *)message
+//{
+//
 //}
-
-
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    if ([AVUser currentUser] == nil) {
-//        
-//        [self.view bringSubviewToFront:self.loginBackView];
-//    }else{
-//        [self.view sendSubviewToBack:self.loginBackView];
-//        //刷新ui
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.friendTableView reloadData];
-//        });
-//    }
+    //    if ([AVUser currentUser] == nil) {
+    //
+    //        [self.view bringSubviewToFront:self.loginBackView];
+    //    }else{
+    //        [self.view sendSubviewToBack:self.loginBackView];
+    //        //刷新ui
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            [self.friendTableView reloadData];
+    //        });
+    //    }
     [self viewDidLoad];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     if ([AVUser currentUser] == nil) {
         [self.view addSubview:self.loginBackView];
     }else{
@@ -294,7 +355,8 @@ static NSString*const cellID=@"cell";
         }else{
             [self loadDataOfGroup];
         }
-        [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
+        //        [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
+        [self ReceiveMessage];
     }
     // Do any additional setup after loading the view.
 }
@@ -528,6 +590,8 @@ static NSString*const cellID=@"cell";
     if (self.page) {
         ChatViewController*chatVC=[ChatViewController new];
         NSArray * arraySection = self.friendsArray[indexPath.section];
+        //隐藏tabbar
+        chatVC.hidesBottomBarWhenPushed = YES;
         chatVC.friendName = arraySection[indexPath.row];
         [self.navigationController pushViewController:chatVC animated:YES];
     }

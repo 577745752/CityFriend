@@ -35,6 +35,8 @@
 		C219D3101C48C2A400F6EEDE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D30F1C48C2A400F6EEDE /* 4.png */; };
 		C219D3121C48C3C600F6EEDE /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3111C48C3C600F6EEDE /* 1.png */; };
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
+		C22867DD1C56FEF600AB5D97 /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C22867DC1C56FEF600AB5D97 /* DataBaseTool.m */; };
+		C22867E01C57521100AB5D97 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = C22867DF1C57521100AB5D97 /* Chat.m */; };
 		C241C1201C56119F00143EE8 /* GCDMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */; };
 		C241C1231C56123F00143EE8 /* ReceiveMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C241C1221C56123F00143EE8 /* ReceiveMessageTool.m */; };
 		C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */; };
@@ -112,6 +114,10 @@
 		C219D30F1C48C2A400F6EEDE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C219D3111C48C3C600F6EEDE /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		C219D3131C48C40900F6EEDE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C22867DB1C56FEF600AB5D97 /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
+		C22867DC1C56FEF600AB5D97 /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
+		C22867DE1C57521100AB5D97 /* Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
+		C22867DF1C57521100AB5D97 /* Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chat.m; sourceTree = "<group>"; };
 		C241C11E1C56119F00143EE8 /* GCDMulticastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDMulticastDelegate.h; sourceTree = "<group>"; };
 		C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDMulticastDelegate.m; sourceTree = "<group>"; };
 		C241C1211C56123F00143EE8 /* ReceiveMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveMessageTool.h; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 				C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */,
 				C241C1211C56123F00143EE8 /* ReceiveMessageTool.h */,
 				C241C1221C56123F00143EE8 /* ReceiveMessageTool.m */,
+				C22867DA1C56FEF600AB5D97 /* 数据库类_ByLZQ */,
 				C255EEA81C4F322000EB2925 /* SHA1加密 */,
 				C255EED61C4F8AD400EB2925 /* GDataXMLNode.h */,
 				C255EED51C4F8AD400EB2925 /* GDataXMLNode.m */,
@@ -327,6 +334,8 @@
 			children = (
 				C255EF011C4FD53700EB2925 /* Shop.h */,
 				C255EF021C4FD53700EB2925 /* Shop.m */,
+				C22867DE1C57521100AB5D97 /* Chat.h */,
+				C22867DF1C57521100AB5D97 /* Chat.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +411,15 @@
 				C219D30F1C48C2A400F6EEDE /* 4.png */,
 			);
 			path = tabbarImage;
+			sourceTree = "<group>";
+		};
+		C22867DA1C56FEF600AB5D97 /* 数据库类_ByLZQ */ = {
+			isa = PBXGroup;
+			children = (
+				C22867DB1C56FEF600AB5D97 /* DataBaseTool.h */,
+				C22867DC1C56FEF600AB5D97 /* DataBaseTool.m */,
+			);
+			path = "数据库类_ByLZQ";
 			sourceTree = "<group>";
 		};
 		C255EEA81C4F322000EB2925 /* SHA1加密 */ = {
@@ -594,9 +612,11 @@
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
 				C255EEB61C4F62DD00EB2925 /* LocationCollectionViewCell.m in Sources */,
 				C241C1201C56119F00143EE8 /* GCDMulticastDelegate.m in Sources */,
+				C22867DD1C56FEF600AB5D97 /* DataBaseTool.m in Sources */,
 				C210148D1C507E1D0043B98E /* ShopViewController.m in Sources */,
 				C2020E3F1C524E110055641C /* MyButton.m in Sources */,
 				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,
+				C22867E01C57521100AB5D97 /* Chat.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C212E4081C53276600E1FC1D /* AddActivityViewController.m in Sources */,

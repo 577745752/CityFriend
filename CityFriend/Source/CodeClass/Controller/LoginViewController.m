@@ -120,12 +120,31 @@
     [AVUser logInWithUsernameInBackground:_userNameTextField.text password:_pswTextField.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
             NSLog(@"登陆成功");
+            [self initDataBase];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             NSLog(@"登陆失败");
         }
     }];
 }
+//初始化数据库,建表操作
+-(void)initDataBase
+{
+    NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+    DataBaseTool*db=[DataBaseTool shareDataBase];
+    //连接数据库
+    [db connectDB:dataBasePath];
+    //建表
+    [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_friends(\
+                    friendname text not null,\
+                    groupname text not null,\
+                    primary key \(friendname)\
+                    )",[AVUser currentUser].username]];
+    [db disconnectDB];
+    NSLog(@"%@",dataBasePath);
+}
+
 -(void)registerAction:(UIButton*)button
 {
     RegisterViewController*regist=[RegisterViewController new];

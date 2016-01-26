@@ -17,4 +17,6 @@
 #import "GCDMulticastDelegate.h"
 //接收消息工具
 #import "ReceiveMessageTool.h"
+//数据库工具类
+#import "DataBaseTool.h"
 #endif
