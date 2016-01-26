@@ -118,7 +118,7 @@ static NSString *headerReuse = @"headerReuse";
 #pragma mark----------collectionView---------------
     self.flowLayout = [[UICollectionViewFlowLayout alloc]init];
     self.flowLayout.itemSize = CGSizeMake(12*kGap, 6*kGap);
-    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-10*kGap-64) collectionViewLayout:self.flowLayout];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(self.scroView.frame), kWidth, kHeight-10*kGap-64) collectionViewLayout:self.flowLayout];
     self.flowLayout.sectionInset = UIEdgeInsetsMake(3.5*kGap, 3.5*kGap, 3.5*kGap, 3.5*kGap);
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;

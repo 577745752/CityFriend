@@ -125,10 +125,10 @@ static NSString*const cellID=@"cell";
     self.chattingArray=[db selectTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,self.friendName] WithCondition:@"1=1"];
 //   self.chattingArray =[db selectString:[NSString stringWithFormat:@"SELECT * FROM %@_%@",[AVUser currentUser].username,self.friendName]];
 //        [db disconnectDB];
-    Chat*chat=[Chat new];
-    chat=self.chattingArray[0];
-    NSLog(@"%@",chat.content);
-    NSLog(@"%@",dataBasePath);
+//    Chat*chat=[Chat new];
+//    chat=self.chattingArray[0];
+//    NSLog(@"%@",chat.content);
+//    NSLog(@"%@",dataBasePath);
     //刷新u
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.chattingTableView reloadData];
