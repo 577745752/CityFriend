@@ -403,6 +403,7 @@ static NSString*const cellID=@"cell";
 {
     if (!_headerView) {
         _headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 64, kWidth, 10*kGap)];
+        _headerView.backgroundColor  = [UIColor whiteColor];
         [_headerView addSubview:self.friendButton];
         [_headerView addSubview:self.qunButton];
     }
@@ -434,7 +435,6 @@ static NSString*const cellID=@"cell";
         _friendTableView.delegate=self;
         _friendTableView.dataSource=self;
         [_friendTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-        _friendTableView.backgroundColor=[UIColor redColor];
     }
     return _friendTableView;
 }

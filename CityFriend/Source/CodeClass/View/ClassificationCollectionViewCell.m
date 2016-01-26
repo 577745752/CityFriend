@@ -26,10 +26,11 @@
     _imgView.layer.cornerRadius = 5*kGap;
     _imgView.image = [UIImage imageNamed:@"8.jpeg"];
     //[self addSubview:_imgView];
-    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 25)];
+    self.LabName = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kGap * 12, kGap * 6)];
+    self.LabName.center = self.contentView.center;
     _LabName.textAlignment = 1;
     _LabName.font = [UIFont systemFontOfSize:15];
-    _LabName.layer.cornerRadius = 10;
+    _LabName.layer.cornerRadius = 15;
     _LabName.layer.masksToBounds = YES;
     
     [self addSubview:_LabName];

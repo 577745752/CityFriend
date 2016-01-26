@@ -66,7 +66,6 @@ static NSString*const cellID=@"cell";
     self.chattingTableView.delegate=self;
     self.chattingTableView.dataSource=self;
     [self.chattingTableView registerClass:[ChatTableViewCell class] forCellReuseIdentifier:cellID];
-    self.chattingTableView.backgroundColor=[UIColor redColor];
     [self loadData];
     [self.view addSubview:self.chattingTableView];
     //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
@@ -82,7 +81,6 @@ static NSString*const cellID=@"cell";
     }
     // 初始化myView
     self.myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth,10*kGap)];
-    self.myView.backgroundColor = [UIColor grayColor];
     self.myView.center = CGPointMake(kWidth/2, kHeight-64-5*kGap);
     
     // 初始化textView
