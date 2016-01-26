@@ -40,7 +40,9 @@
     tab.viewControllers=@[homeNC,activityNC,friendNC,userNC];
     self.window.rootViewController=tab;
     tab.selectedIndex=0;
-
+    //背景色设置
+    [UINavigationBar appearance].barTintColor=[UIColor colorWithRed:150/255.0  green:237/255.0  blue:226/255.0 alpha:1];
+    tab.tabBar.barTintColor = [UIColor colorWithRed:150/255.0  green:237/255.0  blue:226/255.0 alpha:1];
     return YES;
 }
 

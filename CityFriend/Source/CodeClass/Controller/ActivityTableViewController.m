@@ -20,7 +20,7 @@ static NSString*const cellID=@"cell";
     if (self) {
         self.navigationItem.title=@"活动";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"活动" image:[UIImage imageNamed:@"2"] selectedImage:[UIImage imageNamed:@"2"]];
-        //self.view.backgroundColor=[UIColor yellowColor];
+        self.view.backgroundColor=[UIColor colorWithRed:220 / 255.0 green:165 / 255.0 blue:45 / 255.0 alpha:1];
         
         UIBarButtonItem* right=[[UIBarButtonItem alloc]initWithTitle:@"发起活动" style:UIBarButtonItemStylePlain target:self action:@selector(rightClick:)];
         self.navigationItem.rightBarButtonItem = right;
@@ -102,6 +102,7 @@ static NSString*const cellID=@"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     cell.textLabel.text=self.activityArray[indexPath.row][@"localData"][@"title"];
+    cell.backgroundColor = [UIColor colorWithRed:220 / 255.0 green:165 / 255.0 blue:45 / 255.0 alpha:1];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

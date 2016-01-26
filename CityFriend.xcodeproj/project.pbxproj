@@ -64,6 +64,10 @@
 		C2CF005E1C574A5F00B33539 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00591C574A5F00B33539 /* time.png */; };
 		C2CF00621C57565200B33539 /* HappyTogether1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00601C57565200B33539 /* HappyTogether1.jpg */; };
 		C2CF00631C57565200B33539 /* HappyTogether.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00611C57565200B33539 /* HappyTogether.jpeg */; };
+		C2CF00691C5770E200B33539 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00651C5770E200B33539 /* 1.jpg */; };
+		C2CF006A1C5770E200B33539 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00661C5770E200B33539 /* 2.jpg */; };
+		C2CF006B1C5770E200B33539 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00671C5770E200B33539 /* 3.jpg */; };
+		C2CF006C1C5770E200B33539 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00681C5770E200B33539 /* 4.jpg */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +164,10 @@
 		C2CF00591C574A5F00B33539 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		C2CF00601C57565200B33539 /* HappyTogether1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyTogether1.jpg; sourceTree = "<group>"; };
 		C2CF00611C57565200B33539 /* HappyTogether.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyTogether.jpeg; sourceTree = "<group>"; };
+		C2CF00651C5770E200B33539 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		C2CF00661C5770E200B33539 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		C2CF00671C5770E200B33539 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		C2CF00681C5770E200B33539 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		C2D1570C1C49D23C0068FC6E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 		C219D2F41C489DBE00F6EEDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2CF00641C5770E200B33539 /* HomePageScroll */,
 				C2CF005F1C57565200B33539 /* ActivityImg */,
 				C2CF00541C574A5F00B33539 /* ActivityDetialPictures */,
 				C255EEB21C4F3C0500EB2925 /* cities.plist */,
@@ -453,6 +462,17 @@
 			path = ActivityImg;
 			sourceTree = "<group>";
 		};
+		C2CF00641C5770E200B33539 /* HomePageScroll */ = {
+			isa = PBXGroup;
+			children = (
+				C2CF00651C5770E200B33539 /* 1.jpg */,
+				C2CF00661C5770E200B33539 /* 2.jpg */,
+				C2CF00671C5770E200B33539 /* 3.jpg */,
+				C2CF00681C5770E200B33539 /* 4.jpg */,
+			);
+			path = HomePageScroll;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -518,15 +538,19 @@
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
 				C2CF00621C57565200B33539 /* HappyTogether1.jpg in Resources */,
+				C2CF006B1C5770E200B33539 /* 3.jpg in Resources */,
 				C2020E321C51C42C0055641C /* 10.png in Resources */,
+				C2CF006A1C5770E200B33539 /* 2.jpg in Resources */,
 				C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */,
 				C2CF005E1C574A5F00B33539 /* time.png in Resources */,
 				C219D3101C48C2A400F6EEDE /* 4.png in Resources */,
 				C2CF005B1C574A5F00B33539 /* address.png in Resources */,
+				C2CF006C1C5770E200B33539 /* 4.jpg in Resources */,
 				C255EEAE1C4F338C00EB2925 /* 6.png in Resources */,
 				C2CF00631C57565200B33539 /* HappyTogether.jpeg in Resources */,
 				C28765381C48E1150093F42E /* 5.png in Resources */,
 				C2020E361C51C6020055641C /* 9.png in Resources */,
+				C2CF00691C5770E200B33539 /* 1.jpg in Resources */,
 				C2CF005C1C574A5F00B33539 /* chat.png in Resources */,
 				C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */,
 				C255EEBB1C4F65F500EB2925 /* 7.png in Resources */,
