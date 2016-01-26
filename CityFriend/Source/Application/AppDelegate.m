@@ -33,14 +33,14 @@
      UINavigationController*activityNC=[[UINavigationController alloc]initWithRootViewController:[ActivityTableViewController new]];
      UINavigationController*friendNC=[[UINavigationController alloc]initWithRootViewController:[[FriendViewController alloc] init]];
      UINavigationController*userNC=[[UINavigationController alloc]initWithRootViewController:[UserTableViewController new]];
-    
+    friendNC.navigationController.hidesBottomBarWhenPushed = YES;
+    friendNC.tabBarController.hidesBottomBarWhenPushed = YES;
     
     UITabBarController*tab=[[UITabBarController alloc]init];
     tab.viewControllers=@[homeNC,activityNC,friendNC,userNC];
     self.window.rootViewController=tab;
     tab.selectedIndex=0;
 
-    
     return YES;
 }
 

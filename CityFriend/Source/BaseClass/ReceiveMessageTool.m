@@ -58,9 +58,7 @@
 
 // 接收消息的回调函数
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-
     [self.multiDelegate conversation:conversation onDidReceiveTypedMessage:message];
-    
 }
 
 @end
