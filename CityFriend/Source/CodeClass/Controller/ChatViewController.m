@@ -65,10 +65,16 @@ static NSString*const cellID=@"cell";
     self.chattingTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight-64-10*kGap) style:UITableViewStyleGrouped];
     self.chattingTableView.delegate=self;
     self.chattingTableView.dataSource=self;
-    [self.chattingTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    [self.chattingTableView registerClass:[ChatTableViewCell class] forCellReuseIdentifier:cellID];
     self.chattingTableView.backgroundColor=[UIColor redColor];
     [self loadData];
-    [self.view addSubview:self.chattingTableView];    
+    [self.view addSubview:self.chattingTableView];
+    //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
+    NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
+    //跳转到最后一行
+    if (self.chattingArray.count>0) {
+        [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    }
     
 #pragma mark------------textView------------------
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
@@ -122,6 +128,7 @@ static NSString*const cellID=@"cell";
     //连接数据库
     [db connectDB:dataBasePath];
     //查询
+    self.chattingArray=[NSMutableArray new];
     self.chattingArray=[db selectTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,self.friendName] WithCondition:@"1=1"];
 //   self.chattingArray =[db selectString:[NSString stringWithFormat:@"SELECT * FROM %@_%@",[AVUser currentUser].username,self.friendName]];
 //        [db disconnectDB];
@@ -150,11 +157,10 @@ static NSString*const cellID=@"cell";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+    ChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
     Chat*chat=[Chat new];
     chat=self.chattingArray[indexPath.row];
-    cell.textLabel.text=chat.content;
-    
+    cell.chat=chat;
     return cell;
 }
 //返回区头高度
@@ -168,6 +174,18 @@ static NSString*const cellID=@"cell";
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.000000001;
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 回收键盘的同时textView返回底部
+    [self.view endEditing:YES];
+    [self keyBoardBack];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Chat*chat=self.chattingArray[indexPath.row];
+    CGRect rect=[chat.content boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-130, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    return rect.size.height+50;
 }
 // 在开始编辑的时候 textView 和键盘一起弹出
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView

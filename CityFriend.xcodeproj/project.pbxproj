@@ -35,6 +35,13 @@
 		C219D3101C48C2A400F6EEDE /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D30F1C48C2A400F6EEDE /* 4.png */; };
 		C219D3121C48C3C600F6EEDE /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3111C48C3C600F6EEDE /* 1.png */; };
 		C219D3141C48C40900F6EEDE /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C219D3131C48C40900F6EEDE /* 3.png */; };
+		C21C67D91C576E7E006FA98F /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C67D81C576E7E006FA98F /* ChatTableViewCell.m */; };
+		C21C67DB1C57723B006FA98F /* chat_to.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C67DA1C57723B006FA98F /* chat_to.png */; };
+		C21C67DD1C57723E006FA98F /* chat_from.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C67DC1C57723E006FA98F /* chat_from.png */; };
+		C21C67E71C577468006FA98F /* HintLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21C67E61C577468006FA98F /* HintLoginView.m */; };
+		C21C67E91C57757C006FA98F /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C67E81C57757C006FA98F /* 11.png */; };
+		C21C67EB1C578897006FA98F /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C67EA1C578897006FA98F /* 12.png */; };
+		C21C67ED1C57889B006FA98F /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = C21C67EC1C57889B006FA98F /* 13.png */; };
 		C22867DD1C56FEF600AB5D97 /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C22867DC1C56FEF600AB5D97 /* DataBaseTool.m */; };
 		C22867E01C57521100AB5D97 /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = C22867DF1C57521100AB5D97 /* Chat.m */; };
 		C241C1201C56119F00143EE8 /* GCDMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C241C11F1C56119F00143EE8 /* GCDMulticastDelegate.m */; };
@@ -118,6 +125,15 @@
 		C219D30F1C48C2A400F6EEDE /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C219D3111C48C3C600F6EEDE /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		C219D3131C48C40900F6EEDE /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C21C67D71C576E7E006FA98F /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		C21C67D81C576E7E006FA98F /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
+		C21C67DA1C57723B006FA98F /* chat_to.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_to.png; sourceTree = "<group>"; };
+		C21C67DC1C57723E006FA98F /* chat_from.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_from.png; sourceTree = "<group>"; };
+		C21C67E51C577468006FA98F /* HintLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintLoginView.h; sourceTree = "<group>"; };
+		C21C67E61C577468006FA98F /* HintLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintLoginView.m; sourceTree = "<group>"; };
+		C21C67E81C57757C006FA98F /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		C21C67EA1C578897006FA98F /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		C21C67EC1C57889B006FA98F /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
 		C22867DB1C56FEF600AB5D97 /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
 		C22867DC1C56FEF600AB5D97 /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
 		C22867DE1C57521100AB5D97 /* Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
@@ -363,6 +379,10 @@
 				C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */,
 				C2020E3D1C524E110055641C /* MyButton.h */,
 				C2020E3E1C524E110055641C /* MyButton.m */,
+				C21C67D71C576E7E006FA98F /* ChatTableViewCell.h */,
+				C21C67D81C576E7E006FA98F /* ChatTableViewCell.m */,
+				C21C67E51C577468006FA98F /* HintLoginView.h */,
+				C21C67E61C577468006FA98F /* HintLoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,6 +419,11 @@
 				C255EF071C4FD78F00EB2925 /* 8.jpeg */,
 				C2020E351C51C6020055641C /* 9.png */,
 				C2020E311C51C42C0055641C /* 10.png */,
+				C21C67E81C57757C006FA98F /* 11.png */,
+				C21C67EA1C578897006FA98F /* 12.png */,
+				C21C67EC1C57889B006FA98F /* 13.png */,
+				C21C67DA1C57723B006FA98F /* chat_to.png */,
+				C21C67DC1C57723E006FA98F /* chat_from.png */,
 				C219D3021C48A4DF00F6EEDE /* tabbarImage */,
 			);
 			path = Resources;
@@ -533,9 +558,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21C67DB1C57723B006FA98F /* chat_to.png in Resources */,
 				C219D3141C48C40900F6EEDE /* 3.png in Resources */,
 				C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */,
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
+				C21C67E91C57757C006FA98F /* 11.png in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
 				C2CF00621C57565200B33539 /* HappyTogether1.jpg in Resources */,
 				C2CF006B1C5770E200B33539 /* 3.jpg in Resources */,
@@ -545,10 +572,15 @@
 				C2CF005E1C574A5F00B33539 /* time.png in Resources */,
 				C219D3101C48C2A400F6EEDE /* 4.png in Resources */,
 				C2CF005B1C574A5F00B33539 /* address.png in Resources */,
+<<<<<<< HEAD
 				C2CF006C1C5770E200B33539 /* 4.jpg in Resources */,
+=======
+				C21C67DD1C57723E006FA98F /* chat_from.png in Resources */,
+>>>>>>> 8e1811c9d6897f890995aede1c06937358adc62d
 				C255EEAE1C4F338C00EB2925 /* 6.png in Resources */,
 				C2CF00631C57565200B33539 /* HappyTogether.jpeg in Resources */,
 				C28765381C48E1150093F42E /* 5.png in Resources */,
+				C21C67EB1C578897006FA98F /* 12.png in Resources */,
 				C2020E361C51C6020055641C /* 9.png in Resources */,
 				C2CF00691C5770E200B33539 /* 1.jpg in Resources */,
 				C2CF005C1C574A5F00B33539 /* chat.png in Resources */,
@@ -559,6 +591,7 @@
 				C2CF005D1C574A5F00B33539 /* initicator.png in Resources */,
 				C2CF005A1C574A5F00B33539 /* activityContent.png in Resources */,
 				C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */,
+				C21C67ED1C57889B006FA98F /* 13.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +655,7 @@
 				C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
+				C21C67D91C576E7E006FA98F /* ChatTableViewCell.m in Sources */,
 				C241C1231C56123F00143EE8 /* ReceiveMessageTool.m in Sources */,
 				C212E40B1C53594700E1FC1D /* ActivityTableViewController.m in Sources */,
 				C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */,
@@ -641,6 +675,7 @@
 				C2020E3F1C524E110055641C /* MyButton.m in Sources */,
 				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,
 				C22867E01C57521100AB5D97 /* Chat.m in Sources */,
+				C21C67E71C577468006FA98F /* HintLoginView.m in Sources */,
 				C255EEC91C4F88CF00EB2925 /* ClassificationCollectionViewCell.m in Sources */,
 				C219D2FE1C489F3B00F6EEDE /* FriendViewController.m in Sources */,
 				C212E4081C53276600E1FC1D /* AddActivityViewController.m in Sources */,

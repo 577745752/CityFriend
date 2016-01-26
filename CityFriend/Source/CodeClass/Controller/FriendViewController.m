@@ -12,9 +12,11 @@
 //右按钮
 @property(nonatomic,strong)UIBarButtonItem*right;
 //提示登陆的背景视图
-@property(nonatomic,strong)UIView*loginBackView;
+@property(nonatomic,strong)HintLoginView*loginBackView;
 //提示登陆按钮
 @property(nonatomic,strong)UIButton*loginButton;
+//提示注册按钮
+@property(nonatomic,strong)UIButton*registerButton;
 //好友或者群组的底视图
 @property(nonatomic,strong)UIView*headerView;
 //好友
@@ -303,12 +305,12 @@ static NSString*const cellID=@"cell";
         //连接数据库
         [db connectDB:dataBasePath];
         //更新本地数据库的聊天记录
-//        Chat*chat=[Chat new];
-//        chat.name=conversation.creator;
-//        chat.content=message.text;
-//        chat.time=@"time";
-//        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
-//        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
+        //        Chat*chat=[Chat new];
+        //        chat.name=conversation.creator;
+        //        chat.content=message.text;
+        //        chat.time=@"time";
+        //        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
+        //        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
         [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,conversation.creator,conversation.creator,message.text,time]];
         [db disconnectDB];
         NSLog(@"%@",dataBasePath);
@@ -360,12 +362,12 @@ static NSString*const cellID=@"cell";
     }
     // Do any additional setup after loading the view.
 }
--(UIView*)loginBackView
+-(HintLoginView*)loginBackView
 {
     if (!_loginBackView) {
-        _loginBackView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        _loginBackView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"8.jpeg"]];
+        _loginBackView=[[HintLoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
         [_loginBackView addSubview:self.loginButton];
+        [_loginBackView addSubview:self.registerButton];
     }
     return _loginBackView;
 }
@@ -373,13 +375,29 @@ static NSString*const cellID=@"cell";
 {
     if (!_loginButton) {
         _loginButton=[UIButton buttonWithType:UIButtonTypeSystem];
-        _loginButton.frame=CGRectMake(0, 0, 20*kGap, 10*kGap);
-        [_loginButton setTitle:@"马上去登陆" forState:UIControlStateNormal];
-        _loginButton.center=self.view.center;
+        _loginButton.frame=CGRectMake(10*kGap, 2*kHeight/3, 10*kGap, 5*kGap);
+        _loginButton.layer.cornerRadius=5;
+        _loginButton.layer.masksToBounds=YES;
+        _loginButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
+        [_loginButton setTitle:@"登陆" forState:UIControlStateNormal];
         [_loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        _loginButton.backgroundColor=[UIColor redColor];
+        
     }
     return _loginButton;
+}
+-(UIButton*)registerButton
+{
+    if (!_registerButton) {
+        _registerButton=[UIButton buttonWithType:UIButtonTypeSystem];
+        _registerButton.frame=CGRectMake(30*kGap,2*kHeight/3, 10*kGap, 5*kGap);
+        _registerButton.layer.cornerRadius=5;
+        _registerButton.layer.masksToBounds=YES;
+        _registerButton.backgroundColor=[UIColor colorWithRed:164/255.0 green:203/255.0 blue:70/255.0 alpha:1];
+        [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
+        [_registerButton addTarget:self action:@selector(registerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _registerButton;
 }
 -(UIView*)headerView
 {
@@ -509,6 +527,11 @@ static NSString*const cellID=@"cell";
 {
     LoginViewController *login=[LoginViewController new];
     [self.navigationController pushViewController:login animated:YES];
+}
+-(void)registerButtonAction:(UIButton*)button
+{
+    RegisterViewController*regist=[RegisterViewController new];
+    [self.navigationController pushViewController:regist animated:YES];
 }
 #pragma mark-------------TableTableView的代理方法-----------------
 //设置分区个数
