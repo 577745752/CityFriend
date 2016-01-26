@@ -27,6 +27,9 @@
 @property (nonatomic, retain) NSMutableArray *nameArray;
 //详细分类名数组
 @property (nonatomic, retain) NSMutableArray *subArray;
+//轮播图
+@property(nonatomic,strong)UIScrollView *scroView;
+@property(nonatomic,strong)UIPageControl *pageControl;
 @end
 
 //重用标识符
@@ -62,6 +65,32 @@ static NSString *headerReuse = @"headerReuse";
     self.cityNameLabel.textAlignment=NSTextAlignmentCenter;
     self.cityNameLabel.text=@"正在玩命定位中......";
     [self.view addSubview:self.cityNameLabel];
+#pragma mark-----------轮播图
+    self.scroView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.cityNameLabel.frame), kWidth, kHeight / 4)];
+    self.scroView.backgroundColor = [UIColor grayColor];
+    _scroView.contentSize = CGSizeMake(kWidth * 4, kHeight / 4);
+    _scroView.pagingEnabled = YES;
+    _scroView.contentOffset = CGPointMake(0, 0);
+    self.pageControl=[[UIPageControl alloc]initWithFrame:CGRectMake(0, 0, kWidth / 5, kGap * 4)];
+    self.pageControl.backgroundColor=[UIColor greenColor];
+    self.pageControl.center=CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height-55);
+    //设置圆点个数
+    self.pageControl.numberOfPages=4;
+    //设置未选中圆点颜色
+    self.pageControl.pageIndicatorTintColor=[UIColor grayColor];
+    //设置选中圆点颜色
+    self.pageControl.currentPageIndicatorTintColor=[UIColor orangeColor];
+    //当只剩下一个圆点的时候,设置是否隐藏
+    self.pageControl.hidesForSinglePage=YES;
+    //设置默认选中的圆点
+    self.pageControl.currentPage = 0;//此时为选中第一个圆点
+    //事件
+    [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:self.pageControl];
+    
+    
+    [self.view addSubview:self.scroView];
 #pragma mark-------------城市定位-------------
     //判断当前设备是否支持定位
     if ([CLLocationManager locationServicesEnabled]==YES) {
@@ -88,12 +117,12 @@ static NSString *headerReuse = @"headerReuse";
     
 #pragma mark----------collectionView---------------
     self.flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    self.flowLayout.itemSize = CGSizeMake(12*kGap, 14*kGap);
+    self.flowLayout.itemSize = CGSizeMake(12*kGap, 6*kGap);
     self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64+10*kGap, kWidth, kHeight-10*kGap-64) collectionViewLayout:self.flowLayout];
     self.flowLayout.sectionInset = UIEdgeInsetsMake(3.5*kGap, 3.5*kGap, 3.5*kGap, 3.5*kGap);
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.backgroundColor=[UIColor yellowColor];
+    self.collectionView.backgroundColor=[UIColor whiteColor];
     self.flowLayout.headerReferenceSize=CGSizeMake(kWidth, 5*kGap);
     //注册
     [self.collectionView registerClass:[ClassificationCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
@@ -147,13 +176,23 @@ static NSString *headerReuse = @"headerReuse";
 //返回cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ClassificationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    NSString *str = [NSString new];
+    str = _subArray[indexPath.section][indexPath.row];
+    if ([str containsString:@"酒店"]) {
+        str = [[str componentsSeparatedByString:@"酒店"]firstObject];
+        cell.LabName.text = str;
+    }
+    else{
     cell.LabName.text = _subArray[indexPath.section][indexPath.row];
+    }
+    cell.LabName.backgroundColor = [UIColor colorWithRed:arc4random() % 255 / 255.0 green:arc4random() % 255 / 255.0  blue:arc4random() % 255 / 255.0  alpha:1];
     return cell;
 }
 //增补视图
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
     ClassificationCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReuse forIndexPath:indexPath];
+    
     view.label.text = _nameArray[indexPath.section];
     view.backgroundColor = [UIColor greenColor];
     return view;
@@ -162,7 +201,7 @@ static NSString *headerReuse = @"headerReuse";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ShopTableViewController*shopTC=[ShopTableViewController new];
     shopTC.cityName=self.cityName;
-    shopTC.category=_subArray[indexPath.section][indexPath.row];
+    shopTC.category=_subArray[indexPath.section][indexPath.item];
     [self.navigationController pushViewController:shopTC animated:YES];
     
 }
@@ -171,7 +210,7 @@ static NSString *headerReuse = @"headerReuse";
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     CLLocation*location=[locations lastObject];
-    //NSLog(@"定位成功");
+    NSLog(@"定位成功");
     [self getCityNameWithCoor:CLLocationCoordinate2DMake(location.coordinate.latitude,location.coordinate.longitude)];
     //关闭定位
     [self.manager stopUpdatingLocation];

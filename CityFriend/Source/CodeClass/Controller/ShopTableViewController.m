@@ -20,7 +20,7 @@ static NSString*shopID=@"shop";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@,%@",self.cityName,self.category);
+    //NSLog(@"%@,%@",self.cityName,self.category);
     [self.tableView registerClass:[ShopTableViewCell class] forCellReuseIdentifier:shopID];
     [self setUrlCategory:_category andCityName:_cityName];
     [self loadData];
@@ -32,7 +32,7 @@ static NSString*shopID=@"shop";
     self.dataDic = [SignatrueEncryption encryptedParamsWithBaseParams:dictionary];
     self.urlStr = [NSString stringWithFormat:@"%@/v1/deal/find_deals?appkey=%@&sign=%@&city=%@&category=%@&limit=30&page=1", kBASE_SERVER_URL, kAPP_KEY, _dataDic[@"sign"], dictionary[@"city"], dictionary[@"category"]];
     _urlStr = [_urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@", _urlStr);
+    //NSLog(@"%@", _urlStr);
 }
 //JSON解析
 -(void)loadData{

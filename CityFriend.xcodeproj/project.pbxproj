@@ -54,6 +54,14 @@
 		C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C255EF071C4FD78F00EB2925 /* 8.jpeg */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
+		C2CF002D1C56FEA900B33539 /* ActivivtyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */; };
+		C2CF005A1C574A5F00B33539 /* activityContent.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00551C574A5F00B33539 /* activityContent.png */; };
+		C2CF005B1C574A5F00B33539 /* address.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00561C574A5F00B33539 /* address.png */; };
+		C2CF005C1C574A5F00B33539 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00571C574A5F00B33539 /* chat.png */; };
+		C2CF005D1C574A5F00B33539 /* initicator.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00581C574A5F00B33539 /* initicator.png */; };
+		C2CF005E1C574A5F00B33539 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00591C574A5F00B33539 /* time.png */; };
+		C2CF00621C57565200B33539 /* HappyTogether1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00601C57565200B33539 /* HappyTogether1.jpg */; };
+		C2CF00631C57565200B33539 /* HappyTogether.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00611C57565200B33539 /* HappyTogether.jpeg */; };
 		C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +145,15 @@
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C2CF002B1C56FEA900B33539 /* ActivivtyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivivtyDetailViewController.h; sourceTree = "<group>"; };
+		C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivivtyDetailViewController.m; sourceTree = "<group>"; };
+		C2CF00551C574A5F00B33539 /* activityContent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activityContent.png; sourceTree = "<group>"; };
+		C2CF00561C574A5F00B33539 /* address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address.png; sourceTree = "<group>"; };
+		C2CF00571C574A5F00B33539 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		C2CF00581C574A5F00B33539 /* initicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = initicator.png; sourceTree = "<group>"; };
+		C2CF00591C574A5F00B33539 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		C2CF00601C57565200B33539 /* HappyTogether1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyTogether1.jpg; sourceTree = "<group>"; };
+		C2CF00611C57565200B33539 /* HappyTogether.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HappyTogether.jpeg; sourceTree = "<group>"; };
 		C2D1570C1C49D23C0068FC6E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C2D1570E1C49DCC10068FC6E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -285,6 +302,8 @@
 				C210148C1C507E1D0043B98E /* ShopViewController.m */,
 				C212E4091C53594700E1FC1D /* ActivityTableViewController.h */,
 				C212E40A1C53594700E1FC1D /* ActivityTableViewController.m */,
+				C2CF002B1C56FEA900B33539 /* ActivivtyDetailViewController.h */,
+				C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */,
 				C212E4061C53276600E1FC1D /* AddActivityViewController.h */,
 				C212E4071C53276600E1FC1D /* AddActivityViewController.m */,
 				C219D2FC1C489F3B00F6EEDE /* FriendViewController.h */,
@@ -352,6 +371,8 @@
 		C219D2F41C489DBE00F6EEDE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2CF005F1C57565200B33539 /* ActivityImg */,
+				C2CF00541C574A5F00B33539 /* ActivityDetialPictures */,
 				C255EEB21C4F3C0500EB2925 /* cities.plist */,
 				C255EEBF1C4F83C500EB2925 /* Categories.xml */,
 				C28765371C48E1150093F42E /* 5.png */,
@@ -391,6 +412,27 @@
 				C255EEAB1C4F322000EB2925 /* SignatrueEncryption.m */,
 			);
 			path = "SHA1加密";
+			sourceTree = "<group>";
+		};
+		C2CF00541C574A5F00B33539 /* ActivityDetialPictures */ = {
+			isa = PBXGroup;
+			children = (
+				C2CF00551C574A5F00B33539 /* activityContent.png */,
+				C2CF00561C574A5F00B33539 /* address.png */,
+				C2CF00571C574A5F00B33539 /* chat.png */,
+				C2CF00581C574A5F00B33539 /* initicator.png */,
+				C2CF00591C574A5F00B33539 /* time.png */,
+			);
+			path = ActivityDetialPictures;
+			sourceTree = "<group>";
+		};
+		C2CF005F1C57565200B33539 /* ActivityImg */ = {
+			isa = PBXGroup;
+			children = (
+				C2CF00601C57565200B33539 /* HappyTogether1.jpg */,
+				C2CF00611C57565200B33539 /* HappyTogether.jpeg */,
+			);
+			path = ActivityImg;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,16 +499,23 @@
 				C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */,
 				C219D2D91C489CBA00F6EEDE /* LaunchScreen.storyboard in Resources */,
 				C219D3121C48C3C600F6EEDE /* 1.png in Resources */,
+				C2CF00621C57565200B33539 /* HappyTogether1.jpg in Resources */,
 				C2020E321C51C42C0055641C /* 10.png in Resources */,
 				C255EEB31C4F3C0500EB2925 /* cities.plist in Resources */,
+				C2CF005E1C574A5F00B33539 /* time.png in Resources */,
 				C219D3101C48C2A400F6EEDE /* 4.png in Resources */,
+				C2CF005B1C574A5F00B33539 /* address.png in Resources */,
 				C255EEAE1C4F338C00EB2925 /* 6.png in Resources */,
+				C2CF00631C57565200B33539 /* HappyTogether.jpeg in Resources */,
 				C28765381C48E1150093F42E /* 5.png in Resources */,
 				C2020E361C51C6020055641C /* 9.png in Resources */,
+				C2CF005C1C574A5F00B33539 /* chat.png in Resources */,
 				C219D2D61C489CBA00F6EEDE /* Assets.xcassets in Resources */,
 				C255EEBB1C4F65F500EB2925 /* 7.png in Resources */,
 				C20870E51C4CDFBC007EC7B6 /* 2.png in Resources */,
 				C219D2D41C489CBA00F6EEDE /* Main.storyboard in Resources */,
+				C2CF005D1C574A5F00B33539 /* initicator.png in Resources */,
+				C2CF005A1C574A5F00B33539 /* activityContent.png in Resources */,
 				C255EEC01C4F83C500EB2925 /* Categories.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C219D3011C489F4E00F6EEDE /* UserTableViewController.m in Sources */,
+				C2CF002D1C56FEA900B33539 /* ActivivtyDetailViewController.m in Sources */,
 				C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */,
 				C255EEAC1C4F322000EB2925 /* SignatrueEncryption.m in Sources */,
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,

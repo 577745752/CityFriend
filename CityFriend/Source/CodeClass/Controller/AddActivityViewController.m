@@ -152,6 +152,7 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }else{
         AVObject *post = [AVObject objectWithClassName:@"Activity"];
+        [post setObject:[AVUser currentUser].username forKey:@"initiator"];
         [post setObject:self.activityTitleTextField.text forKey:@"title"];
         [post setObject:self.activityTimeTextField.text forKey:@"time"];
         [post setObject:self.addressTextField.text forKey:@"address"];

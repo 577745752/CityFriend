@@ -7,9 +7,10 @@
 //
 
 #import "ActivityTableViewController.h"
-
+#import "ActivivtyDetailViewController.h"
 @interface ActivityTableViewController ()
 @property(nonatomic,strong)NSMutableArray*activityArray;
+@property(nonatomic,strong)UIScrollView *scroView;
 @end
 static NSString*const cellID=@"cell";
 @implementation ActivityTableViewController
@@ -19,7 +20,7 @@ static NSString*const cellID=@"cell";
     if (self) {
         self.navigationItem.title=@"活动";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"活动" image:[UIImage imageNamed:@"2"] selectedImage:[UIImage imageNamed:@"2"]];
-        self.view.backgroundColor=[UIColor yellowColor];
+        //self.view.backgroundColor=[UIColor yellowColor];
         
         UIBarButtonItem* right=[[UIBarButtonItem alloc]initWithTitle:@"发起活动" style:UIBarButtonItemStylePlain target:self action:@selector(rightClick:)];
         self.navigationItem.rightBarButtonItem = right;
@@ -47,12 +48,16 @@ static NSString*const cellID=@"cell";
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     [self loadData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+//-(void)viewWillAppear:(BOOL)animated{
+//    [self loadData];
+//}
 -(void)loadData
 {
     //TableView的数据
@@ -97,11 +102,34 @@ static NSString*const cellID=@"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     cell.textLabel.text=self.activityArray[indexPath.row][@"localData"][@"title"];
-    
     return cell;
 }
-
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%lu",indexPath.row);
+    ActivivtyDetailViewController *new = [ActivivtyDetailViewController new];
+    new.objc = self.activityArray[indexPath.row];
+    
+    [self.navigationController pushViewController:new animated:YES];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return kHeight / 3;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    _scroView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight / 3)];
+    _scroView.contentSize = CGSizeMake(kWidth * 2, kHeight / 3);
+    _scroView.pagingEnabled = YES;
+    _scroView.contentOffset = CGPointMake(0, 0);
+    _scroView.backgroundColor = [UIColor grayColor];
+    
+    UIImageView *imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight / 3)];
+    imgView1.image = [UIImage imageNamed:@"HappyTogether.jpeg"];
+    [_scroView addSubview:imgView1];
+    UIImageView *imgView2 = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth, 0, kWidth, kHeight / 3)];
+    imgView2.image = [UIImage imageNamed:@"HappyTogether1.jpg"];
+    [_scroView addSubview:imgView2];
+    
+    return _scroView;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
