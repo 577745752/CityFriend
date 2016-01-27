@@ -129,11 +129,107 @@ static NSString*const cellID=@"cell";
 }
 -(void)setQun:(UIBarButtonItem*)item
 {
+//    //向本地数据库中添加数据
+//    NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+//    NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+//    DataBaseTool*db=[DataBaseTool shareDataBase];
+//    //连接数据库
+//    [db connectDB:dataBasePath];
+//    //建表
+//
+//    [db disconnectDB];
+//    NSLog(@"%@",dataBasePath);
     
+
+//    //刷新数据
+//    [self loadDataOfFriends];
+    UIAlertController*setQun=[UIAlertController alertControllerWithTitle:@"" message:@"请输入群id" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction*ok=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //获取要要创建的群的id
+        UITextField*text=(UITextField*)[setQun.view viewWithTag:107];
+        //在群表中查询群id是否已经存在
+        AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+        [query whereKey:@"qunname" equalTo:text.text];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error == nil) {
+                //如果返回的用户数组不为空,说明该群名称已经存在了
+                if ([objects count]) {
+                        UIAlertController*qunmingbeizhanyong=[UIAlertController alertControllerWithTitle:@"提示" message:@"群名称已经被占用了" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction*zhidaole=[UIAlertAction actionWithTitle:@"哥乌恩滚" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        }];
+                        [qunmingbeizhanyong addAction:zhidaole];
+                        [self presentViewController:qunmingbeizhanyong animated:YES completion:nil];
+                }else{//如果返回的用户数组为空,才可以创建
+                    //向云端服务器表中添加数据(更新群表)
+                    AVObject *post = [AVObject objectWithClassName:@"Qun"];
+//                    [post setObject:[AVUser currentUser].username forKey:@"username"];
+                    [post setObject:[AVUser currentUser].username forKey:@"admin"];
+                    [post setObject:text.text forKey:@"qunname"];
+                    [post setObject:[NSNumber numberWithInt:1] forKey:@"numberofqun"]; //初始值为 1,用计数器来存储当前群组的成员人数
+                    [post addObjectsFromArray:[NSArray arrayWithObjects:[AVUser currentUser].username, nil] forKey:@"member"];//用数组来存储群成员
+                    [post save];        //刷新数据
+                    [self loadDataOfGroup];
+                }
+            } else {
+                NSLog(@"%@",error);
+            }
+        }];
+
+    }];
+    UIAlertAction*no=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [setQun addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder=@"请输群id";
+        textField.tag=107;
+    }];
+    
+    [setQun addAction:no];
+    [setQun addAction:ok];
+    [self presentViewController:setQun animated:YES completion:nil];
+
 }
 -(void)joinQun:(UIBarButtonItem*)item
 {
+    UIAlertController*joinQun=[UIAlertController alertControllerWithTitle:@"" message:@"请输入群id" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction*ok=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //获取要要创建的群的id
+        UITextField*text=(UITextField*)[joinQun.view viewWithTag:108];
+        //在群表中查询群id是否存在
+        AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+        [query whereKey:@"qunname" equalTo:text.text];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error == nil) {
+                //如果返回的用户数组不为空,说明该群名称已经存在了
+                if ([objects count]) {
+                    //首先要知道群主是谁
+                    NSString*admin=[objects[0] valueForKey:@"admin"];
+                   //向群主申请加入该群,给群主发送申请信息
+                    [self SendMessage:[NSString stringWithFormat:@"%@/%@/>_<想要入伙>_<",[AVUser currentUser].username,text.text] toUserName:admin];
+                }else{//要加的群不存在
+                    UIAlertController*qunmingbeizhanyong=[UIAlertController alertControllerWithTitle:@"提示" message:@"您输入的群不存在" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction*zhidaole=[UIAlertAction actionWithTitle:@"哥乌恩滚" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+                    [qunmingbeizhanyong addAction:zhidaole];
+                    [self presentViewController:qunmingbeizhanyong animated:YES completion:nil];
+                }
+            } else {
+                NSLog(@"%@",error);
+            }
+        }];
+        
+    }];
+    UIAlertAction*no=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [joinQun addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder=@"请输群id";
+        textField.tag=108;
+    }];
     
+    [joinQun addAction:no];
+    [joinQun addAction:ok];
+    [self presentViewController:joinQun animated:YES completion:nil];
 }
 // 添加好友的方法(实际上是用了发送消息的方法)
 -(void)SendMessage:(NSString*)message toUserName:(NSString*)username{
@@ -220,13 +316,6 @@ static NSString*const cellID=@"cell";
                             )",[AVUser currentUser].username,idString]];
             [db disconnectDB];
             NSLog(@"%@",dataBasePath);
-            
-            
-            
-            
-            
-            
-            
             //向云端服务器表中添加数据(更新好友表)
             AVObject *post = [AVObject objectWithClassName:@"Friends"];
             [post setObject:[AVUser currentUser].username forKey:@"username"];
@@ -250,7 +339,7 @@ static NSString*const cellID=@"cell";
         [getFriend addAction:no];
         [getFriend addAction:ok];
         [self presentViewController:getFriend animated:YES completion:nil];
-    }else if([message.text hasSuffix:@"已经通过了你的好友请求>_<"]){
+    }else if([message.text hasSuffix:@"已经通过了你的好友请求>_<"]){//对方通过你的好友请求的消息处理
         //截取对方的id
         NSString*idString=[[message.text componentsSeparatedByString:@"已经"] firstObject];
         UIAlertController*getFriend=[UIAlertController alertControllerWithTitle:@"" message:message.text preferredStyle:UIAlertControllerStyleAlert];
@@ -287,7 +376,57 @@ static NSString*const cellID=@"cell";
         }];
         [getFriend addAction:ok];
         [self presentViewController:getFriend animated:YES completion:nil];
-    }else{
+    }else if ([message.text hasSuffix:@">_<想要入伙>_<"]){
+        //截取对方的id和想要加入的群
+        NSString*idString=[[message.text componentsSeparatedByString:@"/"] firstObject];
+        NSString*qunname=[message.text componentsSeparatedByString:@"/"][1];
+        UIAlertController*receiveMember=[UIAlertController alertControllerWithTitle:qunname message:[NSString stringWithFormat:@"报告公明哥哥:山下有个自称%@的黑脸汉子前来入伙",idString] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*ok=[UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //更新之前需要先查询本条记录的objectId(每个表中每条记录的objectId都是唯一的)
+            AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+            [query whereKey:@"qunname" equalTo:qunname];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    // 检索成功
+                    NSString*objectId=[objects[0] valueForKey:@"objectId"];
+                    //向云端服务器表中更新数据(更新群表)
+                    // 知道 objectId，创建 AVObject
+                    AVObject *post = [AVObject objectWithoutDataWithClassName:@"Qun" objectId:objectId];
+                    //更新群成员数组字段的记录
+                    [post addObjectsFromArray:[NSArray arrayWithObjects:idString, nil] forKey:@"member"];
+//                    [post setObject:@"http://tp1.sinaimg.cn/3652761852/50/5730347813/0" forKey:@"pubUserAvatar"];
+                    [post incrementKey:@"numberofqun"];//计数器计数一次
+                    //保存
+                    [post saveInBackground];
+                    //刷新数据
+                    [self loadDataOfGroup];
+                    //给请求入伙的用户返回同意添加的结果
+                    [self SendMessage:[NSString stringWithFormat:@">_<同意你加入大保健团伙>_</%@/%@",[AVUser currentUser].username,qunname]toUserName:idString];
+                } else {
+                    // 输出错误信息
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }];
+        UIAlertAction*no=[UIAlertAction actionWithTitle:@"残忍拒绝" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [receiveMember addAction:no];
+        [receiveMember addAction:ok];
+        [self presentViewController:receiveMember animated:YES completion:nil];
+        } else if([message.text hasPrefix:@">_<同意你加入大保健团伙>_<"]){
+            //获取群主id
+            NSString*idString=[message.text componentsSeparatedByString:@"/"][1];
+            //获取已经加入的群名称
+            NSString*qunname=[[message.text componentsSeparatedByString:@"/"] lastObject];
+            UIAlertController*intoQun=[UIAlertController alertControllerWithTitle:qunname message:@"你已经成功加入了大保健团伙" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*ok=[UIAlertAction actionWithTitle:@"搜嘎" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                //向云端服务器群表中添加数据(更新群表)
+                //刷新数据
+                [self loadDataOfGroup];
+            }];
+            [intoQun addAction:ok];
+            [self presentViewController:intoQun animated:YES completion:nil];
+       }else{
         /*
          //正常聊天
          NSLog(@"接收到消息了");
@@ -541,11 +680,27 @@ static NSString*const cellID=@"cell";
 -(void)loadDataOfGroup
 {
     self.qunArray=[NSMutableArray new];
-    
-    //刷新u
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.friendTableView reloadData];
-    });
+    AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // 检索成功
+            for (AVObject * obj in objects) {
+                NSMutableArray*array=[obj valueForKey:@"member"];
+                for (NSString * username in array) {
+                    if ([username isEqualToString:[AVUser currentUser].username]) {
+                        [self.qunArray addObject:[obj valueForKey:@"qunname"]];
+                    }
+                }
+            }
+            //刷新ui
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.friendTableView reloadData];
+            });
+        } else {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 -(void)loginButtonAction:(UIButton*)button
 {
@@ -586,7 +741,8 @@ static NSString*const cellID=@"cell";
     if (self.page) {
         cell.textLabel.text=self.friendsArray[indexPath.section][indexPath.row];
     }else{
-        cell.textLabel.text=@"群名字";
+        
+        cell.textLabel.text=self.qunArray[indexPath.row];
     }
     
     return cell;
