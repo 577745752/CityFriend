@@ -141,6 +141,12 @@ static NSString*const cellID=@"cell";
     //刷新u
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.chattingTableView reloadData];
+        //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
+        NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
+        //跳转到最后一行
+        if (self.chattingArray.count>0) {
+            [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+        }
     });
 
 }
@@ -254,14 +260,6 @@ static NSString*const cellID=@"cell";
                     [self loadData];
                     NSLog(@"发送成功！");
                     //刷新u
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
-                        NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
-                        //跳转到最后一行
-                        if (self.chattingArray.count>0) {
-                            [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
-                        }
-                    });
                     [self.view endEditing:YES];
                     [self keyBoardBack];
                     self.textView.text = @"";
