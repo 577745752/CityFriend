@@ -55,6 +55,7 @@ static NSString*const cellID=@"cell";
         self.right=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightClick:)];
         //默认显示好友界面
         self.page=YES;
+        [self ReceiveMessage];
     }
     return self;
 }
@@ -358,7 +359,7 @@ static NSString*const cellID=@"cell";
             [self loadDataOfGroup];
         }
         //        [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
-        [self ReceiveMessage];
+        
     }
     // Do any additional setup after loading the view.
 }

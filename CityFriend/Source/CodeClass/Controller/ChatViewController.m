@@ -82,6 +82,7 @@ static NSString*const cellID=@"cell";
     // 初始化myView
     self.myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth,10*kGap)];
     self.myView.center = CGPointMake(kWidth/2, kHeight-64-5*kGap);
+    self.myView.backgroundColor=[UIColor grayColor];
     
     // 初始化textView
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kWidth-10*kGap, 10*kGap)];
@@ -110,13 +111,16 @@ static NSString*const cellID=@"cell";
     
     [self.myView addSubview:sendButton];
     [self.view addSubview:self.myView];
-    self.view.backgroundColor = [UIColor cyanColor];
     // Do any additional setup after loading the view.
 }
 -(void)sendButtonAction:(UIButton*)button
 {
-    
+    if ([self.textView.text isEqualToString:@""]) {
+        
+    }else{
+        
     [self SendMessage:self.textView.text];
+    }
 }
 -(void)loadData
 {
