@@ -151,8 +151,11 @@
         [alertController addAction:action];
         [self presentViewController:alertController animated:YES completion:nil];
     }else{
+        NSMutableArray *array = [NSMutableArray new];
+        [array addObject:[AVUser currentUser].username];
         AVObject *post = [AVObject objectWithClassName:@"Activity"];
         [post setObject:[AVUser currentUser].username forKey:@"initiator"];
+        [post setObject:array forKey:@"counts"];
         [post setObject:self.activityTitleTextField.text forKey:@"title"];
         [post setObject:self.activityTimeTextField.text forKey:@"time"];
         [post setObject:self.addressTextField.text forKey:@"address"];
@@ -167,6 +170,7 @@
                 [alertController addAction:action];
                 [self presentViewController:alertController animated:YES completion:nil];
             } else {
+                NSLog(@"%@",error);
                 // 保存 post 时出错
                 UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"发布失败" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -174,7 +178,7 @@
                 [self presentViewController:alertController animated:YES completion:nil];
             }
         }];
-         }
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

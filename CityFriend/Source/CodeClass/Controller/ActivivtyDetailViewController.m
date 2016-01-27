@@ -23,10 +23,37 @@
     }
     return self;
 }
-//分享事件
+//点击加入活动
 -(void)shareActivity:(UIBarButtonItem *)item{
-    NSLog(@"测试数据");
+    AVQuery *query = [AVQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"title" equalTo:self.titleLabel.text];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSMutableArray *array = [NSMutableArray new];
+        array = objects[0][@"counts"];
+        if([array containsObject:[AVUser currentUser].username]){
+            UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"您已经在活动成员内,不需再次加入!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+            NSLog(@"加入失败");
+        }
+        else{
+            [array addObject:[AVUser currentUser].username];
+            [_objc setObject:array forKey:@"counts"];
+            [_objc save];
+            NSLog(@"加入成功");
+            UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"加入成功,赶紧加入群聊进行活动吧!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*action=[UIAlertAction actionWithTitle:@"开心~" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
 }
+
 
 
 -(void)drawView
@@ -152,7 +179,7 @@
 }
 -(UILabel *)chatGroup_Label{
     if (!_chatGroup_Label) {
-        _chatGroup_Label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.chatGroupImgView.frame) + kGap * 2, CGRectGetMaxY(self.address_Label.frame) + kGap * 3, kWidth / 5, kGap * 4)];
+        _chatGroup_Label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.chatGroupImgView.frame) + kGap * 2, CGRectGetMaxY(self.address_Label.frame) + kGap * 3, kWidth / 4, kGap * 4)];
         _chatGroup_Label.text = @"讨论群:";
         _chatGroup_Label.font = [UIFont systemFontOfSize:15];
         //_chatGroup_Label.backgroundColor = [UIColor grayColor];
@@ -162,8 +189,9 @@
 -(UILabel *)chatGroupLabel{
     if (!_chatGroupLabel) {
         _chatGroupLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.chatGroup_Label.frame) + kGap * 2, CGRectGetMaxY(self.addressLabel.frame) + kGap * 3, kWidth / 5 , kGap * 4)];
-        
-        _chatGroupLabel.backgroundColor = [UIColor grayColor];
+        _chatGroup_Label.text = @"已参加数:";
+        _chatGroup_Label.font = [UIFont systemFontOfSize:15];
+        //_chatGroupLabel.backgroundColor = [UIColor grayColor];
     }
     return _chatGroupLabel;
 }
@@ -213,7 +241,9 @@
     self.initiatorLabel.text = _objc[@"initiator"];
     self.timeLabel.text = _objc[@"time"];
     self.addressLabel.text = _objc[@"address"];
-    
+    NSMutableArray * arr = [NSMutableArray new];
+    arr = _objc[@"counts"];
+    self.chatGroupLabel.text = [NSString stringWithFormat:@"%lu 人",(unsigned long)arr.count];
     CGRect a = self.activityContentLabel.frame;
     a.size.height =  [self caculateHeightWith:_objc[@"concent"]];
     self.activityContentLabel.frame = a;
