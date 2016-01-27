@@ -142,6 +142,7 @@ static NSString*const cellID=@"cell";
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.chattingTableView reloadData];
     });
+
 }
 //设置分区个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -252,6 +253,16 @@ static NSString*const cellID=@"cell";
                     //重新加载聊天记录
                     [self loadData];
                     NSLog(@"发送成功！");
+                    //刷新u
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
+                        NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
+                        //跳转到最后一行
+                        if (self.chattingArray.count>0) {
+                            [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+                        }
+                    });
+
                 }
             }];
         }];
