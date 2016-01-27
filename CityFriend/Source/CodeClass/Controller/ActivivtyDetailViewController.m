@@ -16,7 +16,7 @@
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareActivity:)];
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"加入活动" style:UIBarButtonItemStylePlain target:self action:@selector(shareActivity:)];
         self.navigationItem.title=@"活动详情";
         [self drawView];
         
@@ -31,6 +31,8 @@
 
 -(void)drawView
 {
+    self.view.backgroundColor=[UIColor colorWithRed:220 / 255.0 green:165 / 255.0 blue:45 / 255.0 alpha:1];
+    
     [self.view addSubview:self.titleLabel];
     
     [self.view addSubview:self.initiatorImgView];
