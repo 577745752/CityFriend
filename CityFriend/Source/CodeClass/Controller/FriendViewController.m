@@ -9,8 +9,12 @@
 #import "FriendViewController.h"
 
 @interface FriendViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
-//右按钮
-@property(nonatomic,strong)UIBarButtonItem*right;
+//好友界面右按钮
+@property(nonatomic,strong)UIBarButtonItem*friendRight;
+//群界面右按钮加群
+@property(nonatomic,strong)UIBarButtonItem*joinQunRight;
+//群界面右按钮建群
+@property(nonatomic,strong)UIBarButtonItem*setQunRight;
 //提示登陆的背景视图
 @property(nonatomic,strong)HintLoginView*loginBackView;
 //提示登陆按钮
@@ -52,14 +56,21 @@ static NSString*const cellID=@"cell";
     if (self) {
         self.navigationItem.title=@"好友";
         self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"好友" image:[UIImage imageNamed:@"3"] selectedImage:[UIImage imageNamed:@"3"]];
-        self.right=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightClick:)];
+        self.friendRight=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(friendRightClick:)];
+        self.setQunRight=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(setQun:)];
+        self.joinQunRight=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(joinQun:)];
+  
         //默认显示好友界面
         self.page=YES;
-        [self ReceiveMessage];
+        //如果用户已经登录,就开始接受信息
+        if ([AVUser currentUser]!=nil) {
+             [self ReceiveMessage];
+        }
+       
     }
     return self;
 }
--(void)rightClick:(UIBarButtonItem*)item
+-(void)friendRightClick:(UIBarButtonItem*)item
 {
     if (self.page) {//好友界面
         //点击弹窗
@@ -112,8 +123,17 @@ static NSString*const cellID=@"cell";
         [friendName addAction:no];
         [friendName addAction:ok];
         [self presentViewController:friendName animated:YES completion:nil];
-    }else{//群组界面
+    }else{
+        //群组界面
     }
+}
+-(void)setQun:(UIBarButtonItem*)item
+{
+    
+}
+-(void)joinQun:(UIBarButtonItem*)item
+{
+    
 }
 // 添加好友的方法(实际上是用了发送消息的方法)
 -(void)SendMessage:(NSString*)message toUserName:(NSString*)username{
@@ -353,13 +373,14 @@ static NSString*const cellID=@"cell";
 #pragma mark------------TableView
         [self.view addSubview:self.friendTableView];
         if (self.page) {
-            self.navigationItem.rightBarButtonItem = self.right;
+            self.navigationItem.rightBarButtonItems = @[self.friendRight];
             [self loadDataOfFriends];
         }else{
+            self.navigationItem.rightBarButtonItems=@[self.joinQunRight,self.setQunRight];
             [self loadDataOfGroup];
         }
         //        [[ReceiveMessageTool shareIFlyManager] addDelegateReceiveMessageTool:self delegateQueue:dispatch_get_main_queue()];
-        
+        [self ReceiveMessage];
     }
     // Do any additional setup after loading the view.
 }
@@ -442,11 +463,13 @@ static NSString*const cellID=@"cell";
 -(void)friendButtonAction:(UIButton*)button
 {
     self.page=YES;
+    self.navigationItem.rightBarButtonItems = @[self.friendRight];
     [self loadDataOfFriends];
 }
 -(void)groupButtonAction:(UIButton*)button
 {
     self.page=NO;
+    self.navigationItem.rightBarButtonItems=@[self.joinQunRight,self.setQunRight];
     [self loadDataOfGroup];
 }
 -(void)loadDataOfFriends
