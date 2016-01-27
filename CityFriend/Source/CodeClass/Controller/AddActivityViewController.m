@@ -18,6 +18,7 @@
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(register1:)];
         self.navigationItem.title=@"发布活动";
+        self.str=@"";
         [self drawView];
         
     }
@@ -132,7 +133,7 @@
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     if([_str isEqualToString:@""]){
         _concentView.text = @"";
-        _concentView.textColor = [UIColor blackColor];
+        _concentView.textColor = [UIColor grayColor];
     }
     else{
     }
