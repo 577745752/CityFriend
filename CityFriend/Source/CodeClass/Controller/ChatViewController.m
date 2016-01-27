@@ -85,7 +85,7 @@ static NSString*const cellID=@"cell";
     self.myView.backgroundColor=[UIColor grayColor];
     
     // 初始化textView
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kWidth-10*kGap, 10*kGap)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(kGap * 2, 1.5 * kGap, kWidth-10*kGap, 7*kGap)];
     // 设置代理
     self.textView.delegate = self;
     //
@@ -95,7 +95,7 @@ static NSString*const cellID=@"cell";
     // 设置编辑使用的属性(默认是yes,当设置为NO的时候,依然可以拷贝)
     self.textView.editable = YES;
     // 设置textView的边框的属性
-    self.textView.layer.cornerRadius = 5*kGap;
+    self.textView.layer.cornerRadius = 3*kGap;
     self.textView.layer.masksToBounds = YES;
     self.textView.layer.borderWidth = 3;
     self.textView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -103,7 +103,7 @@ static NSString*const cellID=@"cell";
     [self.myView addSubview:self.textView];
     // 创建Button
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sendButton.frame = CGRectMake(0, 0, 10*kGap, 10*kGap);
+    sendButton.frame = CGRectMake(0, 0, 10*kGap, 7*kGap);
     sendButton.center = CGPointMake(kWidth-5*kGap, 5*kGap);
     [sendButton setTitle:@"发送" forState:UIControlStateNormal];
     // 添加事件
@@ -262,6 +262,9 @@ static NSString*const cellID=@"cell";
                             [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
                         }
                     });
+                    [self.view endEditing:YES];
+                    [self keyBoardBack];
+                    self.textView.text = @"";
 
                 }
             }];

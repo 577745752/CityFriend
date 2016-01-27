@@ -16,5 +16,5 @@
 @property(nonatomic,strong)UITextField*activityTitleTextField;
 @property(nonatomic,strong)UITextField*activityTimeTextField;
 @property(nonatomic,strong)UITextField*addressTextField;
-@property(nonatomic,strong)UITextField*concentTextField;
+@property(nonatomic,strong)UITextView*concentView;
 @end

@@ -8,8 +8,8 @@
 
 #import "AddActivityViewController.h"
 
-@interface AddActivityViewController ()
-
+@interface AddActivityViewController ()<UITextViewDelegate>
+@property(nonatomic,strong)NSString * str;
 @end
 
 @implementation AddActivityViewController
@@ -33,7 +33,7 @@
     [self.view addSubview:self.activityTitleTextField];
     [self.view addSubview:self.activityTimeTextField];
     [self.view addSubview:self.addressTextField];
-    [self.view addSubview:self.concentTextField];
+    [self.view addSubview:self.concentView];
 }
 -(UILabel*)activityTitleLabel
 {
@@ -110,18 +110,37 @@
     }
     return _addressTextField;
 }
--(UITextField*)concentTextField
+-(UITextView*)concentView
 {
-    if (!_concentTextField) {
-        _concentTextField=[[UITextField alloc]initWithFrame:CGRectMake(3*kWidth/8, 36*kGap, kWidth/2, 35*kGap)];
-        _concentTextField.placeholder=@"请输入活动内容";
-        _concentTextField.layer.borderWidth=1;
-        _concentTextField.layer.borderColor=[UIColor grayColor].CGColor;
-        _concentTextField.layer.cornerRadius=5;
-        _concentTextField.layer.masksToBounds=YES;
-        _concentTextField.alpha=0.5;
+    if (!_concentView) {
+        _concentView=[[UITextView alloc]initWithFrame:CGRectMake(3*kWidth/8, 36*kGap, kWidth/2, 35*kGap)];
+        _concentView.text=@"请输入活动内容";
+        _concentView.textColor = [UIColor colorWithRed:224 / 255.0 green:224 / 255.0 blue:226 / 255.0 alpha:1];
+        //_concentView.alpha=0.2;
+        //_concentView.clearsOnInsertion = YES;
+        _concentView.delegate = self;
+        _concentView.font = [UIFont systemFontOfSize:17];
+        _concentView.layer.borderWidth=1;
+        _concentView.layer.borderColor=[UIColor lightGrayColor].CGColor;
+        _concentView.layer.cornerRadius=5;
+        _concentView.layer.masksToBounds=YES;
+        //文字对齐方式 左对齐
     }
-    return _concentTextField;
+    return _concentView;
+}
+//将要开始编辑
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if([_str isEqualToString:@""]){
+        _concentView.text = @"";
+        _concentView.textColor = [UIColor blackColor];
+    }
+    else{
+    }
+    return YES;
+}
+//结束编辑
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    _str = _concentView.text;
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -145,7 +164,7 @@
         UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:action];
         [self presentViewController:alertController animated:YES completion:nil];
-    }else if([_concentTextField.text isEqualToString:@""]){
+    }else if([_concentView.text isEqualToString:@""]){
         UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"活动内容不能为空" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*action=[UIAlertAction actionWithTitle:@"好吧" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:action];
@@ -159,7 +178,7 @@
         [post setObject:self.activityTitleTextField.text forKey:@"title"];
         [post setObject:self.activityTimeTextField.text forKey:@"time"];
         [post setObject:self.addressTextField.text forKey:@"address"];
-        [post setObject:self.concentTextField.text forKey:@"concent"];
+        [post setObject:self.concentView.text forKey:@"concent"];
         [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 // post 保存成功
