@@ -666,12 +666,14 @@ static NSString*const cellID=@"cell";
 }
 -(void)friendButtonAction:(UIButton*)button
 {
+    self.navigationItem.title=@"好友";
     self.page=YES;
     self.navigationItem.rightBarButtonItems = @[self.friendRight];
     [self loadDataOfFriends];
 }
 -(void)groupButtonAction:(UIButton*)button
 {
+    self.navigationItem.title=@"群组";
     self.page=NO;
     self.navigationItem.rightBarButtonItems=@[self.joinQunRight,self.setQunRight];
     [self loadDataOfGroup];
