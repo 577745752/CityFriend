@@ -35,7 +35,7 @@
 -(UILabel*)label
 {
     if (!_label) {
-        _label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/8, kHeight/2, 3*kWidth/4, 6*kGap)];
+        _label=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/8+2*kGap, kHeight/2+5*kGap, 3*kWidth/4, 6*kGap)];
         _label.text=@"遇 见 你, 真 美 好 !";
         _label.font=[UIFont fontWithName:@"Zapfino" size:23];
         _label.textColor=[UIColor redColor];

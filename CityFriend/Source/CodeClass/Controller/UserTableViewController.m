@@ -65,7 +65,7 @@
     if (section==0) {
         return 1;
     }
-    return 6;
+    return 5;
 }
 
 
@@ -84,19 +84,19 @@
         [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
         
         [loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
-
+        
         [cell.contentView addSubview:loginButton];
-
+        
         UIButton *registeredButton =[UIButton buttonWithType:UIButtonTypeSystem];
         registeredButton.frame=CGRectMake(3*kWidth/4-10*kGap, kHeight/5, 10*kGap, 5*kGap);
         [registeredButton setTitle:@"注册" forState:UIControlStateNormal];
         [registeredButton addTarget:self action:@selector(registered:) forControlEvents:UIControlEventTouchUpInside];
-
+        
         [cell.contentView addSubview:registeredButton];
         [cell.contentView addSubview:self.label];
         return cell;
     }
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (indexPath.row == 0&&indexPath.section==1) {
         cell.textLabel.text=@"我的活动";
@@ -105,37 +105,55 @@
         cell.accessoryView=fuzhu;
     }
     else if (indexPath.row == 1){
-    cell.textLabel.text=@"我的约会";
+        cell.textLabel.text=@"我的收藏";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
     }else if (indexPath.row == 2)
     {
-   cell.textLabel.text =@"我的收藏";
+        cell.textLabel.text =@"推荐应用给好友";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
     }else if (indexPath.row == 3)
     {
-        cell.textLabel.text =@"推荐应用给好友";
-        UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
-        fuzhu.text=@">";
-        cell.accessoryView=fuzhu;
-    }else if (indexPath.row == 4)
-    {
         cell.textLabel.text =@"帮助与反馈";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
-    }else if (indexPath.row == 5)
+    }else if (indexPath.row == 4)
     {
         cell.textLabel.text =@"设置";
         UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
         fuzhu.text=@">";
         cell.accessoryView=fuzhu;
     }
+    //    else if (indexPath.row == 5)
+    //    {
+    //        cell.textLabel.text =@"设置";
+    //        UILabel*fuzhu=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 20)];
+    //        fuzhu.text=@">";
+    //        cell.accessoryView=fuzhu;
+    //    }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        ActivedicTableViewController *myactiveVC=[ActivedicTableViewController new];
+        [self.navigationController pushViewController:myactiveVC animated:YES];
+    }
+    else if (indexPath.row==1)
+    {
+        CollectionTableViewController*myMovieVC=[CollectionTableViewController new];
+        [self.navigationController pushViewController:myMovieVC animated:YES];
+    }else if (indexPath.row==4)
+    {
+        SetTableViewController*mysetVC=[SetTableViewController new];
+        [self.navigationController pushViewController:mysetVC animated:YES];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

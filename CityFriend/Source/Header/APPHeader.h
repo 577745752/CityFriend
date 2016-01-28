@@ -29,6 +29,7 @@
 //第二个界面
 #import "ActivityTableViewController.h"
 #import "AddActivityViewController.h"
+
 //第三个界面
 #import "FriendViewController.h"
 #import "MyButton.h"
@@ -40,6 +41,9 @@
 #import "QunMemberTableViewController.h"
 //第四个界面
 #import "UserTableViewController.h"
+#import "ActivedicTableViewController.h"
+#import "CollectionTableViewController.h"
+#import "SetTableViewController.h"
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"

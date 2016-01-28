@@ -69,6 +69,9 @@
 		C2634DB41C5A026100F141B8 /* QunChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2634DB31C5A026100F141B8 /* QunChatTableViewCell.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
+		C28EA7511C5A413A00C6C527 /* ActivedicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28EA7501C5A413A00C6C527 /* ActivedicTableViewController.m */; };
+		C28EA7541C5A426B00C6C527 /* CollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28EA7531C5A426B00C6C527 /* CollectionTableViewController.m */; };
+		C28EA7571C5A42B300C6C527 /* SetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28EA7561C5A42B300C6C527 /* SetTableViewController.m */; };
 		C2CF002D1C56FEA900B33539 /* ActivivtyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */; };
 		C2CF005A1C574A5F00B33539 /* activityContent.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00551C574A5F00B33539 /* activityContent.png */; };
 		C2CF005B1C574A5F00B33539 /* address.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF00561C574A5F00B33539 /* address.png */; };
@@ -181,6 +184,12 @@
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C28EA74F1C5A413A00C6C527 /* ActivedicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivedicTableViewController.h; sourceTree = "<group>"; };
+		C28EA7501C5A413A00C6C527 /* ActivedicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivedicTableViewController.m; sourceTree = "<group>"; };
+		C28EA7521C5A426B00C6C527 /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTableViewController.h; sourceTree = "<group>"; };
+		C28EA7531C5A426B00C6C527 /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTableViewController.m; sourceTree = "<group>"; };
+		C28EA7551C5A42B300C6C527 /* SetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewController.h; sourceTree = "<group>"; };
+		C28EA7561C5A42B300C6C527 /* SetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewController.m; sourceTree = "<group>"; };
 		C2CF002B1C56FEA900B33539 /* ActivivtyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivivtyDetailViewController.h; sourceTree = "<group>"; };
 		C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivivtyDetailViewController.m; sourceTree = "<group>"; };
 		C2CF00551C574A5F00B33539 /* activityContent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activityContent.png; sourceTree = "<group>"; };
@@ -351,6 +360,12 @@
 				C2634DA81C59AE8400F141B8 /* QunMemberTableViewController.m */,
 				C219D2FF1C489F4E00F6EEDE /* UserTableViewController.h */,
 				C219D3001C489F4E00F6EEDE /* UserTableViewController.m */,
+				C28EA74F1C5A413A00C6C527 /* ActivedicTableViewController.h */,
+				C28EA7501C5A413A00C6C527 /* ActivedicTableViewController.m */,
+				C28EA7521C5A426B00C6C527 /* CollectionTableViewController.h */,
+				C28EA7531C5A426B00C6C527 /* CollectionTableViewController.m */,
+				C28EA7551C5A42B300C6C527 /* SetTableViewController.h */,
+				C28EA7561C5A42B300C6C527 /* SetTableViewController.m */,
 				C28765391C48E3050093F42E /* LoginViewController.h */,
 				C287653A1C48E3050093F42E /* LoginViewController.m */,
 				C2D1570D1C49DCC10068FC6E /* RegisterViewController.h */,
@@ -664,6 +679,7 @@
 				C255EEB11C4F36AE00EB2925 /* LocationViewController.m in Sources */,
 				C21C67D91C576E7E006FA98F /* ChatTableViewCell.m in Sources */,
 				C241C1231C56123F00143EE8 /* ReceiveMessageTool.m in Sources */,
+				C28EA7541C5A426B00C6C527 /* CollectionTableViewController.m in Sources */,
 				C212E40B1C53594700E1FC1D /* ActivityTableViewController.m in Sources */,
 				C2634DB41C5A026100F141B8 /* QunChatTableViewCell.m in Sources */,
 				C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */,
@@ -674,6 +690,7 @@
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,
 				C219D2CB1C489CBA00F6EEDE /* main.m in Sources */,
+				C28EA7571C5A42B300C6C527 /* SetTableViewController.m in Sources */,
 				C2D1570F1C49DCC10068FC6E /* RegisterViewController.m in Sources */,
 				C287653B1C48E3050093F42E /* LoginViewController.m in Sources */,
 				C255EECC1C4F891800EB2925 /* ClassificationCollectionReusableView.m in Sources */,
@@ -682,6 +699,7 @@
 				C22867DD1C56FEF600AB5D97 /* DataBaseTool.m in Sources */,
 				C210148D1C507E1D0043B98E /* ShopViewController.m in Sources */,
 				C2020E3F1C524E110055641C /* MyButton.m in Sources */,
+				C28EA7511C5A413A00C6C527 /* ActivedicTableViewController.m in Sources */,
 				C255EF031C4FD53700EB2925 /* Shop.m in Sources */,
 				C22867E01C57521100AB5D97 /* Chat.m in Sources */,
 				C21C67E71C577468006FA98F /* HintLoginView.m in Sources */,

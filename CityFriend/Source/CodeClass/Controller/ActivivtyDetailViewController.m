@@ -16,8 +16,7 @@
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"加入活动" style:UIBarButtonItemStylePlain target:self action:@selector(shareActivity:)];
-        self.navigationItem.title=@"活动详情";
+        
         [self drawView];
         
     }
@@ -255,6 +254,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    if (_yesOrNo == NO) {
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+    }
+    else{
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"加入活动" style:UIBarButtonItemStylePlain target:self action:@selector(shareActivity:)];
+        self.navigationItem.title=@"活动详情";
+        _yesOrNo = YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

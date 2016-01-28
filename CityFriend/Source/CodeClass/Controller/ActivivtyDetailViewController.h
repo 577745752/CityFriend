@@ -37,6 +37,8 @@
 
 //进群按钮
 @property(nonatomic,strong)UIButton *GetInToGroupButton;
+//判断是从哪个页面跳转的
+@property(nonatomic,assign)BOOL yesOrNo;
 
 -(CGFloat)caculateHeightWith:(NSString *)str;
 @end
