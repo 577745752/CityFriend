@@ -1,14 +1,14 @@
 //
-//  ChatTableViewCell.m
+//  QunChatTableViewCell.m
 //  CityFriend
 //
-//  Created by lanou3g on 16/1/26.
+//  Created by lanou3g on 16/1/28.
 //  Copyright © 2016年 朱延刚. All rights reserved.
 //
 
-#import "ChatTableViewCell.h"
+#import "QunChatTableViewCell.h"
 
-@implementation ChatTableViewCell
+@implementation QunChatTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -19,7 +19,7 @@
 }
 -(void)drawView
 {
-    
+    [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.headImgView];
     [self.contentView addSubview:self.bodyImgView];
     [self.contentView addSubview:self.timeLabel];
@@ -59,6 +59,14 @@
     }
     return _timeLabel;
 }
+-(UILabel*)nameLabel
+{
+    if (!_nameLabel) {
+        _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(3*kGap, 0, kWidth-6*kGap, 2*kGap)];
+        _nameLabel.font=[UIFont systemFontOfSize:2*kGap];
+    }
+    return _nameLabel;
+}
 -(void)setChat:(Chat *)chat
 {
     CGRect rect=[chat.content boundingRectWithSize:CGSizeMake(28*kGap, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
@@ -86,9 +94,9 @@
     }else{
         self.concentLabel.text=chat.content;
         self.headImgView.image=[UIImage imageNamed:@"12"];
-        CGRect headImgViewFrame=CGRectMake(kGap, kGap, 10*kGap, 10*kGap);
+        CGRect headImgViewFrame=CGRectMake(kGap, 2*kGap, 10*kGap, 10*kGap);
         self.headImgView.frame=headImgViewFrame;
-        
+        self.nameLabel.text=chat.name;
         
         CGRect bodyImgViewFrame=self.bodyImgView.frame;
         bodyImgViewFrame.size.height=rect.size.height+4*kGap;
@@ -98,7 +106,7 @@
         [_bodyImgView setImage:[[UIImage imageNamed:@"chat_from"] stretchableImageWithLeftCapWidth:10*kGap topCapHeight:0]];
         self.timeLabel.text=[chat.time substringToIndex:19];
         self.timeLabel.textAlignment=NSTextAlignmentRight;
-  }
+    }
 }
 - (void)awakeFromNib {
     // Initialization code

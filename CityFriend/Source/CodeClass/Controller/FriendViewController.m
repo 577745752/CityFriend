@@ -817,8 +817,9 @@ static NSString*const cellID=@"cell";
 {
     if (self.page) {
         MyButton*button=[MyButton buttonWithType:UIButtonTypeSystem];
-        button.backgroundColor=[UIColor purpleColor];
-        [button setTitle:self.groupArray[section] forState:(UIControlStateNormal)];
+        button.titleLabel.textAlignment=NSTextAlignmentLeft;
+        button.backgroundColor=[UIColor grayColor];
+        [button setTitle:[NSString stringWithFormat:@"<   %@   >",self.groupArray[section]] forState:(UIControlStateNormal)];
         button.section=section;
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
         return button;
@@ -845,8 +846,7 @@ static NSString*const cellID=@"cell";
     if ([[self.foldDict valueForKey:self.groupArray[section]] boolValue]==NO) {
         [self.foldDict setValue:@(YES) forKey:self.groupArray[section]];
     }else{
-        [self
-         .foldDict setValue:@(NO) forKey:self.groupArray[section]];
+        [self.foldDict setValue:@(NO) forKey:self.groupArray[section]];
     }
     [self.friendTableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationTop];
     

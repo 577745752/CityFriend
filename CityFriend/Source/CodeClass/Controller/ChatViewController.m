@@ -20,7 +20,8 @@
 //对话id
 @property(nonatomic,strong)NSString*conversationID;
 @end
-static NSString*const cellID=@"cell";
+static NSString*const friend=@"cell";
+static NSString*const group=@"cell";
 @implementation ChatViewController
 
 // 重写父类视图控制器
@@ -107,7 +108,8 @@ static NSString*const cellID=@"cell";
     self.chattingTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth, kHeight-64-10*kGap) style:UITableViewStyleGrouped];
     self.chattingTableView.delegate=self;
     self.chattingTableView.dataSource=self;
-    [self.chattingTableView registerClass:[ChatTableViewCell class] forCellReuseIdentifier:cellID];
+    [self.chattingTableView registerClass:[ChatTableViewCell class] forCellReuseIdentifier:friend];
+    [self.chattingTableView registerClass:[QunChatTableViewCell class] forCellReuseIdentifier:group];
     [self loadData];
     [self.view addSubview:self.chattingTableView];
     //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
@@ -243,13 +245,19 @@ static NSString*const cellID=@"cell";
 //设置cell
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        ChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+    if (self.page) {
+        ChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:friend];
         Chat*chat=[Chat new];
         chat=self.chattingArray[indexPath.row];
         cell.chat=chat;
         return cell;
-
+    }else{
+        QunChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:group];
+        Chat*chat=[Chat new];
+        chat=self.chattingArray[indexPath.row];
+        cell.chat=chat;
+        return cell;
+    }
 }
 //返回区头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -272,8 +280,8 @@ static NSString*const cellID=@"cell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Chat*chat=self.chattingArray[indexPath.row];
-    CGRect rect=[chat.content boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-130, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
-    return rect.size.height+50;
+    CGRect rect=[chat.content boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-22*kGap, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    return rect.size.height+9*kGap;
 }
 // 在开始编辑的时候 textView 和键盘一起弹出
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView

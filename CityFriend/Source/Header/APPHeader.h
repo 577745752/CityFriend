@@ -34,6 +34,7 @@
 #import "MyButton.h"
 #import "ChatViewController.h"
 #import "ChatTableViewCell.h"
+#import "QunChatTableViewCell.h"
 #import "Chat.h"
 #import "HintLoginView.h"
 #import "QunMemberTableViewController.h"
