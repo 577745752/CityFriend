@@ -57,7 +57,7 @@
     self.label.frame=labelFrame;
     if ([chat.name isEqualToString:[AVUser currentUser].username]) {
         // cell.textLabel.text=message.body;
-        self.label.text=chat.content;
+        self.label.text=[NSString stringWithFormat:@"%@:%@",chat.name,chat.content];
         self.headImgView.image=[UIImage imageNamed:@"13"];
         CGRect headImgViewFrame=CGRectMake([UIScreen mainScreen].bounds.size.width-50, 10, 50, 50);
         self.headImgView.frame=headImgViewFrame;
@@ -72,7 +72,7 @@
         [self.bodyImgView setImage:[[UIImage imageNamed:@"chat_to"] stretchableImageWithLeftCapWidth:30 topCapHeight:0]];
 
     }else{
-        self.label.text=chat.content;
+        self.label.text=[NSString stringWithFormat:@"%@:%@",chat.name,chat.content];
         self.headImgView.image=[UIImage imageNamed:@"12"];
         CGRect headImgViewFrame=CGRectMake(0, 10, 50, 50);
         self.headImgView.frame=headImgViewFrame;

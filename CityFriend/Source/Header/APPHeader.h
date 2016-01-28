@@ -36,6 +36,7 @@
 #import "ChatTableViewCell.h"
 #import "Chat.h"
 #import "HintLoginView.h"
+#import "QunMemberTableViewController.h"
 //第四个界面
 #import "UserTableViewController.h"
 

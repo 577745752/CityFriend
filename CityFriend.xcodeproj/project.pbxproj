@@ -65,6 +65,7 @@
 		C255EF031C4FD53700EB2925 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF021C4FD53700EB2925 /* Shop.m */; };
 		C255EF061C4FD61600EB2925 /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */; };
 		C255EF081C4FD78F00EB2925 /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C255EF071C4FD78F00EB2925 /* 8.jpeg */; };
+		C2634DA91C59AE8400F141B8 /* QunMemberTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2634DA81C59AE8400F141B8 /* QunMemberTableViewController.m */; };
 		C28765381C48E1150093F42E /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C28765371C48E1150093F42E /* 5.png */; };
 		C287653B1C48E3050093F42E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C287653A1C48E3050093F42E /* LoginViewController.m */; };
 		C2CF002D1C56FEA900B33539 /* ActivivtyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CF002C1C56FEA900B33539 /* ActivivtyDetailViewController.m */; };
@@ -172,6 +173,8 @@
 		C255EF041C4FD61600EB2925 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C255EF051C4FD61600EB2925 /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		C255EF071C4FD78F00EB2925 /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
+		C2634DA71C59AE8400F141B8 /* QunMemberTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QunMemberTableViewController.h; sourceTree = "<group>"; };
+		C2634DA81C59AE8400F141B8 /* QunMemberTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QunMemberTableViewController.m; sourceTree = "<group>"; };
 		C28765371C48E1150093F42E /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		C28765391C48E3050093F42E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C287653A1C48E3050093F42E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				C219D2FD1C489F3B00F6EEDE /* FriendViewController.m */,
 				C212E4031C530AFB00E1FC1D /* ChatViewController.h */,
 				C212E4041C530AFB00E1FC1D /* ChatViewController.m */,
+				C2634DA71C59AE8400F141B8 /* QunMemberTableViewController.h */,
+				C2634DA81C59AE8400F141B8 /* QunMemberTableViewController.m */,
 				C219D2FF1C489F4E00F6EEDE /* UserTableViewController.h */,
 				C219D3001C489F4E00F6EEDE /* UserTableViewController.m */,
 				C28765391C48E3050093F42E /* LoginViewController.h */,
@@ -658,6 +663,7 @@
 				C212E4051C530AFB00E1FC1D /* ChatViewController.m in Sources */,
 				C210149E1C50D96B0043B98E /* GetBackPwdViewController.m in Sources */,
 				C255EEB91C4F65C200EB2925 /* LocationCollectionReusableView.m in Sources */,
+				C2634DA91C59AE8400F141B8 /* QunMemberTableViewController.m in Sources */,
 				C255EF001C4FD49900EB2925 /* ShopTableViewController.m in Sources */,
 				C255EED71C4F8AD400EB2925 /* GDataXMLNode.m in Sources */,
 				C219D2F61C489DBE00F6EEDE /* AppDelegate.m in Sources */,

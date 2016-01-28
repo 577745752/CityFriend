@@ -168,6 +168,28 @@ static NSString*const cellID=@"cell";
                     [post setObject:[NSNumber numberWithInt:1] forKey:@"numberofqun"]; //初始值为 1,用计数器来存储当前群组的成员人数
                     [post addObjectsFromArray:[NSArray arrayWithObjects:[AVUser currentUser].username, nil] forKey:@"member"];//用数组来存储群成员
                     [post save];        //刷新数据
+                    
+                    //在本地数据库中建立群聊天记录表
+                    NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+                    NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+                    DataBaseTool*db=[DataBaseTool shareDataBase];
+                    //连接数据库
+                    [db connectDB:dataBasePath];
+                    //建表
+                    [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_qun_%@(\
+                                    name text not null,\
+                                    content text not null,\
+                                    time text not null\
+                                    )",[AVUser currentUser].username,text.text]];
+                    [db disconnectDB];
+                    NSLog(@"%@",dataBasePath);
+
+                    
+                    
+                    
+                    
+                    
+                    
                     [self loadDataOfGroup];
                 }
             } else {
@@ -240,7 +262,7 @@ static NSString*const cellID=@"cell";
     // 用自己的名字作为 ClientId 打开 client
     [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
         // "我" 建立了与 "对方" 的会话
-        [self.client createConversationWithName:@"好友请求" clientIds:@[username] callback:^(AVIMConversation *conversation, NSError *error) {
+        [self.client createConversationWithName:@"请求" clientIds:@[username] callback:^(AVIMConversation *conversation, NSError *error) {
             // 我 发了一条消息给 对方
             [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
@@ -420,13 +442,56 @@ static NSString*const cellID=@"cell";
             NSString*qunname=[[message.text componentsSeparatedByString:@"/"] lastObject];
             UIAlertController*intoQun=[UIAlertController alertControllerWithTitle:qunname message:@"你已经成功加入了大保健团伙" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*ok=[UIAlertAction actionWithTitle:@"搜嘎" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                //向云端服务器群表中添加数据(更新群表)
+                //在本地数据库中建立群聊天记录表
+                NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+                NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+                DataBaseTool*db=[DataBaseTool shareDataBase];
+                //连接数据库
+                [db connectDB:dataBasePath];
+                //建表
+                [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_qun_%@(\
+                                name text not null,\
+                                content text not null,\
+                                time text not null\
+                                )",[AVUser currentUser].username,qunname]];
+                [db disconnectDB];
+                NSLog(@"%@",dataBasePath);
                 //刷新数据
                 [self loadDataOfGroup];
             }];
             [intoQun addAction:ok];
             [self presentViewController:intoQun animated:YES completion:nil];
-       }else{
+        }else if([conversation.name hasPrefix:@"群聊"]){
+            //获取是哪个群发的消息
+            NSString*qunname=[[conversation.name componentsSeparatedByString:@"群聊"] lastObject];
+            //东八区时间
+            NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
+            NSString*time=(NSString*)bjdate;
+            //NSString*time1=[[time componentsSeparatedByString:@"+"] firstObject];
+            //向本地数据库中添加数据
+            NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+            NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+            DataBaseTool*db=[DataBaseTool shareDataBase];
+            //连接数据库
+            [db connectDB:dataBasePath];
+            //更新本地数据库的聊天记录
+            //        Chat*chat=[Chat new];
+            //        chat.name=conversation.creator;
+            //        chat.content=message.text;
+            //        chat.time=@"time";
+            //        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
+            //        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
+            [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_qun_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,qunname,conversation.creator,message.text,time]];
+            [db disconnectDB];
+            NSLog(@"%@",dataBasePath);
+            //广播通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Message" object:nil userInfo:@{@"群":qunname}];
+
+        
+        
+        
+        
+        }else{
         /*
          //正常聊天
          NSLog(@"接收到消息了");
@@ -796,7 +861,16 @@ static NSString*const cellID=@"cell";
         //隐藏tabbar
         chatVC.hidesBottomBarWhenPushed = YES;
         chatVC.friendName = arraySection[indexPath.row];
+        chatVC.page=self.page;
         [self.navigationController pushViewController:chatVC animated:YES];
+    }else{
+        ChatViewController*chatVC=[ChatViewController new];
+        //隐藏tabbar
+        chatVC.hidesBottomBarWhenPushed = YES;
+        chatVC.groupName=self.qunArray[indexPath.row];
+        chatVC.page=self.page;
+        [self.navigationController pushViewController:chatVC animated:YES];
+        
     }
 }
 

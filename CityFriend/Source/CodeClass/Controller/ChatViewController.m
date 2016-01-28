@@ -38,6 +38,10 @@ static NSString*const cellID=@"cell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMessageAction:) name:@"Message" object:nil];
     // 首先 创建了一个 client 来发送消息
     self.client = [[AVIMClient alloc] init];
+    
+    
+    
+    
     return self;
 }
 -(void)getMessageAction:(NSNotification*)notification
@@ -50,9 +54,47 @@ static NSString*const cellID=@"cell";
         _friendName=nil;
         _friendName=friendName;
     }
-    self.navigationItem.title = self.friendName;
+    self.navigationItem.title = _friendName;
 }
-
+-(void)setGroupName:(NSString *)groupName
+{
+    if (_groupName!=groupName) {
+        _groupName=nil;
+        _groupName=groupName;
+    }
+    self.navigationItem.title=_groupName;
+    //获取群成员列表
+    self.qunMemberArray=[NSMutableArray new];
+    AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // 检索成功
+            for (AVObject * obj in objects) {
+                self.qunMemberArray=[obj valueForKey:@"member"];
+            }
+        } else {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+-(void)setPage:(BOOL)page
+{
+    if (_page!=page) {
+        _page=nil;
+        _page=page;
+    }
+    if (!_page) {
+        self.Right=[[UIBarButtonItem alloc]initWithTitle:@"群成员" style:UIBarButtonItemStylePlain target:self action:@selector(RightClick:)];
+        self.navigationItem.rightBarButtonItem = self.Right;
+    }
+}
+-(void)RightClick:(UIBarButtonItem*)item
+{
+    QunMemberTableViewController*qunMemberTVC=[QunMemberTableViewController new];
+    qunMemberTVC.qunMemberArray=self.qunMemberArray;
+    [self.navigationController pushViewController:qunMemberTVC animated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
 
 }
@@ -124,31 +166,67 @@ static NSString*const cellID=@"cell";
 }
 -(void)loadData
 {
-    NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
-    DataBaseTool*db=[DataBaseTool shareDataBase];
-    //连接数据库
-    [db connectDB:dataBasePath];
-    //查询
-    self.chattingArray=[NSMutableArray new];
-    self.chattingArray=[db selectTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,self.friendName] WithCondition:@"1=1"];
-//   self.chattingArray =[db selectString:[NSString stringWithFormat:@"SELECT * FROM %@_%@",[AVUser currentUser].username,self.friendName]];
-//        [db disconnectDB];
-//    Chat*chat=[Chat new];
-//    chat=self.chattingArray[0];
-//    NSLog(@"%@",chat.content);
-//    NSLog(@"%@",dataBasePath);
-    //刷新u
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.chattingTableView reloadData];
-        //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
-        NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
-        //跳转到最后一行
-        if (self.chattingArray.count>0) {
-            [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
-        }
-    });
+    //好友
+    if (self.page) {
+        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+        DataBaseTool*db=[DataBaseTool shareDataBase];
+        //连接数据库
+        [db connectDB:dataBasePath];
+        //查询
+        self.chattingArray=[NSMutableArray new];
+        self.chattingArray=[db selectTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,self.friendName] WithCondition:@"1=1"];
+        //   self.chattingArray =[db selectString:[NSString stringWithFormat:@"SELECT * FROM %@_%@",[AVUser currentUser].username,self.friendName]];
+        //        [db disconnectDB];
+        //    Chat*chat=[Chat new];
+        //    chat=self.chattingArray[0];
+        //    NSLog(@"%@",chat.content);
+        //    NSLog(@"%@",dataBasePath);
+        //刷新u
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.chattingTableView reloadData];
+            //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
+            NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
+            //跳转到最后一行
+            if (self.chattingArray.count>0) {
+                [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            }
+        });
 
+    }else{//群组
+        
+        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+        DataBaseTool*db=[DataBaseTool shareDataBase];
+        //连接数据库
+        [db connectDB:dataBasePath];
+        //查询
+        self.chattingArray=[NSMutableArray new];
+        self.chattingArray=[db selectTable:[NSString stringWithFormat:@"%@_qun_%@",[AVUser currentUser].username,self.groupName] WithCondition:@"1=1"];
+        //   self.chattingArray =[db selectString:[NSString stringWithFormat:@"SELECT * FROM %@_%@",[AVUser currentUser].username,self.friendName]];
+        //        [db disconnectDB];
+        //    Chat*chat=[Chat new];
+        //    chat=self.chattingArray[0];
+        //    NSLog(@"%@",chat.content);
+        //    NSLog(@"%@",dataBasePath);
+        //刷新u
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.chattingTableView reloadData];
+            //如果和这个朋友有过聊天,那么聊天结果需要跳到最后一行
+            NSIndexPath*indexPath=[NSIndexPath indexPathForRow:self.chattingArray.count-1 inSection:0];
+            //跳转到最后一行
+            if (self.chattingArray.count>0) {
+                [self.chattingTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            }
+        });
+ 
+        
+        
+        
+        
+        
+    }
+    
 }
 //设置分区个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -165,12 +243,13 @@ static NSString*const cellID=@"cell";
 //设置cell
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    ChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
-    Chat*chat=[Chat new];
-    chat=self.chattingArray[indexPath.row];
-    cell.chat=chat;
-    return cell;
+
+        ChatTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+        Chat*chat=[Chat new];
+        chat=self.chattingArray[indexPath.row];
+        cell.chat=chat;
+        return cell;
+
 }
 //返回区头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -228,46 +307,89 @@ static NSString*const cellID=@"cell";
 }
 // 发送消息的方法
 -(void)SendMessage:(NSString*)message{
-
-    // 用自己的名字作为 ClientId 打开 client
-    [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
-        // "我" 建立了与 "对方" 的会话
-        [self.client createConversationWithName:@"聊天" clientIds:@[self.friendName] callback:^(AVIMConversation *conversation, NSError *error) {
-            // 我 发了一条消息给 对方
-            self.conversationID=conversation.conversationId;
-            [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    //东八区时间
-                    NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
-                    NSString*time=(NSString*)bjdate;
-                    //NSString*time1=[[time componentsSeparatedByString:@"+"] firstObject];
-                    //向本地数据库中添加数据
-                    NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-                    NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
-                    DataBaseTool*db=[DataBaseTool shareDataBase];
-                    //连接数据库
-                    [db connectDB:dataBasePath];
-                    //更新本地数据库的聊天记录
-                    //        Chat*chat=[Chat new];
-                    //        chat.name=conversation.creator;
-                    //        chat.content=message.text;
-                    //        chat.time=@"time";
-                    //        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
-                    //        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
-                    [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,self.friendName,[AVUser currentUser].username,message,time]];
-                    [db disconnectDB];
-                    //重新加载聊天记录
-                    [self loadData];
-                    NSLog(@"发送成功！");
-                    //刷新u
-                    [self.view endEditing:YES];
-                    [self keyBoardBack];
-                    self.textView.text = @"";
-
-                }
+    if (_page) {
+        // 用自己的名字作为 ClientId 打开 client
+        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+            // "我" 建立了与 "对方" 的会话
+            [self.client createConversationWithName:@"聊天" clientIds:@[self.friendName] callback:^(AVIMConversation *conversation, NSError *error) {
+                // 我 发了一条消息给 对方
+                self.conversationID=conversation.conversationId;
+                [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        //东八区时间
+                        NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
+                        NSString*time=(NSString*)bjdate;
+                        //NSString*time1=[[time componentsSeparatedByString:@"+"] firstObject];
+                        //向本地数据库中添加数据
+                        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+                        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+                        DataBaseTool*db=[DataBaseTool shareDataBase];
+                        //连接数据库
+                        [db connectDB:dataBasePath];
+                        //更新本地数据库的聊天记录
+                        //        Chat*chat=[Chat new];
+                        //        chat.name=conversation.creator;
+                        //        chat.content=message.text;
+                        //        chat.time=@"time";
+                        //        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
+                        //        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
+                        [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,self.friendName,[AVUser currentUser].username,message,time]];
+                        [db disconnectDB];
+                        //重新加载聊天记录
+                        [self loadData];
+                        NSLog(@"发送成功！");
+                        //刷新u
+                        [self.view endEditing:YES];
+                        [self keyBoardBack];
+                        self.textView.text = @"";
+                        
+                    }
+                }];
             }];
         }];
-    }];
+ 
+    }else
+    {
+        // 用自己的名字作为 ClientId 打开 client
+        [self.client openWithClientId:[AVUser currentUser].username callback:^(BOOL succeeded, NSError *error) {
+            // "我" 建立了与 "对方" 的会话
+            [self.client createConversationWithName:[NSString stringWithFormat:@"群聊%@",self.groupName] clientIds:self.qunMemberArray callback:^(AVIMConversation *conversation, NSError *error) {
+                // 我 发了一条消息给 对方
+                self.conversationID=conversation.conversationId;
+                [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        //东八区时间
+                        NSDate*bjdate=[NSDate dateWithTimeIntervalSinceNow:8*60*60];//+8*6*60
+                        NSString*time=(NSString*)bjdate;
+                        //NSString*time1=[[time componentsSeparatedByString:@"+"] firstObject];
+                        //向本地数据库中添加数据
+                        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+                        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+                        DataBaseTool*db=[DataBaseTool shareDataBase];
+                        //连接数据库
+                        [db connectDB:dataBasePath];
+                        //更新本地数据库的聊天记录
+                        //        Chat*chat=[Chat new];
+                        //        chat.name=conversation.creator;
+                        //        chat.content=message.text;
+                        //        chat.time=@"time";
+                        //        NSLog(@"%@",[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator]);
+                        //        [db insertToTable:[NSString stringWithFormat:@"%@_%@",[AVUser currentUser].username,conversation.creator] WithChat:chat];
+                        [db execDMLSql:[NSString stringWithFormat:@"INSERT INTO %@_qun_%@ VALUES ('%@','%@','%@')",[AVUser currentUser].username,self.groupName,[AVUser currentUser].username,message,time]];
+                        [db disconnectDB];
+                        //重新加载聊天记录
+                        [self loadData];
+                        NSLog(@"发送成功！");
+                        //刷新u
+                        [self.view endEditing:YES];
+                        [self keyBoardBack];
+                        self.textView.text = @"";
+                        
+                    }
+                }];
+            }];
+        }];
+    }
 }
 //// 接收消息的回调函数
 //- (void)conversation:(AVIMConversation *)conversation onDidReceiveTypedMessage:(AVIMTypedMessage *)message
