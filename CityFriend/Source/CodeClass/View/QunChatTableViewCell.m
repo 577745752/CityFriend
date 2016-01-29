@@ -88,7 +88,7 @@
         bodyImgViewFrame.size.width=rect.size.width+10*kGap;
         bodyImgViewFrame.origin.x=[UIScreen mainScreen].bounds.size.width-12*kGap-rect.size.width-10*kGap;
         _bodyImgView.frame=bodyImgViewFrame;
-        [_bodyImgView setImage:[[UIImage imageNamed:@"chat_to"] stretchableImageWithLeftCapWidth:10*kGap topCapHeight:0]];
+        [_bodyImgView setImage:[[UIImage imageNamed:@"chat_to"] stretchableImageWithLeftCapWidth:5*kGap topCapHeight:0]];
         self.timeLabel.text=[chat.time substringToIndex:19];
         self.timeLabel.textAlignment=NSTextAlignmentLeft;
     }else{
@@ -103,7 +103,7 @@
         bodyImgViewFrame.size.width=rect.size.width+10*kGap;
         bodyImgViewFrame.origin.x=12*kGap;
         _bodyImgView.frame=bodyImgViewFrame;
-        [_bodyImgView setImage:[[UIImage imageNamed:@"chat_from"] stretchableImageWithLeftCapWidth:10*kGap topCapHeight:0]];
+        [_bodyImgView setImage:[[UIImage imageNamed:@"chat_from"] stretchableImageWithLeftCapWidth:5*kGap topCapHeight:0]];
         self.timeLabel.text=[chat.time substringToIndex:19];
         self.timeLabel.textAlignment=NSTextAlignmentRight;
     }
