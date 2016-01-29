@@ -9,6 +9,8 @@
 #import "ActivivtyDetailViewController.h"
 
 @interface ActivivtyDetailViewController ()
+//聊天 相关属性
+@property (nonatomic, strong) AVIMClient *client;
 
 @end
 
@@ -24,6 +26,10 @@
 }
 //点击加入活动
 -(void)shareActivity:(UIBarButtonItem *)item{
+    if([AVUser currentUser] == nil){
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+    }
+    else{
     AVQuery *query = [AVQuery queryWithClassName:@"Activity"];
     [query whereKey:@"title" equalTo:self.titleLabel.text];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -51,6 +57,7 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
     }];
+    }
 }
 
 
@@ -200,10 +207,69 @@
         _GetInToGroupButton.frame = CGRectMake(CGRectGetMaxX(self.chatGroupLabel.frame) + kGap * 2, CGRectGetMaxY(self.addressLabel.frame) + kGap * 2, kGap * 8, kGap * 6);
         //_GetInToGroupButton.backgroundColor = [UIColor grayColor];
         [_GetInToGroupButton setTitle:@"进群" forState:UIControlStateNormal];
+        [_GetInToGroupButton addTarget:self action:@selector(GetInToGroupAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _GetInToGroupButton;
 }
 
+// 添加好友的方法(实际上是用了发送消息的方法)
+-(void)SendMessage:(NSString*)message toUserName:(NSString*)username{
+    // 首先 创建了一个 client 来发送消息
+    self.client = [[AVIMClient alloc] init];
+    //用户登陆状态
+    AVUser *currentUser = [AVUser currentUser];
+    // 用自己的名字作为 ClientId 打开 client
+    [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
+        // "我" 建立了与 "对方" 的会话
+        [self.client createConversationWithName:@"请求" clientIds:@[username] callback:^(AVIMConversation *conversation, NSError *error) {
+            // 我 发了一条消息给 对方
+            [conversation sendMessage:[AVIMTextMessage messageWithText:message attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"发送成功！");
+                }
+            }];
+        }];
+    }];
+}
+
+//加入活动聊天群
+-(void)GetInToGroupAction:(UIButton *)button{
+    if([AVUser currentUser] == nil){
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+    }
+    else{
+    //在群表中查询群id是否存在
+#warning 需要更改
+    AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+    [query whereKey:@"qunname" equalTo:self.objc[@"qunName"]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error == nil) {
+            //首先要知道群主是谁
+            NSString*admin=[objects[0] valueForKey:@"admin"];
+            //向群主申请加入该群,给群主发送申请信息
+            
+            // 首先 创建了一个 client 来发送消息
+            self.client = [[AVIMClient alloc] init];
+            //用户登陆状态
+            AVUser *currentUser = [AVUser currentUser];
+            // 用自己的名字作为 ClientId 打开 client
+            [self.client openWithClientId:currentUser.username callback:^(BOOL succeeded, NSError *error) {
+                // "我" 建立了与 "对方" 的会话
+                [self.client createConversationWithName:@"请求" clientIds:@[admin] callback:^(AVIMConversation *conversation, NSError *error) {
+                    // 我 发了一条消息给 对方
+                    [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"%@/%@/>_<想要入伙>_<",[AVUser currentUser].username,self.objc[@"qunName"]] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"发送成功！");
+                        }
+                    }];
+                }];
+            }];
+        } else {
+            NSLog(@"%@",error);
+        }
+    }];
+    }
+}
 -(UIImageView *)activityContentImgView{
     if(!_activityContentImgView){
         _activityContentImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kGap * 2, CGRectGetMaxY(self.chatGroupImgView.frame) + kGap * 2, kGap * 5, kGap * 5)];
@@ -273,13 +339,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

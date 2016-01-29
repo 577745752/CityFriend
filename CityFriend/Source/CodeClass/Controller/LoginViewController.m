@@ -9,7 +9,8 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
-
+@property(nonatomic,strong)NSMutableArray * friendArray;
+@property(nonatomic,strong)NSMutableArray * groupArray;
 @end
 
 @implementation LoginViewController
@@ -116,11 +117,12 @@
 }
 -(void)login:(UIButton*)button
 {
-
+    
     [AVUser logInWithUsernameInBackground:_userNameTextField.text password:_pswTextField.text block:^(AVUser *user, NSError *error) {
         if (user != nil) {
             NSLog(@"登陆成功");
             [self initDataBase];
+            
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             NSLog(@"登陆失败");
@@ -130,18 +132,75 @@
 //初始化数据库,建表操作
 -(void)initDataBase
 {
+    self.friendArray = [NSMutableArray new];
+    self.groupArray = [NSMutableArray new];
     NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
     DataBaseTool*db=[DataBaseTool shareDataBase];
-    //连接数据库
-    [db connectDB:dataBasePath];
-    //建表
-    [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_friends(\
-                    friendname text not null,\
-                    groupname text not null,\
-                    primary key \(friendname)\
-                    )",[AVUser currentUser].username]];
-    [db disconnectDB];
+    //    //连接数据库
+    //    [db connectDB:dataBasePath];
+    //    //建表
+    //    [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_friends(\
+    //                    friendname text not null,\
+    //                    groupname text not null,\
+    //                    primary key \(friendname)\
+    //                    )",[AVUser currentUser].username]];
+    
+    AVQuery *query = [AVQuery queryWithClassName:@"Friends"];
+    [query whereKey:@"username" equalTo:[AVUser currentUser].username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        //连接数据库
+        [db connectDB:dataBasePath];
+        //建表
+        [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_friends(\
+                        friendname text not null,\
+                        groupname text not null,\
+                        primary key \(friendname)\
+                        )",[AVUser currentUser].username]];
+        
+        for (AVObject *objc in objects) {
+            [self.friendArray addObject:objc[@"friendname"]];
+        }
+        for (NSString *str in self.friendArray) {
+            [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_%@(\
+                            name text not null,\
+                            content text not null,\
+                            time text not null\
+                            )",[AVUser currentUser].username,str]];
+        }
+        [db disconnectDB];
+    }];
+    
+    AVQuery *query1 = [AVQuery queryWithClassName:@"Qun"];
+    //[query1 whereKey:@"username" equalTo:[AVUser currentUser].username];
+    [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        //连接数据库
+        [db connectDB:dataBasePath];
+        //建表
+        [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_friends(\
+                        friendname text not null,\
+                        groupname text not null,\
+                        primary key \(friendname)\
+                        )",[AVUser currentUser].username]];
+        for (AVObject *objc in objects) {
+            NSMutableArray*array=[objc valueForKey:@"member"];
+            for (NSString * username in array) {
+                if ([username isEqualToString:[AVUser currentUser].username]) {
+                    [self.groupArray addObject:[objc valueForKey:@"qunname"]];
+                }
+            }
+        }
+        for (NSString *str in self.groupArray) {
+            [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_qun_%@(\
+                            name text not null,\
+                            content text not null,\
+                            time text not null\
+                            )",[AVUser currentUser].username,str]];
+        }
+        [db disconnectDB];
+    }];
+    
     NSLog(@"%@",dataBasePath);
 }
 
@@ -162,7 +221,7 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -170,13 +229,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

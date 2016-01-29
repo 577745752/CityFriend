@@ -39,6 +39,7 @@
     self.button.backgroundColor=[UIColor redColor];
     [self.button setTitle:@"收藏店铺" forState:UIControlStateNormal];
     //[self.button setTitle:@"你好丑" forState:UIControlStateHighlighted];
+    //收藏按钮添加事件
     [self.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.button.frame=CGRectMake(0, 64, kWidth, 45);
     self.view.backgroundColor=[UIColor yellowColor];
@@ -95,8 +96,13 @@
     [view removeFromSuperview];
     NSLog(@"加载出错");
 }
+//收藏点击事件
 -(void)buttonAction:(UIButton*)button
 {
+    if([AVUser currentUser] == nil){
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+    }
+    else{
     AVQuery *query = [AVQuery queryWithClassName:@"Shop"];
     [query whereKey:@"userName"equalTo:[AVUser currentUser].username];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -163,7 +169,7 @@
             NSLog(@"%@",error);
         }
     }];
-    
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

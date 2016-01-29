@@ -109,7 +109,7 @@ static NSString*const cellID=@"cell";
     NSLog(@"%lu",indexPath.row);
     ActivivtyDetailViewController *new = [ActivivtyDetailViewController new];
     new.objc = self.activityArray[indexPath.row];
-    
+    new.yesOrNo = YES;
     [self.navigationController pushViewController:new animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

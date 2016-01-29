@@ -10,6 +10,8 @@
 
 @interface AddActivityViewController ()<UITextViewDelegate>
 @property(nonatomic,strong)NSString * str;
+//用来暂时存储群名称
+@property(nonatomic,strong)NSString *qunName;
 @end
 
 @implementation AddActivityViewController
@@ -171,33 +173,107 @@
         [alertController addAction:action];
         [self presentViewController:alertController animated:YES completion:nil];
     }else{
-        NSMutableArray *array = [NSMutableArray new];
-        [array addObject:[AVUser currentUser].username];
-        AVObject *post = [AVObject objectWithClassName:@"Activity"];
-        [post setObject:[AVUser currentUser].username forKey:@"initiator"];
-        [post setObject:array forKey:@"counts"];
-        [post setObject:self.activityTitleTextField.text forKey:@"title"];
-        [post setObject:self.activityTimeTextField.text forKey:@"time"];
-        [post setObject:self.addressTextField.text forKey:@"address"];
-        [post setObject:self.concentView.text forKey:@"concent"];
-        [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                // post 保存成功
-                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"发布成功" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];
-                [alertController addAction:action];
-                [self presentViewController:alertController animated:YES completion:nil];
-            } else {
-                NSLog(@"%@",error);
-                // 保存 post 时出错
-                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"发布失败" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                [alertController addAction:action];
-                [self presentViewController:alertController animated:YES completion:nil];
-            }
+        //发布活动时,创建群
+        UIAlertController*setQun=[UIAlertController alertControllerWithTitle:@"" message:@"请输入群id" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*ok=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            //获取要要创建的群的id
+            UITextField*text=(UITextField*)[setQun.view viewWithTag:107];
+            
+            //在群表中查询群id是否已经存在
+            AVQuery *query = [AVQuery queryWithClassName:@"Qun"];
+            [query whereKey:@"qunname" equalTo:text.text];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (error == nil) {
+                    //如果返回的用户数组不为空,说明该群名称已经存在了
+                    if ([objects count]) {
+                        UIAlertController*qunmingbeizhanyong=[UIAlertController alertControllerWithTitle:@"提示" message:@"群名称已经被占用了" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction*zhidaole=[UIAlertAction actionWithTitle:@"哥乌恩滚" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        }];
+                        [qunmingbeizhanyong addAction:zhidaole];
+                        [self presentViewController:qunmingbeizhanyong animated:YES completion:nil];
+                    }else{//如果返回的用户数组为空,才可以创建
+                        //向云端服务器表中添加数据(更新群表)
+                        AVObject *post1 = [AVObject objectWithClassName:@"Qun"];
+                        //                    [post setObject:[AVUser currentUser].username forKey:@"username"];
+                        [post1 setObject:[AVUser currentUser].username forKey:@"admin"];
+                        [post1 setObject:text.text forKey:@"qunname"];
+                        self.qunName = text.text;
+                        [post1 setObject:[NSNumber numberWithInt:1] forKey:@"numberofqun"]; //初始值为 1,用计数器来存储当前群组的成员人数
+                        [post1 addObjectsFromArray:[NSArray arrayWithObjects:[AVUser currentUser].username, nil] forKey:@"member"];//用数组来存储群成员
+                        [post1 save];        //刷新数据
+                        
+                        
+                        
+                        
+                        NSMutableArray *array = [NSMutableArray new];
+                        [array addObject:[AVUser currentUser].username];
+                        AVObject *post = [AVObject objectWithClassName:@"Activity"];
+                        [post setObject:[AVUser currentUser].username forKey:@"initiator"];
+                        [post setObject:array forKey:@"counts"];
+                        [post setObject:self.activityTitleTextField.text forKey:@"title"];
+                        [post setObject:self.activityTimeTextField.text forKey:@"time"];
+                        [post setObject:self.addressTextField.text forKey:@"address"];
+                        [post setObject:self.concentView.text forKey:@"concent"];
+                        [post setObject:self.qunName forKey:@"qunName"];
+                        
+                        [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (!error) {
+                                // post 保存成功
+                                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"发布成功" preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }];
+                                [alertController addAction:action];
+                                [self presentViewController:alertController animated:YES completion:nil];
+                            } else {
+                                NSLog(@"%@",error);
+                                // 保存 post 时出错
+                                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"发布失败" preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction*action=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                                [alertController addAction:action];
+                                [self presentViewController:alertController animated:YES completion:nil];
+                            }
+                        }];
+                        
+                        
+                        
+                        
+                        
+                        //在本地数据库中建立群聊天记录表
+                        NSString*DocumentPath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+                        NSString*dataBasePath=[DocumentPath stringByAppendingPathComponent:@"DataBase.sqlite"];
+                        DataBaseTool*db=[DataBaseTool shareDataBase];
+                        //连接数据库
+                        [db connectDB:dataBasePath];
+                        //建表
+                        [db execDDLSql:[NSString stringWithFormat:@"create table if not exists %@_qun_%@(\
+                                        name text not null,\
+                                        content text not null,\
+                                        time text not null\
+                                        )",[AVUser currentUser].username,text.text]];
+                        [db disconnectDB];
+                        NSLog(@"%@",dataBasePath);
+                        //[self loadDataOfGroup];
+                    }
+                } else {
+                    NSLog(@"%@",error);
+                }
+            }];
+            
         }];
+        UIAlertAction*no=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [setQun addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder=@"请输群id";
+            textField.tag=107;
+        }];
+        [setQun addAction:no];
+        [setQun addAction:ok];
+        [self presentViewController:setQun animated:YES completion:nil];
+        
+        
+        
+        
     }
 }
 - (void)viewDidLoad {

@@ -141,18 +141,34 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(indexPath.section == 1){
     if (indexPath.row==0) {
+        if([AVUser currentUser] == nil){
+            [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+        }
+        else{
         ActivedicTableViewController *myactiveVC=[ActivedicTableViewController new];
         [self.navigationController pushViewController:myactiveVC animated:YES];
+        }
     }
     else if (indexPath.row==1)
-    {
+    {if([AVUser currentUser] == nil){
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+    }
+    else{
         CollectionTableViewController*myMovieVC=[CollectionTableViewController new];
         [self.navigationController pushViewController:myMovieVC animated:YES];
+    }
     }else if (indexPath.row==4)
     {
+        if([AVUser currentUser] == nil){
+            [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+        }
+        else{
         SetTableViewController*mysetVC=[SetTableViewController new];
-        [self.navigationController pushViewController:mysetVC animated:YES];
+            [self.navigationController pushViewController:mysetVC animated:YES];
+        }
+    }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
