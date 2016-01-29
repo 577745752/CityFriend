@@ -107,7 +107,8 @@ static NSString*shopID=@"shop";
 {
     ShopViewController*shopVC=[ShopViewController new];
     Shop*shop=self.dataArray[indexPath.row];
-    shopVC.shop=shop;
+    shopVC.shopTitle = shop.title;
+    shopVC.deal_url=shop.deal_url;
     [self.navigationController pushViewController:shopVC animated:YES];
 }
 /*

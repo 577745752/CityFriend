@@ -10,4 +10,6 @@
 
 @interface ShopViewController : UIViewController
 @property(nonatomic,strong)Shop*shop;
+@property(nonatomic,strong)NSString *deal_url;
+@property(nonatomic,strong)NSString *shopTitle;
 @end
