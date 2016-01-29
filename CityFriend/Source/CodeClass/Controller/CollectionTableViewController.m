@@ -9,7 +9,7 @@
 #import "CollectionTableViewController.h"
 
 @interface CollectionTableViewController ()
-
+@property(nonatomic,strong)NSMutableArray *shopArray;
 @end
 static NSString *const mycollecVCID=@"mycollecVC";
 @implementation CollectionTableViewController
@@ -17,11 +17,35 @@ static NSString *const mycollecVCID=@"mycollecVC";
 {
     if (self=[super initWithStyle:style]) {
         self.navigationItem.title=@"我的活动";
+        
+        [self loadData];
     }
     
     return self;
 }
-
+-(void)loadData{
+    self.shopArray = [NSMutableArray new];
+    AVQuery *query = [AVQuery queryWithClassName:@"Shop"];
+    [query whereKey:@"userName"equalTo:[AVUser currentUser].username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            for (AVObject *ob in objects) {
+                NSMutableDictionary *dict = [NSMutableDictionary new];
+                [dict setObject:ob[@"shopTitle"]forKey:@"shopTitle"];
+                [dict setObject:ob[@"shopUrl"] forKey:@"shopUrl"];
+                [self.shopArray addObject:dict];
+                //NSLog(@"====%@",ob[@"shopTitle"]);
+            }
+        }
+        else{
+            NSLog(@"%@",error);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.tableView reloadData];
+        });
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //注册
@@ -36,24 +60,29 @@ static NSString *const mycollecVCID=@"mycollecVC";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 10;
+    //NSLog(@"%lu",self.shopArray.count);
+    return self.shopArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:mycollecVCID forIndexPath:indexPath];
-    
-    
-    
+    cell.textLabel.text = self.shopArray[indexPath.row][@"shopTitle"];
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ShopViewController*shopVC=[ShopViewController new];
+    shopVC.shopTitle = self.shopArray[indexPath.row][@"shopTitle"];
+    shopVC.deal_url=self.shopArray[indexPath.row][@"shopUrl"];
+    [self.navigationController pushViewController:shopVC animated:YES];
+    
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];

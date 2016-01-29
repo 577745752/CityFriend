@@ -16,13 +16,29 @@
 @end
 
 @implementation ShopViewController
-
+//-(void)viewWillAppear:(BOOL)animated{
+//    AVQuery *query = [AVQuery queryWithClassName:@"Shop"];
+//    [query whereKey:@"userName"equalTo:[AVUser currentUser].username];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if(!error){
+//            for (AVObject *ob in objects) {
+//                if([ob[@"shopTitle"]isEqualToString:self.shop.title ]){
+//                    [self.button setTitle:@"已收藏" forState:UIControlStateNormal];
+//                    self.button.backgroundColor=[UIColor greenColor];
+//                }
+//                else{
+//                    NSLog(@"%@",error);
+//                }
+//            }
+//        }
+//    }];
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.button=[UIButton buttonWithType:UIButtonTypeSystem];
     self.button.backgroundColor=[UIColor redColor];
-    [self.button setTitle:@"下面,是见证奇迹的时刻" forState:UIControlStateNormal];
-    [self.button setTitle:@"你好丑" forState:UIControlStateHighlighted];
+    [self.button setTitle:@"收藏店铺" forState:UIControlStateNormal];
+    //[self.button setTitle:@"你好丑" forState:UIControlStateHighlighted];
     [self.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     self.button.frame=CGRectMake(0, 64, kWidth, 45);
     self.view.backgroundColor=[UIColor yellowColor];
@@ -37,7 +53,7 @@
     [self.view addSubview:self.button];
     //网络加载
     //NSMutableURLRequest*request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.shop.deal_h5_url]]];
-    NSMutableURLRequest*request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.shop.deal_url]]];
+    NSMutableURLRequest*request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.deal_url]]];
     //加载
     [self.webView loadRequest:request];
 }
@@ -81,6 +97,72 @@
 }
 -(void)buttonAction:(UIButton*)button
 {
+    AVQuery *query = [AVQuery queryWithClassName:@"Shop"];
+    [query whereKey:@"userName"equalTo:[AVUser currentUser].username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(!error){
+            //if(objects.count != 0){
+            BOOL a = YES;
+            for (AVObject *ob in objects) {
+                if([ob[@"shopUrl"]isEqualToString:self.deal_url])
+                {
+                    UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"您已经收藏过该店铺了!" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction*action=[UIAlertAction actionWithTitle:@"哦了~" style:UIAlertActionStyleDefault handler:nil];
+                    [alertController addAction:action];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                    a = NO;
+                }
+                else
+                {
+                    a = YES;
+                    //dispatch_async(dispatch_get_main_queue(), ^{
+                    //                            [self.button setTitle:@"已收藏" forState:UIControlStateNormal];
+                    //                            self.button.backgroundColor=[UIColor greenColor];
+                    //                        });
+                    //break;
+                }
+            }
+            if (a == YES) {
+                //写入
+                AVObject *objc = [AVObject objectWithClassName:@"Shop"];
+                [objc setObject:[AVUser currentUser].username forKey:@"userName"];
+                [objc setObject:self.shopTitle forKey:@"shopTitle"];
+                [objc setObject:self.deal_url forKey:@"shopUrl"];
+                [objc save];
+                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"收藏成功!!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction*action=[UIAlertAction actionWithTitle:@"干得漂亮~~" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:action];
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }
+            
+        }
+        //            else{
+        //                //写入
+        //                AVObject *objc = [AVObject objectWithClassName:@"Shop"];
+        //                [objc setObject:[AVUser currentUser].username forKey:@"userName"];
+        //                [objc setObject:self.shop.title forKey:@"shopTitle"];
+        //                [objc setObject:self.shop.deal_url forKey:@"shopUrl"];
+        //                [objc save];
+        //                UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"收藏成功!!" preferredStyle:UIAlertControllerStyleAlert];
+        //                UIAlertAction*action=[UIAlertAction actionWithTitle:@"干得漂亮~~" style:UIAlertActionStyleDefault handler:nil];
+        //                [alertController addAction:action];
+        //                [self presentViewController:alertController animated:YES completion:nil];
+        ////                dispatch_async(dispatch_get_main_queue(), ^{
+        ////                    [self.button setTitle:@"已收藏" forState:UIControlStateNormal];
+        ////                    self.button.backgroundColor=[UIColor greenColor];
+        ////                });
+        //
+        //            }
+        //        }
+        else{
+            UIAlertController*alertController=[UIAlertController alertControllerWithTitle:@"提示" message:@"收藏失败了!!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*action=[UIAlertAction actionWithTitle:@"干得漂亮~~" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:action];
+            [self presentViewController:alertController animated:YES completion:nil];
+            NSLog(@"%@",error);
+        }
+    }];
     
 }
 - (void)didReceiveMemoryWarning {
