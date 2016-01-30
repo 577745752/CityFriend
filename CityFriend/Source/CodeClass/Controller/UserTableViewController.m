@@ -85,7 +85,7 @@
         
         [loginButton addTarget:self action:@selector(:) forControlEvents:UIControlEventTouchUpInside];
         
-        [cell.contentView addSubview:loginButton];
+//        [cell.contentView addSubview:loginButton];
         
         UIButton *registeredButton =[UIButton buttonWithType:UIButtonTypeSystem];
         registeredButton.frame=CGRectMake(3*kWidth/4-10*kGap, kHeight/5, 10*kGap, 5*kGap);
