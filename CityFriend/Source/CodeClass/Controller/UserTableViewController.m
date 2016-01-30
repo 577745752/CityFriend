@@ -81,9 +81,9 @@
         
         UIButton *loginButton =[UIButton buttonWithType:UIButtonTypeSystem];
         loginButton.frame = CGRectMake(kWidth/4, kHeight/5, 10*kGap, 5*kGap);
-        [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
+//        [loginButton setTitle:@"登陆" forState:UIControlStateNormal];
         
-        [loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+        [loginButton addTarget:self action:@selector(:) forControlEvents:UIControlEventTouchUpInside];
         
         [cell.contentView addSubview:loginButton];
         
@@ -92,7 +92,7 @@
         [registeredButton setTitle:@"注册" forState:UIControlStateNormal];
         [registeredButton addTarget:self action:@selector(registered:) forControlEvents:UIControlEventTouchUpInside];
         
-        [cell.contentView addSubview:registeredButton];
+//        [cell.contentView addSubview:registeredButton];
         [cell.contentView addSubview:self.label];
         return cell;
     }

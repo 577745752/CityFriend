@@ -30,7 +30,7 @@
     self.LabName.center = self.contentView.center;
     _LabName.textAlignment = 1;
     _LabName.font = [UIFont systemFontOfSize:15];
-    _LabName.layer.cornerRadius = 15;
+    _LabName.layer.cornerRadius = 3*kGap;
     _LabName.layer.masksToBounds = YES;
     
     [self addSubview:_LabName];
